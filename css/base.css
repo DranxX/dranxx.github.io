@@ -1,0 +1,51 @@
+/* ── RESET & VARIABLES ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:   #080810;
+  --ink-2: #0f0f1a;
+  --ink-3: #181825;
+  --ink-4: #222233;
+  --ink-3-rgb: 24, 24, 37;
+  --y:     #e8c840;
+  --y2:    #c9a820;
+  --b:     #6aaec8;
+  --b2:    #3d8aab;
+  --fg:    #d4d4e8;
+  --mid:   #555570;
+  --dim:   #2a2a40;
+  --line:  rgba(255,255,255,0.07);
+}
+
+:root.light {
+  --ink:   #ffffff;
+  --ink-2: #f8f8f8;
+  --ink-3: #e8e8e8;
+  --ink-4: #d8d8d8;
+  --ink-3-rgb: 232, 232, 232;
+  --y:     #e8c840;
+  --y2:    #c9a820;
+  --b:     #6aaec8;
+  --b2:    #3d8aab;
+  --fg:    #1a1a1a;
+  --mid:   #666666;
+  --dim:   #cccccc;
+  --line:  rgba(0,0,0,0.1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--fg);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+a { text-decoration: none; color: inherit; }
