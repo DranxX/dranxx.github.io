@@ -5,11 +5,10 @@
     if (!preloader) return;
     setTimeout(() => {
       preloader.classList.add('fade-out');
-      // Delay class removal until splash animation finishes
       setTimeout(() => {
         document.body.classList.remove('loading');
         document.body.classList.remove('page-transitioning');
-      }, 600); // Matches base.css transition duration
+      }, 600);
     }, 300);
   };
 
@@ -22,8 +21,6 @@
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-links');
   const themeToggle = document.querySelector('.theme-toggle');
-
-  // Theme toggle
   const currentTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.classList.toggle('light', currentTheme === 'light');
   const themeIcon = document.querySelector('.theme-toggle i');
@@ -55,14 +52,10 @@
       });
     });
   }
-
-  // Page transition logic
   document.querySelectorAll('a[href]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       const currentURL = window.location.pathname.split('/').pop() || 'index';
-
-      // Skip anchors, same-page, and external
       if (href.startsWith('#')) return;
       if (href === currentURL || href === `${currentURL}.html` || (href === 'index' && currentURL === '')) return;
       if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
@@ -74,7 +67,7 @@
 
       setTimeout(() => {
         window.location.href = href;
-      }, 600); // Corner splash closing time
+      }, 600);
     });
   });
 
