@@ -1,146 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#080810">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXUS — Platform</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/sections.css">
-<link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS — Platform</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
 </head>
-<body>
 
-<!-- ═══ NAV ═══ -->
-<nav id="nav">
-  <a href="index" class="nav-logo">NEX<em>US</em></a>
-  <button class="nav-toggle" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <div class="nav-right"><ul class="nav-links">
-    <li><a href="index">Home</a></li>
-    <li><a href="platform">Platform</a></li>
-    <li><a href="services">Services</a></li>
-    <li><a href="products">Products</a></li>
-    <li><a href="resources">Resource</a></li>
-    <li><a href="projects">Project</a></li>
-    <li><a href="partners">Partners</a></li>
-    <li><a href="profile">Profile</a></li>
-    <li><a href="profile" class="nav-cta">Let's Talk</a></li>
-  </ul>
-  <button class="theme-toggle" aria-label="Toggle theme">
-    <i class="bi bi-moon"></i>
-  </button>
-</nav>
+<body class="loading">
 
-<!-- ═══ PLATFORM ═══ -->
-<section id="platform" class="s">
-  <div class="wrap">
-    <div class="s-label reveal">Platform</div>
-    <h2 class="reveal">One Layer.<br><span class="y">Infinite</span> Scale</h2>
-    <div class="grid grid-2 reveal reveal-d1">
-      <div class="plat-col dark">
-        <div class="plat-num">01</div>
-        <div class="plat-title">Unified <span class="y">API</span> Gateway</div>
-        <p class="plat-desc">Centralized ingress handling auth, rate limiting, routing, and logging — every service benefits without duplication.</p>
-        <ul class="plat-list">
-          <li>JWT / OAuth2 auth middleware</li>
-          <li>Per-client rate limiting</li>
-          <li>Structured request logging</li>
-          <li>Versioned routing</li>
-        </ul>
-      </div>
-      <div class="plat-col">
-        <div class="plat-num">02</div>
-        <div class="plat-title">Real-Time <span class="b">Monitoring</span></div>
-        <p class="plat-desc">Live dashboards, custom alerting, and anomaly detection — keeping your team ahead of issues before users notice.</p>
-        <ul class="plat-list">
-          <li>Sub-second alert propagation</li>
-          <li>Custom SLO / SLA tracking</li>
-          <li>On-call rotation support</li>
-          <li>Error grouping &amp; root cause analysis</li>
-        </ul>
-      </div>
-    </div>
-    <div class="metrics-row reveal reveal-d2">
-      <div class="metric-box">
-        <div class="metric-val" style="color:var(--y)">99.9%</div>
-        <div class="metric-lbl">Uptime SLA</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-val" style="color:var(--b)">1.2ms</div>
-        <div class="metric-lbl">Avg Latency</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-val" style="color:var(--y)">142k</div>
-        <div class="metric-lbl">Req / Day</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-val" style="color:var(--b)">0</div>
-        <div class="metric-lbl">Critical Errors</div>
-      </div>
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="geometric-loader"></div>
+      <div class="loader-text">Nexus Engineering</div>
     </div>
   </div>
-</section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand">NEX<em>US</em></div>
-        <p class="footer-desc">Reliable digital solutions — clean code, sharp design, scalable architecture.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="index#home">Home</a></li>
-          <li><a href="platform#platform">Platform</a></li>
-          <li><a href="services#services">Services</a></li>
-          <li><a href="products#products">Products</a></li>
+  <div class="page-content">
+
+
+    <!-- ═══ NAV ═══ -->
+    <nav id="nav">
+      <a href="index" class="nav-logo">NEX<em>US</em></a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index">Home</a></li>
+          <li><a href="platform">Platform</a></li>
+          <li><a href="services">Services</a></li>
+          <li><a href="products">Products</a></li>
+          <li><a href="resources">Resource</a></li>
+          <li><a href="projects">Project</a></li>
+          <li><a href="partners">Partners</a></li>
+          <li><a href="profile">Profile</a></li>
+          <li><a href="profile" class="nav-cta">Let's Talk</a></li>
         </ul>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <i class="bi bi-moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="footer-col">
-        <h4>More</h4>
-        <ul>
-          <li><a href="resources#resources">Resources</a></li>
-          <li><a href="projects#projects">Projects</a></li>
-          <li><a href="partners#partners">Partners</a></li>
-          <li><a href="profile#profile">Profile</a></li>
-        </ul>
+    </nav>
+
+    <!-- ═══ PLATFORM ═══ -->
+    <section id="platform" class="s">
+      <div class="wrap">
+        <div class="s-label reveal">Platform</div>
+        <h2 class="reveal">One Layer.<br><span class="y">Infinite</span> Scale</h2>
+        <div class="grid grid-2 reveal reveal-d1">
+          <div class="plat-col dark">
+            <div class="plat-num">01</div>
+            <div class="plat-title">Unified <span class="y">API</span> Gateway</div>
+            <p class="plat-desc">Centralized ingress handling auth, rate limiting, routing, and logging — every service
+              benefits without duplication.</p>
+            <ul class="plat-list">
+              <li>JWT / OAuth2 auth middleware</li>
+              <li>Per-client rate limiting</li>
+              <li>Structured request logging</li>
+              <li>Versioned routing</li>
+            </ul>
+          </div>
+          <div class="plat-col">
+            <div class="plat-num">02</div>
+            <div class="plat-title">Real-Time <span class="b">Monitoring</span></div>
+            <p class="plat-desc">Live dashboards, custom alerting, and anomaly detection — keeping your team ahead of
+              issues before users notice.</p>
+            <ul class="plat-list">
+              <li>Sub-second alert propagation</li>
+              <li>Custom SLO / SLA tracking</li>
+              <li>On-call rotation support</li>
+              <li>Error grouping &amp; root cause analysis</li>
+            </ul>
+          </div>
+        </div>
+        <div class="metrics-row reveal reveal-d2">
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--y)">99.9%</div>
+            <div class="metric-lbl">Uptime SLA</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--b)">1.2ms</div>
+            <div class="metric-lbl">Avg Latency</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--y)">142k</div>
+            <div class="metric-lbl">Req / Day</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val" style="color:var(--b)">0</div>
+            <div class="metric-lbl">Critical Errors</div>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:hello@nexus.dev">hello@nexus.dev</a></li>
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Twitter / X</a></li>
-        </ul>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>
+            <div class="footer-brand">NEX<em>US</em></div>
+            <p class="footer-desc">Reliable digital solutions — clean code, sharp design, scalable architecture.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <ul>
+              <li><a href="index#home">Home</a></li>
+              <li><a href="platform#platform">Platform</a></li>
+              <li><a href="services#services">Services</a></li>
+              <li><a href="products#products">Products</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>More</h4>
+            <ul>
+              <li><a href="resources#resources">Resources</a></li>
+              <li><a href="projects#projects">Projects</a></li>
+              <li><a href="partners#partners">Partners</a></li>
+              <li><a href="profile#profile">Profile</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:hello@nexus.dev">hello@nexus.dev</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">Twitter / X</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">© 2025 <em>NEXUS</em> — Crafted with precision.</div>
+          <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 <em>NEXUS</em> — Crafted with precision.</div>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Sitemap</a>
-      </div>
-    </div>
+    </footer>
+
   </div>
-</footer>
 
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-

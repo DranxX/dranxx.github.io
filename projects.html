@@ -1,137 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#080810">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXUS — Projects</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/sections.css">
-<link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS — Projects</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
 </head>
-<body>
 
-<!-- ═══ NAV ═══ -->
-<nav id="nav">
-  <a href="index" class="nav-logo">NEX<em>US</em></a>
-  <button class="nav-toggle" aria-label="Toggle menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <div class="nav-right"><ul class="nav-links">
-    <li><a href="index">Home</a></li>
-    <li><a href="platform">Platform</a></li>
-    <li><a href="services">Services</a></li>
-    <li><a href="products">Products</a></li>
-    <li><a href="resources">Resource</a></li>
-    <li><a href="projects">Project</a></li>
-    <li><a href="partners">Partners</a></li>
-    <li><a href="profile">Profile</a></li>
-    <li><a href="profile" class="nav-cta">Let's Talk</a></li>
-  </ul>
-  <button class="theme-toggle" aria-label="Toggle theme">
-    <i class="bi bi-moon"></i>
-  </button>
-</nav>
+<body class="loading">
 
-<!-- ═══ PROJECTS ═══ -->
-<section id="projects" class="s" style="background:var(--ink-2)">
-  <div class="wrap">
-    <div class="s-label reveal">Project</div>
-    <h2 class="reveal">Selected <span class="y">Work</span></h2>
-    <div class="reveal reveal-d1">
-      <div class="proj-featured">
-        <div class="proj-visual">
-          <div class="proj-visual-bg"></div>
-          <div class="proj-visual-text">Market<br>Hub</div>
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="geometric-loader"></div>
+      <div class="loader-text">Nexus Engineering</div>
+    </div>
+  </div>
+
+  <div class="page-content">
+
+
+    <!-- ═══ NAV ═══ -->
+    <nav id="nav">
+      <a href="index" class="nav-logo">NEX<em>US</em></a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index">Home</a></li>
+          <li><a href="platform">Platform</a></li>
+          <li><a href="services">Services</a></li>
+          <li><a href="products">Products</a></li>
+          <li><a href="resources">Resource</a></li>
+          <li><a href="projects">Project</a></li>
+          <li><a href="partners">Partners</a></li>
+          <li><a href="profile">Profile</a></li>
+          <li><a href="profile" class="nav-cta">Let's Talk</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <i class="bi bi-moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ═══ PROJECTS ═══ -->
+    <section id="projects" class="s" style="background:var(--ink-2)">
+      <div class="wrap">
+        <div class="s-label reveal">Project</div>
+        <h2 class="reveal">Selected <span class="y">Work</span></h2>
+        <div class="reveal reveal-d1">
+          <div class="proj-featured">
+            <div class="proj-visual">
+              <div class="proj-visual-bg"></div>
+              <div class="proj-visual-text">Market<br>Hub</div>
+            </div>
+            <div class="proj-body">
+              <div>
+                <span class="proj-status s-live">Live</span>
+                <h3 class="proj-name">MarketHub — E-Commerce Platform</h3>
+                <p class="proj-desc">Multi-vendor marketplace with 50k+ daily transactions. Microservices, real-time
+                  inventory sync, and a recommendation engine that lifted AOV by 23%.</p>
+                <div class="tag-row"><span class="tag">Next.js</span><span class="tag">Go</span><span
+                    class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span></div>
+              </div>
+              <div style="margin-top:24px">
+                <a href="#" class="prod-link link-y"
+                  style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase">Case Study --&gt;</a>
+              </div>
+            </div>
+          </div>
+          <div class="proj-sub-grid">
+            <div class="proj-mini">
+              <span class="proj-status s-live">Live</span>
+              <div class="proj-mini-name">FinTrack Pro</div>
+              <p class="proj-mini-desc">Personal finance tracker with bank integrations, smart budgets, and ML-powered
+                predictions. 8k+ active users.</p>
+              <div class="tag-row" style="margin-top:14px"><span class="tag">React</span><span
+                  class="tag">Python</span><span class="tag">Plaid</span></div>
+            </div>
+            <div class="proj-mini">
+              <span class="proj-status s-beta">Beta</span>
+              <div class="proj-mini-name">MedSchedule</div>
+              <p class="proj-mini-desc">Healthcare appointments, telemedicine, and EHR integration — built to HL7 FHIR
+                compliance.</p>
+              <div class="tag-row" style="margin-top:14px"><span class="tag">Vue.js</span><span
+                  class="tag">Django</span><span class="tag">FHIR</span></div>
+            </div>
+          </div>
         </div>
-        <div class="proj-body">
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
           <div>
-            <span class="proj-status s-live">Live</span>
-            <h3 class="proj-name">MarketHub — E-Commerce Platform</h3>
-            <p class="proj-desc">Multi-vendor marketplace with 50k+ daily transactions. Microservices, real-time inventory sync, and a recommendation engine that lifted AOV by 23%.</p>
-            <div class="tag-row"><span class="tag">Next.js</span><span class="tag">Go</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span></div>
+            <div class="footer-brand">NEX<em>US</em></div>
+            <p class="footer-desc">Reliable digital solutions — clean code, sharp design, scalable architecture.</p>
           </div>
-          <div style="margin-top:24px">
-            <a href="#" class="prod-link link-y" style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase">Case Study --&gt;</a>
+          <div class="footer-col">
+            <h4>Navigate</h4>
+            <ul>
+              <li><a href="index#home">Home</a></li>
+              <li><a href="platform.html#platform">Platform</a></li>
+              <li><a href="services.html#services">Services</a></li>
+              <li><a href="products.html#products">Products</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>More</h4>
+            <ul>
+              <li><a href="resources.html#resources">Resources</a></li>
+              <li><a href="projects.html#projects">Projects</a></li>
+              <li><a href="partners.html#partners">Partners</a></li>
+              <li><a href="profile.html#profile">Profile</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:hello@nexus.dev">hello@nexus.dev</a></li>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">Twitter / X</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">© 2025 <em>NEXUS</em> — Crafted with precision.</div>
+          <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Sitemap</a>
           </div>
         </div>
       </div>
-      <div class="proj-sub-grid">
-        <div class="proj-mini">
-          <span class="proj-status s-live">Live</span>
-          <div class="proj-mini-name">FinTrack Pro</div>
-          <p class="proj-mini-desc">Personal finance tracker with bank integrations, smart budgets, and ML-powered predictions. 8k+ active users.</p>
-          <div class="tag-row" style="margin-top:14px"><span class="tag">React</span><span class="tag">Python</span><span class="tag">Plaid</span></div>
-        </div>
-        <div class="proj-mini">
-          <span class="proj-status s-beta">Beta</span>
-          <div class="proj-mini-name">MedSchedule</div>
-          <p class="proj-mini-desc">Healthcare appointments, telemedicine, and EHR integration — built to HL7 FHIR compliance.</p>
-          <div class="tag-row" style="margin-top:14px"><span class="tag">Vue.js</span><span class="tag">Django</span><span class="tag">FHIR</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand">NEX<em>US</em></div>
-        <p class="footer-desc">Reliable digital solutions — clean code, sharp design, scalable architecture.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="index#home">Home</a></li>
-          <li><a href="platform.html#platform">Platform</a></li>
-          <li><a href="services.html#services">Services</a></li>
-          <li><a href="products.html#products">Products</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>More</h4>
-        <ul>
-          <li><a href="resources.html#resources">Resources</a></li>
-          <li><a href="projects.html#projects">Projects</a></li>
-          <li><a href="partners.html#partners">Partners</a></li>
-          <li><a href="profile.html#profile">Profile</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:hello@nexus.dev">hello@nexus.dev</a></li>
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Twitter / X</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 <em>NEXUS</em> — Crafted with precision.</div>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Sitemap</a>
-      </div>
-    </div>
   </div>
-</footer>
 
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
-
