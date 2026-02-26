@@ -4,10 +4,6 @@
   "scripts": {
     "start": "serve ."
   },
-  "dependencies": {
-    "bootstrap-icons": "^1.13.1",
-    "express": "^5.2.1"
-  },
   "devDependencies": {
     "serve": "^14.2.4"
   }
