@@ -58,6 +58,31 @@
     padding: 8px 0;
   }
 
+  .nav-right .nav-cta {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .nav-cta-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--y);
+    color: var(--ink) !important;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    padding: 12px !important;
+    text-decoration: none;
+  }
+
   h1 {
     font-size: 56px;
   }
@@ -101,6 +126,16 @@
 
   .footer-inner {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-desc {
+    margin-top: 24px;
+    max-width: 100%;
+  }
+
+  .hero-bottom {
+    border-top: none;
+    padding-top: 24px;
   }
 }
 
