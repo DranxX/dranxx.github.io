@@ -25,21 +25,21 @@
 .home-hero .wrap.hero-layout {
   min-height: 618px;
   padding: 86px 0 76px;
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(160px, 18vw, 220px);
+  grid-template-areas: 'kicker logo' 'heading logo' 'copy logo';
+  column-gap: clamp(32px, 4vw, 64px);
+  align-content: center;
   position: relative;
   z-index: 1;
 }
 
 .hero-content {
-  width: 100%;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 2;
+  display: contents;
 }
 
 .hero-kicker {
+  grid-area: kicker;
   display: inline-flex;
   align-items: center;
   gap: 11px;
@@ -58,6 +58,8 @@
 }
 
 .hero-title {
+  grid-area: heading;
+  min-width: 0;
   max-width: 1020px;
   margin-top: 36px;
   font-family: var(--font-display);
@@ -69,32 +71,48 @@
 }
 
 .hero-bottom {
+  grid-area: copy;
   width: 100%;
-  margin-top: clamp(38px, 4vw, 58px);
+  margin-top: clamp(26px, 3vw, 38px);
   padding-top: 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(240px, 27vw, 340px);
-  align-items: center;
-  gap: 48px;
 }
 
 .hero-logo {
+  --logo-aura-size: clamp(260px, 36vw, 500px);
+  grid-area: logo;
   width: 100%;
-  max-width: 340px;
+  max-width: 220px;
   justify-self: end;
+  align-self: center;
+  position: relative;
+  isolation: isolate;
   pointer-events: none;
 }
 
+.hero-logo::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: var(--logo-aura-size);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--blue) 11%, transparent), transparent 64%);
+  transform: translate(-50%, -50%);
+  content: '';
+}
+
 .studio-mark { display: block; width: 100%; height: auto; overflow: visible; }
-.studio-mark-frame { stroke: #91d1e5; }
-.studio-mark-chevron { stroke: #faeca7; }
+.studio-mark-frame { stroke: #91d1e5; transform-origin: 642px 680px; }
+.studio-mark-chevron { stroke: #faeca7; transform-origin: 642px 430px; }
 .studio-mark-cap { fill: #91d3e9; }
 
 @media (prefers-reduced-motion: no-preference) {
   .studio-mark-frame,
-  .studio-mark-chevron { stroke-dasharray: 1; animation: studio-mark-draw 1400ms cubic-bezier(.35, 0, .2, 1) 350ms both; }
-  .studio-mark-chevron { animation-duration: 1100ms; animation-delay: 1000ms; }
-  .studio-mark-cap { transform-origin: 642px 400px; animation: studio-mark-cap-in 500ms ease-out 1750ms both; }
+  .studio-mark-chevron { stroke-dasharray: 1; }
+  .studio-mark-frame { animation: studio-mark-draw 520ms cubic-bezier(.35, 0, .2, 1) 60ms both, studio-mark-frame-assemble 600ms cubic-bezier(.22, 1, .36, 1) 60ms both; }
+  .studio-mark-chevron { animation: studio-mark-draw 430ms cubic-bezier(.35, 0, .2, 1) 220ms both, studio-mark-chevron-assemble 560ms cubic-bezier(.22, 1, .36, 1) 220ms both; }
+  .studio-mark-cap { transform-origin: 642px 400px; animation: studio-mark-cap-in 240ms ease-out 540ms both; }
+  .hero-logo::before { animation: studio-mark-aura-in 360ms ease-out 780ms both; }
 }
 
 @keyframes studio-mark-draw {
@@ -106,6 +124,23 @@
 @keyframes studio-mark-cap-in {
   from { opacity: 0; transform: translateY(-20px) scale(.85); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes studio-mark-frame-assemble {
+  from { transform: translateY(44px) scale(.9); }
+  78% { transform: translateY(-5px) scale(1.015); }
+  to { transform: translateY(0) scale(1); }
+}
+
+@keyframes studio-mark-chevron-assemble {
+  from { transform: translateY(-48px) scale(.94); }
+  78% { transform: translateY(4px) scale(1.01); }
+  to { transform: translateY(0) scale(1); }
+}
+
+@keyframes studio-mark-aura-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(.65); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 .hero-copy { max-width: 590px; }

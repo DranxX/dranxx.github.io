@@ -36,7 +36,8 @@
   .home-hero { min-height: auto; }
   .home-hero .wrap.hero-layout { min-height: 600px; padding: 72px 0 68px; }
   .hero-title { font-size: clamp(74px, 13vw, 118px); }
-  .hero-bottom { grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; margin-top: 44px; }
+  .home-hero .wrap.hero-layout { grid-template-columns: minmax(0, 1fr) 180px; column-gap: 28px; }
+  .hero-bottom { margin-top: 34px; }
 
   .service-card { grid-template-columns: 48px minmax(0, 1fr); gap: 18px 24px; }
   .service-body,
@@ -113,10 +114,11 @@
   .page-title { font-size: clamp(54px, 14vw, 80px); }
   .page-code { display: none; }
 
-  .home-hero .wrap.hero-layout { min-height: 550px; padding: 64px 0 60px; }
-  .hero-title { margin-top: 34px; font-size: clamp(64px, 17vw, 94px); }
-  .hero-bottom { grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 38px; }
-  .hero-logo { width: 180px; justify-self: start; }
+  .home-hero .wrap.hero-layout { min-height: 550px; padding: 64px 0 60px; grid-template-columns: minmax(0, 1fr) 72px; grid-template-areas: 'kicker kicker' 'heading logo' 'copy copy'; column-gap: 20px; }
+  .hero-kicker { align-self: center; }
+  .hero-title { margin-top: 26px; font-size: clamp(64px, 17vw, 94px); }
+  .hero-bottom { margin-top: 38px; }
+  .hero-logo { --logo-aura-size: 220px; width: 72px; margin-top: 26px; transform: translateX(-32px); }
   .scope-divider { height: 68px; margin: -4px 0 30px; }
   .scope-divider .scope-marquee { width: 106vw; transform: translate(-50%, -50%) rotate(-.8deg); }
   .scope-divider .drx-marquee-item { padding-block: 12px; }
@@ -161,8 +163,9 @@
   .section { padding: 56px 0; }
   .home-hero .wrap.hero-layout { min-height: 520px; padding-block: 58px 54px; }
   .hero-title { font-size: clamp(56px, 18vw, 78px); line-height: .82; }
-  .hero-bottom { margin-top: 34px; gap: 30px; }
-  .hero-logo { width: 150px; }
+  .home-hero .wrap.hero-layout { grid-template-columns: minmax(0, 1fr) 64px; }
+  .hero-bottom { margin-top: 34px; }
+  .hero-logo { --logo-aura-size: 200px; width: 64px; align-self: end; margin-bottom: 6px; transform: translate(-32px, -8px); }
   .scope-divider { height: 58px; margin-bottom: 24px; }
   .scope-divider .scope-marquee { width: 108vw; transform: translate(-50%, -50%) rotate(-.6deg); }
   .scope-divider .drx-marquee-name { font-size: 15px; }
