@@ -39,7 +39,7 @@
         accent: t('Game Systems', 'Sistem'),
         description: t('Need matchmaking, combat, or persistent player data? I build the server rules and connect the client controllers, so input, UI, and saved data follow the same game state.', 'Butuh matchmaking, combat, atau data pemain yang tersimpan? Saya membangun aturan di server dan menghubungkannya dengan controller di client, sehingga input, UI, dan data mengikuti state game yang sama.'),
         deliverables: t(['Gameplay: rounds, combat, objectives, movement, and input', 'Backend: party queues, cross-server matchmaking, teleport, and rejoin', 'Player systems: inventory, shop, receipts, progression, and rankings'], ['Gameplay: ronde, combat, objective, movement, dan input', 'Backend: party, matchmaking lintas server, teleport, dan rejoin', 'Sistem pemain: inventory, shop, receipt, progres, dan ranking']),
-        proof: { label: t('See these systems in Bentengan', 'Lihat implementasinya di Bentengan'), url: 'Project_Bentengan', image: `${assetBase}/projects/bentengan/card.webp` },
+        proof: { label: t('See these systems in Bentengan', 'Lihat implementasinya di Bentengan'), url: 'Project/Bentengan/', image: `${assetBase}/projects/bentengan/card.webp` },
         tags: ['Roblox Studio', 'Unity', 'Luau', t('Gameplay architecture', 'Arsitektur gameplay')]
       },
       {
@@ -69,7 +69,7 @@
         accent: t('Security', 'Keamanan'),
         description: t('A feature can work normally and still fail on bad input, duplicate requests, or disconnects. I trace those paths, review server validation, and profile suspected bottlenecks.', 'Sebuah fitur bisa berjalan normal, namun tetap bermasalah saat menerima input salah, request ganda, atau koneksi terputus. Saya menelusuri alurnya, memeriksa validasi server, dan melakukan profiling pada bottleneck yang dicurigai.'),
         deliverables: t(['Code review with findings and proposed fixes', 'Server validation, rate limits, and recovery paths', 'Profiling and focused performance changes'], ['Code review dengan temuan dan usulan perbaikan', 'Validasi server, rate limit, dan recovery saat terjadi error', 'Profiling dan perbaikan performa pada bottleneck']),
-        proof: { label: t('See Bentengan engineering decisions', 'Lihat keputusan teknis Bentengan'), url: 'Project_Bentengan#decisions' },
+        proof: { label: t('See Bentengan engineering decisions', 'Lihat keputusan teknis Bentengan'), url: 'Project/Bentengan/#decisions' },
         tags: ['Threat modeling', 'Pentesting', 'Profiling', t('Optimization', 'Optimasi')]
       }
     ],
@@ -85,7 +85,7 @@
         description: t('Team PvP on Roblox, from cross-server matchmaking to the final score. I built the gameplay and backend scripting: combat, party queues, rejoin, player data, and purchases.', 'Game PvP beregu di Roblox, dari matchmaking lintas server sampai hasil pertandingan. Saya mengerjakan scripting gameplay dan backend: combat, antrean party, rejoin, data pemain, dan transaksi.'),
         tags: ['Luau', 'MemoryStore', 'ProfileStore'],
         preview: `${assetBase}/projects/bentengan/card.webp`,
-        url: 'Project_Bentengan'
+        url: 'Project/Bentengan/'
       },
       {
         id: 'corpus-cleaner',
@@ -212,7 +212,7 @@
     technologyGroups: [
       {
         title: t('Languages', 'Bahasa pemrograman'),
-        note: t('Luau and Python come first; the rest show up in projects and experiments', 'Luau dan Python paling utama; sisanya dipakai di proyek dan eksperimen'),
+        note: t('I mainly use Luau and Python, and try other languages in my projects', 'Saya paling sering menggunakan Luau dan Python. Bahasa lain saya coba saat mengerjakan proyek.'),
         items: [
           { name: 'Luau / Lua', iconSrc: `${assetBase}/brands/lua.svg`, short: 'Lua', primary: true },
           { name: 'Python', iconSrc: `${assetBase}/brands/python.svg`, short: 'Py', primary: true },
@@ -262,7 +262,7 @@
        { name: t('Indonesian', 'Bahasa Indonesia'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('First language', 'Bahasa sehari-hari'), flag: `${assetBase}/icons/flags/id.svg` },
        { name: t('English', 'Bahasa Inggris'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('Working language', 'Bahasa kerja'), flag: `${assetBase}/icons/flags/gb.svg` },
        { name: t('Japanese', 'Bahasa Jepang'), proficiency: 'developing', proficiencyLabel: t('Developing', 'Berkembang'), level: t('General understanding', 'Pemahaman umum'), flag: `${assetBase}/icons/flags/jp.svg` },
-       { name: t('Chinese', 'Bahasa Mandarin'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Mempelajari dasar'), flag: `${assetBase}/icons/flags/cn.svg` },
+       { name: t('Mandarin', 'Bahasa Mandarin'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Mempelajari dasar'), flag: `${assetBase}/icons/flags/cn.svg` },
        { name: t('French', 'Bahasa Prancis'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Mempelajari dasar'), flag: `${assetBase}/icons/flags/fr.svg` }
     ]
   });

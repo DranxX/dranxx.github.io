@@ -67,9 +67,11 @@
       if (currentPage === 'contact') contact.setAttribute('aria-current', 'page');
 
       // Old .html links still resolve, so both /en/projects and /en/projects.html map to the same route.
-      const routeTail = window.location.pathname.endsWith('/') ? '' : window.location.pathname.split('/').filter(Boolean).at(-1) || '';
-      const currentRoute = routeTail.replace(/\.html$/, '').replace(/^index$/, '');
-      const knownRoutes = new Set(['', 'projects', 'Project_Bentengan', 'services', 'profile', 'contact', 'platform', 'products', 'resources', 'partners', '404']);
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      const routeSegments = pathSegments.slice(1);
+      if (routeSegments.at(-1) === 'index.html') routeSegments.pop();
+      const currentRoute = routeSegments.join('/').replace(/\.html$/, '');
+      const knownRoutes = new Set(['', 'projects', 'Project/Bentengan', 'services', 'profile', 'contact', 'platform', 'products', 'resources', 'partners', '404']);
       const alternateRoute = knownRoutes.has(currentRoute) ? currentRoute : '';
       const alternateHref = `../${ui.alternateLocale}/${alternateRoute}${window.location.search}${window.location.hash}`;
       const languageSwitch = setAttributes(createLink(ui.languageCode, alternateHref, 'language-switch'), {

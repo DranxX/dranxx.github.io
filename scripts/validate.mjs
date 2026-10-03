@@ -7,9 +7,9 @@ import { stampHtml } from './stamp-assets.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const locales = ['en', 'id'];
-const publicPageNames = ['index.html', 'projects.html', 'Project_Bentengan.html', 'resources.html', 'services.html', 'profile.html', 'contact.html'];
+const publicPageNames = ['index.html', 'projects.html', 'resources.html', 'services.html', 'profile.html', 'contact.html'];
 const compatibilityPageNames = ['platform.html', 'products.html', 'partners.html'];
-const publicPages = locales.flatMap(locale => publicPageNames.map(page => `${locale}/${page}`));
+const publicPages = [...locales.flatMap(locale => publicPageNames.map(page => `${locale}/${page}`)), ...locales.map(locale => `${locale}/Project/Bentengan/index.html`)];
 const compatibilityPages = locales.flatMap(locale => compatibilityPageNames.map(page => `${locale}/${page}`));
 const errorPages = locales.map(locale => `${locale}/404.html`);
 const pages = [...publicPages, ...compatibilityPages, ...errorPages];
@@ -144,7 +144,7 @@ for (const page of pages) {
   if (stampHtml(page, html) !== html) issues.push(`${page}: stylesheet or script versions are stale; run npm run stamp`);
   const requiredFeatureScripts = page.endsWith('/resources.html')
     ? ['assets/js/resources.data.js', 'assets/js/resources.js']
-    : page.endsWith('/Project_Bentengan.html')
+    : page.endsWith('/Project/Bentengan/index.html')
       ? ['assets/js/projects.data.js', 'assets/js/projects.js']
       : [];
   for (const script of requiredFeatureScripts) {
@@ -220,7 +220,7 @@ const homeSource = fs.readFileSync(path.join(root, 'en/index.html'), 'utf8');
 const indonesianHomeSource = fs.readFileSync(path.join(root, 'id/index.html'), 'utf8');
 const projectsSource = fs.readFileSync(path.join(root, 'en/projects.html'), 'utf8');
 const resourcesSource = fs.readFileSync(path.join(root, 'en/resources.html'), 'utf8');
-const caseStudySource = fs.readFileSync(path.join(root, 'en/Project_Bentengan.html'), 'utf8');
+const caseStudySource = fs.readFileSync(path.join(root, 'en/Project/Bentengan/index.html'), 'utf8');
 const profileSource = fs.readFileSync(path.join(root, 'en/profile.html'), 'utf8');
 const contactSource = fs.readFileSync(path.join(root, 'en/contact.html'), 'utf8');
 const identityAsset = path.join(root, 'assets/profile.webp');
@@ -509,12 +509,12 @@ try {
     ['Indonesian', 'active'],
     ['English', 'active'],
     ['Japanese', 'developing'],
-    ['Chinese', 'beginner'],
+    ['Mandarin', 'beginner'],
     ['French', 'beginner']
   ]);
   if (languages.length !== expectedProficiency.size
     || [...expectedProficiency].some(([name, proficiency]) => languages.find(language => language.name === name)?.proficiency !== proficiency)) {
-    issues.push('assets/js/data.js: language proficiency must map Indonesian/English to active, Japanese to developing, and Chinese/French to beginner');
+    issues.push('assets/js/data.js: language proficiency must map Indonesian/English to active, Japanese to developing, and Mandarin/French to beginner');
   }
   const discordBot = projects.find(item => item.name === 'DiscordBot');
   if (!discordBot?.scopes.includes('automation')) issues.push('assets/js/data.js: DiscordBot must be classified under bots and automation');
@@ -571,7 +571,7 @@ try {
   const caseStudyDataSource = fs.readFileSync(path.join(root, 'assets/js/projects.data.js'), 'utf8');
   const context = { window: { DRANXX_CONFIG: {
     locale: 'en',
-    routes: { projectBentengan: 'Project_Bentengan' },
+    routes: { projectBentengan: 'Project/Bentengan/' },
     projectMedia: { bentengan: { logo: '../assets/projects/bentengan/icon.webp', banner: '../assets/projects/bentengan/banner.webp' } },
     projectLinks: { bentengan: { play: '' } }
   } } };
@@ -580,7 +580,7 @@ try {
   const items = Array.isArray(data?.items) ? data.items : [];
   caseStudyCount = items.length;
   const bentengan = items.find(item => item.id === 'bentengan');
-  if (!bentengan || bentengan.route !== 'Project_Bentengan' || bentengan.flow?.length !== 4 || bentengan.systems?.length < 6) {
+  if (!bentengan || bentengan.route !== 'Project/Bentengan/' || bentengan.flow?.length !== 4 || bentengan.systems?.length < 6) {
     issues.push('assets/js/projects.data.js: Bentengan must retain its exact route, four-stage flow, and detailed engineering scope');
   }
   if (!bentengan?.ownership?.built?.length || !bentengan?.ownership?.integrated?.length || !bentengan?.ownership?.excluded?.length
@@ -690,7 +690,7 @@ if (!/const locale = document\.documentElement\.lang/.test(config)
   || !/bahasa Indonesia/i.test(config)) {
   issues.push('assets/js/site.config.js: locale detection or bilingual navigation copy is missing');
 }
-if (!/projectBentengan:\s*'Project_Bentengan'/.test(config)
+if (!/projectBentengan:\s*'Project\/Bentengan\/'/.test(config)
   || !/projects\/bentengan\/icon\.webp/.test(config)
   || !/projects\/bentengan\/banner\.webp/.test(config)
   || !/play:\s*''/.test(config)
@@ -699,7 +699,7 @@ if (!/projectBentengan:\s*'Project_Bentengan'/.test(config)
   || !/icon:\s*`\$\{assetBase\}\/brands\/roblox-studio\.svg`/.test(config)) {
   issues.push('assets/js/site.config.js: modular Bentengan media/link or resource source configuration is incomplete');
 }
-if (!/'Project_Bentengan'/.test(shellSource)
+if (!/'Project\/Bentengan'/.test(shellSource)
   || !/window\.location\.search/.test(shellSource)
   || !/window\.location\.hash/.test(shellSource)) {
   issues.push('assets/js/shell.js: localized case-study routing must preserve the current query and hash');

@@ -48,7 +48,7 @@ server.stderr.on('data', chunk => { serverError += chunk.toString(); });
 const localeTests = ['en', 'id'].flatMap(locale => [
   { route: `/${locale}/`, status: 200, type: 'text/html', kind: 'public', locale },
   { route: `/${locale}/projects`, status: 200, type: 'text/html', kind: 'public', locale },
-  { route: `/${locale}/Project_Bentengan`, status: 200, type: 'text/html', kind: 'public', locale },
+  { route: `/${locale}/Project/Bentengan/`, status: 200, type: 'text/html', kind: 'public', locale },
   { route: `/${locale}/resources`, status: 200, type: 'text/html', kind: 'public', locale },
   { route: `/${locale}/services`, status: 200, type: 'text/html', kind: 'public', locale },
   { route: `/${locale}/profile`, status: 200, type: 'text/html', kind: 'public', locale },
@@ -134,9 +134,9 @@ try {
   for (const marker of ['data-project-search', 'data-project-filter="all"', 'data-project-empty', 'data-project-clear']) {
     if (!projectsPage.body.includes(marker)) throw new Error(`/en/projects: missing discovery marker ${marker}`);
   }
-  const caseStudyPage = await get('/en/Project_Bentengan');
-  if (!caseStudyPage.body.includes('data-project-case-study="bentengan"') || !caseStudyPage.body.includes('href="../id/Project_Bentengan"')) {
-    throw new Error('/en/Project_Bentengan: detailed Bentengan renderer or localized route is missing');
+  const caseStudyPage = await get('/en/Project/Bentengan/');
+  if (!caseStudyPage.body.includes('data-project-case-study="bentengan"') || !caseStudyPage.body.includes('href="../../id/Project/Bentengan/"')) {
+    throw new Error('/en/Project/Bentengan/: detailed Bentengan renderer or localized route is missing');
   }
   const resourcesPage = await get('/en/resources');
   for (const marker of ['data-resource-catalog', 'data-resource-filters', 'data-resource-list', 'data-resource-modal-root']) {

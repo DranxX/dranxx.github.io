@@ -8,16 +8,27 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const assetReference = /\b(href|src)="((?:\.\.\/)?assets\/[^"?#]+\.(?:css|js))(?:\?v=[0-9a-f]+)?"/g;
 
-export const htmlPages = () => ['index.html', ...['en', 'id'].flatMap(locale => readdirSync(path.join(root, locale))
-  .filter(name => name.endsWith('.html'))
-  .map(name => `${locale}/${name}`))];
+const htmlFiles = (directory, prefix = '') => readdirSync(path.join(root, directory), { withFileTypes: true })
+  .flatMap(entry => {
+    const relativePath = prefix ? `${prefix}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) return htmlFiles(path.join(directory, entry.name), relativePath);
+    return entry.isFile() && entry.name.endsWith('.html') ? [relativePath] : [];
+  });
 
-const assetVersion = file => createHash('sha256').update(readFileSync(path.join(root, file))).digest('hex').slice(0, 10);
+export const htmlPages = () => ['index.html', ...['en', 'id'].flatMap(locale => htmlFiles(locale, locale))];
 
-export const stampHtml = (page, html) => html.replace(assetReference, (match, attribute, target) => {
-  const file = path.normalize(path.join(path.dirname(page), target));
+const assetVersion = file => createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 10);
+
+export const stampHtml = (page, html) => {
+  const baseHref = html.match(/<base\s+href=["']([^"']+)["']/i)?.[1];
+  const assetBase = baseHref
+    ? path.resolve(root, path.dirname(page), baseHref)
+    : path.resolve(root, path.dirname(page));
+  return html.replace(assetReference, (match, attribute, target) => {
+  const file = path.resolve(assetBase, target);
   return `${attribute}="${target}?v=${assetVersion(file)}"`;
-});
+  });
+};
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   let changed = 0;

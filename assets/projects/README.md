@@ -30,7 +30,7 @@ assets/projects/
 Daftarkan proyek di `assets/js/data.js`, pada `projects`. Katalog ini menerima semua jenis karya, termasuk game, tools, repo, dan proyek dengan halaman detail.
 
 - `kind: 'repository'`: card membuka repo. Metadata `source`, `visibility`, `archived`, dan `fork` mengikuti repo aslinya.
-- `kind: 'case-study'`: card membuka halaman detail lokal. Tulis `url` tanpa `.html`, misalnya `Project_Bentengan` untuk file `Project_Bentengan.html`; GitHub Pages menyajikan keduanya.
+- `kind: 'case-study'`: card membuka halaman detail lokal. Tulis `url` sebagai path folder, misalnya `Project/Bentengan/` untuk `Project/Bentengan/index.html`.
 - `kind: 'project'`: card membuka URL proyek, misalnya halaman game atau demo.
 
 Setiap entry memiliki `id`, `name`, `code`, `scopes`, `categoryLabel`, `description`, `tags`, dan `url`. `scopes` bisa memuat `game`, `software`, `automation`, atau `ai`; pencarian juga membaca nama, deskripsi, dan tag teknologi.

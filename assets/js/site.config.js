@@ -22,7 +22,7 @@
       { key: 'profile', label: 'Profile', href: 'profile' }
     ],
     routes: Object.freeze({
-      projectBentengan: 'Project_Bentengan',
+      projectBentengan: 'Project/Bentengan/',
       projects: 'projects',
       resources: 'resources'
     }),

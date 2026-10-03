@@ -94,6 +94,7 @@
 }
 
 .page-lead .blue { color: var(--blue); font-weight: 500; }
+.page-lead .yellow { color: var(--yellow); font-weight: 500; }
 
 .page-code {
   position: absolute;
