@@ -93,6 +93,8 @@
   line-height: 1.82;
 }
 
+.page-lead .blue { color: var(--blue); font-weight: 500; }
+
 .page-code {
   position: absolute;
   right: 24px;
