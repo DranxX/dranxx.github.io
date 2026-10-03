@@ -20,7 +20,7 @@ The profile uses original brand artwork rather than social glyphs recolored to t
 
 ## Technology logos
 
-Language and tool logos use the `original` artwork in [Devicon v2.17.0](https://github.com/devicons/devicon/tree/v2.17.0/icons). The accompanying license is `Devicon-LICENSE`; trademarks belong to their owners. These files are copied without redrawing or applying portfolio colors. A neutral backing is used where a dark/white mark would otherwise disappear.
+Language and tool logos use the `original` artwork in [Devicon v2.17.0](https://github.com/devicons/devicon/tree/v2.17.0/icons). The accompanying license is `Devicon-LICENSE`; trademarks belong to their owners. These files are copied without redrawing or applying portfolio colors. Single-colour black marks (`rust.svg`, `unity.svg`, `vercel.svg`) are shown inverted to white on the dark theme so they stay visible without a white tile; the light theme shows them as shipped. `rust.svg` is `icons/rust/rust-original.svg` from the `devicon@2.17.0` npm package.
 
 Additional assets:
 

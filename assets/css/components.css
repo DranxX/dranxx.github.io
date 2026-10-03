@@ -119,6 +119,10 @@
 .brand-surface-dark { padding: 4px; background: #080810; }
 .technology-mark.brand-surface-light img,
 .technology-mark.brand-surface-dark img { width: 30px; height: 30px; }
+/* Single-colour black marks: show them white on the dark theme instead of on a white tile. */
+.brand-surface-mono img { filter: invert(1); }
+:root.light .brand-surface-mono img,
+[data-theme="light"] .brand-surface-mono img { filter: none; }
 
 :root.light .drx-btn-solid-primary,
 [data-theme="light"] .drx-btn-solid-primary,

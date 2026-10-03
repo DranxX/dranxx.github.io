@@ -9,6 +9,7 @@
     openRepositoryLabel: name => `Buka repositori ${name} di GitHub`,
     publicRepository: 'Source code',
     openCase: 'Lihat proyek',
+    primary: 'Utama',
     archived: 'Diarsipkan',
     repository: 'Repositori',
     showcase: 'Preview proyek',
@@ -19,6 +20,7 @@
     openRepositoryLabel: name => `Open ${name} repository on GitHub`,
     publicRepository: 'Source code',
     openCase: 'View project',
+    primary: 'Main',
     archived: 'Archived',
     repository: 'Repository',
     showcase: 'Project previews',
@@ -79,8 +81,9 @@
     const list = create('ul', 'technology-list');
     values.forEach(value => {
       const item = typeof value === 'string' ? { name: value, short: value.slice(0, 3) } : value;
-      const row = create('li', 'technology-item');
+      const row = create('li', item.primary ? 'technology-item is-primary' : 'technology-item');
       row.append(createTechnologyMark(item), create('span', 'technology-name', item.name));
+      if (item.primary) row.append(create('span', 'technology-badge', copy.primary));
       list.append(row);
     });
     return list;

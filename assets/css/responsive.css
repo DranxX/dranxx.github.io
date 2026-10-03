@@ -7,6 +7,7 @@
   .focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .technology-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-group:last-child { grid-column: 1 / -1; --technology-columns: 4; }
   .language-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-case-identity { padding-inline: 20px; grid-template-columns: 118px minmax(0, 1fr); }
@@ -184,8 +185,9 @@
   .profile-main { padding: 34px 24px; }
   .profile-name { font-size: 66px; }
   .profile-interest-grid { grid-template-columns: 1fr; }
-  .technology-group { min-height: 210px; padding: 26px 22px; }
-  .technology-list { grid-template-columns: 1fr; }
+  .technology-group { padding: 26px 22px; }
+  .technology-group:first-child,
+  .technology-group:last-child { --technology-columns: 2; }
 
   .language-list { grid-template-columns: 1fr; }
   .language-item {

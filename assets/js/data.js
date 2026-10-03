@@ -211,20 +211,15 @@
 
     technologyGroups: [
       {
-        title: t('Primary languages', 'Bahasa utama'),
-        note: t('Strongest and most frequently used', 'Paling dikuasai dan paling sering digunakan'),
+        title: t('Languages', 'Bahasa pemrograman'),
+        note: t('Luau and Python come first; the rest show up in projects and experiments', 'Luau dan Python paling utama; sisanya dipakai di proyek dan eksperimen'),
         items: [
-          { name: 'Luau / Lua', iconSrc: `${assetBase}/brands/lua.svg`, short: 'Lua' },
-          { name: 'Python', iconSrc: `${assetBase}/brands/python.svg`, short: 'Py' }
-        ]
-      },
-      {
-        title: t('Programming languages', 'Bahasa pemrograman'),
-        note: t('Used in projects and experiments', 'Digunakan dalam proyek dan eksperimen'),
-        items: [
+          { name: 'Luau / Lua', iconSrc: `${assetBase}/brands/lua.svg`, short: 'Lua', primary: true },
+          { name: 'Python', iconSrc: `${assetBase}/brands/python.svg`, short: 'Py', primary: true },
           { name: 'JavaScript', iconSrc: `${assetBase}/brands/javascript.svg`, short: 'JS' },
           { name: 'TypeScript', iconSrc: `${assetBase}/brands/typescript.svg`, short: 'TS' },
           { name: 'Go', iconSrc: `${assetBase}/brands/go.svg`, short: 'Go' },
+          { name: 'Rust', iconSrc: `${assetBase}/brands/rust.svg`, iconSurface: 'mono', short: 'RS' },
           { name: 'Java', iconSrc: `${assetBase}/brands/java.svg`, short: 'JV' },
           { name: 'PHP', iconSrc: `${assetBase}/brands/php.svg`, short: 'PHP' }
         ]
@@ -234,7 +229,7 @@
         note: t('Currently focused on Roblox development', 'Saat ini paling banyak digunakan untuk pengembangan di Roblox'),
         items: [
           { name: 'Roblox Studio', iconSrc: `${assetBase}/brands/roblox-studio.svg`, short: 'RBLX' },
-          { name: 'Unity', iconSrc: `${assetBase}/brands/unity.svg`, iconSurface: 'light', short: 'UN' },
+          { name: 'Unity', iconSrc: `${assetBase}/brands/unity.svg`, iconSurface: 'mono', short: 'UN' },
           { name: 'Godot', iconSrc: `${assetBase}/brands/godot.svg`, short: 'GD' },
           { name: 'Blender', iconSrc: `${assetBase}/brands/blender.svg`, short: 'BL' },
           { name: 'Minecraft Bedrock tooling', iconSrc: `${assetBase}/brands/minecraft-bedrock.svg`, short: 'MC' }
@@ -244,39 +239,21 @@
         title: 'AI & data',
         note: t('For AI experiments and data processing', 'Untuk eksperimen AI dan pengolahan data'),
         items: [
-          { name: 'TensorFlow', iconSrc: `${assetBase}/brands/tensorflow.svg`, short: 'TF' },
           { name: 'PyTorch', iconSrc: `${assetBase}/brands/pytorch.svg`, short: 'PT' },
-          { name: 'scikit-learn', iconSrc: `${assetBase}/brands/scikitlearn.svg`, short: 'SK' },
-          { name: 'OpenCV', iconSrc: `${assetBase}/brands/opencv.svg`, short: 'CV' },
+          { name: 'TensorFlow', iconSrc: `${assetBase}/brands/tensorflow.svg`, short: 'TF' },
           { name: 'Transformers', iconSrc: `${assetBase}/brands/huggingface.svg`, short: 'HF' },
-          { name: 'MATLAB', iconSrc: `${assetBase}/brands/matlab.svg`, short: 'ML' }
+          { name: 'scikit-learn', iconSrc: `${assetBase}/brands/scikitlearn.svg`, short: 'SK' },
+          { name: 'OpenCV', iconSrc: `${assetBase}/brands/opencv.svg`, short: 'CV' }
         ]
       },
       {
         title: t('Security & infrastructure', 'Keamanan & infrastruktur'),
-        note: t('Analysis, local development, and deployment', 'Analisis, pengembangan lokal, dan deployment'),
+        note: t('Testing, containers, and deployment', 'Pengujian, container, dan deployment'),
         items: [
           { name: 'Burp Suite', iconSrc: `${assetBase}/brands/burp-suite.svg`, short: 'BS' },
           { name: 'Kali Linux', iconSrc: `${assetBase}/brands/kalilinux.svg`, short: 'KL' },
-          { name: 'Linux', iconSrc: `${assetBase}/brands/linux.svg`, short: 'LX' },
-          { name: 'Bash', iconSrc: `${assetBase}/brands/bash.svg`, iconSurface: 'light', short: 'SH' },
           { name: 'Docker', iconSrc: `${assetBase}/brands/docker.svg`, short: 'DK' },
-          { name: 'Railway', iconSrc: `${assetBase}/brands/railway.svg`, iconSurface: 'dark', short: 'RW' },
-          { name: 'Vercel', iconSrc: `${assetBase}/brands/vercel.svg`, iconSurface: 'light', short: 'VC' },
-          { name: 'Netlify', iconSrc: `${assetBase}/brands/netlify.svg`, short: 'NF' }
-        ]
-      },
-      {
-        title: t('Workflow & applications', 'Workflow & aplikasi'),
-        note: t('Daily and supporting tools', 'Perangkat harian dan pendukung'),
-        items: [
-          { name: 'VS Code', iconSrc: `${assetBase}/brands/vscode.svg`, short: 'VS' },
-          { name: 'Git', iconSrc: `${assetBase}/brands/git.svg`, short: 'Git' },
-          { name: 'GitHub', iconSrc: `${assetBase}/brands/github.svg`, iconDarkSrc: `${assetBase}/brands/github-dark.svg`, short: 'GH' },
-          { name: 'Node.js', iconSrc: `${assetBase}/brands/nodejs.svg`, short: 'Node' },
-          { name: 'MySQL', iconSrc: `${assetBase}/brands/mysql.svg`, short: 'SQL' },
-          { name: 'Android Studio', iconSrc: `${assetBase}/brands/androidstudio.svg`, short: 'AS' },
-          { name: 'Gradle', iconSrc: `${assetBase}/brands/gradle.svg`, iconSurface: 'light', short: 'GR' }
+          { name: 'Vercel', iconSrc: `${assetBase}/brands/vercel.svg`, iconSurface: 'mono', short: 'VC' }
         ]
       }
     ],

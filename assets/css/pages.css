@@ -456,15 +456,16 @@
   background: var(--line);
 }
 
-.technology-group { min-height: 300px; padding: 26px 24px; background: var(--ink-2); }
+.technology-group { padding: 26px 24px; background: var(--ink-2); }
+.technology-group:first-child { grid-column: 1 / -1; --technology-columns: 4; }
 .technology-head { display: flex; align-items: baseline; gap: 16px; }
 .technology-index { color: var(--yellow); font-size: var(--text-meta); letter-spacing: .12em; }
-.technology-head h2 { font-family: var(--font-display); font-size: 23px; font-weight: 650; line-height: 1; text-transform: uppercase; }
+.technology-head h2 { margin: 0; font-family: var(--font-display); font-size: 23px; font-weight: 650; line-height: 1; text-transform: uppercase; }
 .technology-note { margin: 12px 0 20px; color: var(--muted); font-size: 10.5px; line-height: 1.6; }
 
 .technology-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--technology-columns, 2), minmax(0, 1fr));
   gap: 7px;
   margin: 0;
   padding: 0;
@@ -511,6 +512,8 @@
 }
 
 .technology-name { min-width: 0; color: var(--foreground); font-size: 10px; line-height: 1.3; }
+.technology-item.is-primary { border-color: color-mix(in srgb, var(--yellow) 55%, var(--line)); }
+.technology-badge { margin-left: auto; padding: 3px 6px; color: var(--ink); background: var(--yellow); font-size: 7.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 
 .language-list {
   display: grid;
