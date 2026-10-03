@@ -64,6 +64,10 @@
       console.error('DRX runtime is unavailable; revealing static content.');
       revealAll();
     }
+    document.addEventListener('dranxx:content-ready', () => {
+      if (runtime?.initReveal) runtime.initReveal('.drx-reveal');
+      else revealAll();
+    });
 
     document.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
@@ -145,7 +149,6 @@
         .toLowerCase()
         .replace(/[^a-z0-9+#.]+/g, ' ')
         .trim();
-      const cards = [...document.querySelectorAll('[data-project-card]')];
       const search = projectDiscovery.querySelector('[data-project-search]');
       const filters = [...projectDiscovery.querySelectorAll('[data-project-filter]')];
       const clearButtons = [...document.querySelectorAll('[data-project-clear]')];
@@ -172,7 +175,7 @@
 
       const applyProjectFilters = () => {
         let visibleCount = 0;
-        cards.forEach(card => {
+        document.querySelectorAll('[data-project-card]').forEach(card => {
           const visible = matchesProject(card);
           card.hidden = !visible;
           if (visible) visibleCount += 1;
@@ -209,6 +212,7 @@
       }));
 
       applyProjectFilters();
+      document.addEventListener('dranxx:content-ready', applyProjectFilters);
     }
 
     const projectType = document.getElementById('projectType');

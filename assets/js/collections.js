@@ -9,6 +9,8 @@
     openRepositoryLabel: name => `Buka repositori ${name} di GitHub`,
     publicRepository: 'Source code',
     openCase: 'Lihat proyek',
+    archived: 'Diarsipkan',
+    repository: 'Repositori',
     showcase: 'Preview proyek',
     showcaseSteps: 'Pilih proyek'
   } : {
@@ -17,6 +19,8 @@
     openRepositoryLabel: name => `Open ${name} repository on GitHub`,
     publicRepository: 'Source code',
     openCase: 'View project',
+    archived: 'Archived',
+    repository: 'Repository',
     showcase: 'Project previews',
     showcaseSteps: 'Choose a project'
   };
@@ -223,11 +227,79 @@
     return `https://opengraph.githubassets.com/${encodeURIComponent(cacheKey)}/${encodeURIComponent(repository.owner)}/${encodeURIComponent(repository.repository)}`;
   };
 
-  const getLocalPreview = item => item.preview || `${assetBase}/previews/${encodeURIComponent(item.id)}.webp`;
+  const getLocalPreview = item => item.preview || '';
 
-  const getOrderedProjects = () => {
-    return data.projects;
+  const github = config.github || {};
+  const repositoryCacheKey = `dranxx:repositories:${github.user}`;
+  const repositoryCacheAge = 60 * 60 * 1000;
+  const topicScopes = { game: 'game', roblox: 'game', minecraft: 'game', software: 'software', tool: 'software', bot: 'automation', automation: 'automation', ai: 'ai', 'machine-learning': 'ai' };
+  const getRepositoryKey = item => getGitHubRepository(item.url)?.repository.toLowerCase() || '';
+
+  const readRepositoryCache = () => {
+    try {
+      return JSON.parse(localStorage.getItem(repositoryCacheKey));
+    } catch {
+      return null;
+    }
   };
+
+  const fetchRepositories = async () => {
+    const response = await fetch(`https://api.github.com/users/${encodeURIComponent(github.user)}/repos?type=owner&sort=pushed&per_page=100`, {
+      headers: { Accept: 'application/vnd.github+json' }
+    });
+    if (!response.ok) throw new Error(`GitHub API responded with ${response.status}`);
+    const repositories = (await response.json())
+      .filter(repo => !repo.fork)
+      .map(repo => ({
+        name: repo.name,
+        url: repo.html_url,
+        description: repo.description || '',
+        language: repo.language || '',
+        topics: repo.topics || [],
+        archived: repo.archived
+      }));
+    if (!repositories.length) throw new Error('GitHub API returned no repositories');
+    try {
+      localStorage.setItem(repositoryCacheKey, JSON.stringify({ savedAt: Date.now(), repositories }));
+    } catch {}
+    return repositories;
+  };
+
+  const createRepositoryProject = repo => {
+    const item = {
+      id: `repo-${repo.name.toLowerCase()}`,
+      code: repo.name.replace(/[^a-z0-9]/gi, '').slice(0, 3).toUpperCase(),
+      name: repo.name,
+      kind: 'repository',
+      scopes: [...new Set(repo.topics.map(topic => topicScopes[topic]).filter(Boolean))],
+      categoryLabel: repo.language || copy.repository,
+      description: repo.description,
+      tags: [repo.language, ...repo.topics].filter(Boolean).slice(0, 4),
+      url: repo.url,
+      archived: repo.archived
+    };
+    item.preview = getGitHubPreview(item);
+    return item;
+  };
+
+  // Curated entries keep their copy. GitHub decides which of them still exist and adds every other non-fork repository.
+  const mergeRepositories = repositories => {
+    const ignored = new Set((github.ignore || []).map(name => name.toLowerCase()));
+    const live = new Map(repositories.filter(repo => !ignored.has(repo.name.toLowerCase())).map(repo => [repo.name.toLowerCase(), repo]));
+    const curatedKeys = new Set(data.projects.map(getRepositoryKey).filter(Boolean));
+    const curated = data.projects
+      .filter(item => !getRepositoryKey(item) || live.has(getRepositoryKey(item)))
+      .map(item => (live.get(getRepositoryKey(item))?.archived ? { ...item, archived: true } : item));
+    const discovered = [...live.values()]
+      .filter(repo => !curatedKeys.has(repo.name.toLowerCase()))
+      .map(createRepositoryProject);
+    return [...curated, ...discovered];
+  };
+
+  const repositoryCache = github.user ? readRepositoryCache() : null;
+  let projects = Array.isArray(repositoryCache?.repositories) ? mergeRepositories(repositoryCache.repositories) : data.projects;
+
+  const getOrderedProjects = () => projects;
 
   const attachPreview = (container, item, className, eager) => {
     const localPreviewUrl = getLocalPreview(item);
@@ -298,7 +370,9 @@
     const content = create('div', 'project-content');
     const eyebrow = create('div', 'project-eyebrow');
     const repositoryMeta = create('div', 'project-repository-meta');
-    repositoryMeta.append(create('span', 'status status-public', repository ? copy.publicRepository : (isIndonesian ? 'Detail proyek' : 'Project detail')));
+    repositoryMeta.append(item.archived
+      ? create('span', 'status status-archive', copy.archived)
+      : create('span', 'status status-public', repository ? copy.publicRepository : (isIndonesian ? 'Detail proyek' : 'Project detail')));
     eyebrow.append(repositoryMeta, create('span', 'project-category', item.categoryLabel));
     const heading = create('h2', 'project-title-link', item.name);
     content.append(eyebrow, heading, create('p', 'project-description', item.description), createTags(item.tags));
@@ -351,8 +425,13 @@
     return slide;
   };
 
+  const showcaseTeardowns = new WeakMap();
+
   const renderShowcase = element => {
-    const items = getOrderedProjects();
+    showcaseTeardowns.get(element)?.();
+    const listeners = new AbortController();
+    const { signal } = listeners;
+    const items = getOrderedProjects().filter(item => !item.archived);
     const total = items.length;
     if (!total) return;
     element.classList.add('showcase', 'drx-reveal');
@@ -443,21 +522,21 @@
       if (event.pointerType === 'touch') return;
       hovered = true;
       sync();
-    });
+    }, { signal });
     element.addEventListener('pointerleave', event => {
       if (event.pointerType === 'touch') return;
       hovered = false;
       sync();
-    });
+    }, { signal });
     element.addEventListener('focusin', event => {
       focused = event.target.matches(':focus-visible');
       sync();
-    });
+    }, { signal });
     element.addEventListener('focusout', event => {
       if (element.contains(event.relatedTarget)) return;
       focused = false;
       sync();
-    });
+    }, { signal });
     viewport.addEventListener('pointerdown', event => {
       if (event.pointerType !== 'touch') return;
       touching = true;
@@ -481,13 +560,18 @@
       show(event.key === 'Home' ? 0 : event.key === 'End' ? total - 1 : active + (event.key === 'ArrowRight' ? 1 : -1));
       steps[active].focus();
     });
-    document.addEventListener('visibilitychange', sync);
-    if (offscreen) {
-      new IntersectionObserver(([entry]) => {
-        offscreen = !entry.isIntersecting;
-        sync();
-      }, { threshold: .25 }).observe(element);
-    }
+    document.addEventListener('visibilitychange', sync, { signal });
+    const observer = offscreen ? new IntersectionObserver(([entry]) => {
+      offscreen = !entry.isIntersecting;
+      sync();
+    }, { threshold: .25 }) : null;
+    observer?.observe(element);
+    showcaseTeardowns.set(element, () => {
+      listeners.abort();
+      observer?.disconnect();
+      countdown?.cancel();
+      clearTimeout(wrapTimer);
+    });
 
     element.replaceChildren(status, viewport, progress);
     placeTrack(1, true);
@@ -532,10 +616,26 @@
     languages: renderLanguages
   };
 
-  document.querySelectorAll('[data-collection]').forEach(element => {
+  const renderCollection = element => {
     const renderer = renderers[element.dataset.collection];
     if (!renderer) return;
     const parsedLimit = Number.parseInt(element.dataset.limit || '', 10);
     renderer(element, Number.isFinite(parsedLimit) ? parsedLimit : undefined);
-  });
+  };
+
+  document.querySelectorAll('[data-collection]').forEach(renderCollection);
+
+  const projectCollections = [...document.querySelectorAll('[data-collection="projects"], [data-collection="project-showcase"]')];
+  const repositoryCacheIsFresh = Date.now() - (repositoryCache?.savedAt || 0) < repositoryCacheAge;
+  if (github.user && projectCollections.length && !repositoryCacheIsFresh) {
+    fetchRepositories()
+      .then(repositories => {
+        const next = mergeRepositories(repositories);
+        if (JSON.stringify(next) === JSON.stringify(projects)) return;
+        projects = next;
+        projectCollections.forEach(renderCollection);
+        document.dispatchEvent(new CustomEvent('dranxx:content-ready'));
+      })
+      .catch(error => console.warn('GitHub repositories could not be loaded; showing the saved project list.', error));
+  }
 })();

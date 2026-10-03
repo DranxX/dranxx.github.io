@@ -49,6 +49,11 @@
       })
     }),
     resourceFallbackIcon: `${assetBase}/brands/roblox-studio.svg`,
+    github: Object.freeze({
+      user: 'DranxX',
+      // The profile README and this site's own repo are not projects.
+      ignore: Object.freeze(['DranxX', 'dranxx.github.io'])
+    }),
     social: [
       { label: 'GitHub', href: 'https://github.com/DranxX' },
       { label: 'Discord', href: 'https://discord.gg/Bb3aY3Wrxj' },

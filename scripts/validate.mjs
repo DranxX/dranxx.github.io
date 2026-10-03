@@ -378,9 +378,14 @@ if (!/addEventListener\(['"]error['"][\s\S]*?preview\.remove\(\)/.test(collectio
   issues.push('assets/js/collections.js: repository previews must retain an offline/error fallback');
 }
 if (!/'project-showcase': renderShowcase/.test(collectionSource)
-  || !/const items = getOrderedProjects\(\);\s*const total = items\.length;/.test(collectionSource)
+  || !/const items = getOrderedProjects\(\)\.filter\(item => !item\.archived\);/.test(collectionSource)
   || /homeProjectIds|featuredProjectIds|scope-sample/.test(collectionSource)) {
-  issues.push('assets/js/collections.js: Home showcase must render every catalog project');
+  issues.push('assets/js/collections.js: Home showcase must render every active catalog project');
+}
+if (!/api\.github\.com\/users\/\$\{encodeURIComponent\(github\.user\)\}\/repos/.test(collectionSource)
+  || !/\.filter\(repo => !repo\.fork\)/.test(collectionSource)
+  || !/github:\s*Object\.freeze\(\{\s*user: 'DranxX'/.test(fs.readFileSync(path.join(root, 'assets/js/site.config.js'), 'utf8'))) {
+  issues.push('assets/js/collections.js: the catalog must sync DranxX repositories from GitHub and skip forks');
 }
 for (const [page, source] of [['en/index.html', homeSource], ['id/index.html', indonesianHomeSource]]) {
   if (!/<div class="scope-divider"[\s\S]*?<\/div>\s*<section class="section home-section" aria-labelledby="work-title">[\s\S]*?data-collection="project-showcase"/.test(source)) {
@@ -406,6 +411,8 @@ try {
       issues.push(`assets/js/data.js: project ${index + 1} is missing preview metadata`);
       return;
     }
+    const previewTarget = project.preview && localTarget('en/index.html', project.preview);
+    if (previewTarget && !fs.existsSync(previewTarget)) issues.push(`assets/js/data.js: ${project.name} preview file is missing`);
     if (!Array.isArray(project.scopes) || !project.scopes.length || project.scopes.some(scope => !['game', 'software', 'automation', 'ai'].includes(scope))) {
       issues.push(`assets/js/data.js: ${project.name} must use one or more supported evidence-based scopes`);
     }

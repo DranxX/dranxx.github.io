@@ -35,9 +35,20 @@ Daftarkan proyek di `assets/js/data.js`, pada `projects`. Katalog ini menerima s
 
 Setiap entry memiliki `id`, `name`, `code`, `scopes`, `categoryLabel`, `description`, `tags`, dan `url`. `scopes` bisa memuat `game`, `software`, `automation`, atau `ai`; pencarian juga membaca nama, deskripsi, dan tag teknologi.
 
-`preview` opsional. Gunakan gambar asli proyek atau preview resmi repo; jika gambar gagal dimuat, card tetap menampilkan identitas, deskripsi, dan link. Corpus-cleaner memakai preview resmi GitHub yang disimpan di `assets/previews/corpus-cleaner.png`.
+`preview` opsional dan berisi path gambar lokal, misalnya `${assetBase}/previews/<id>.webp`; validator memastikan file-nya ada. Tanpa `preview`, repo GitHub memakai preview resmi GitHub. Jika gambar gagal dimuat, card tetap menampilkan identitas, deskripsi, dan link.
 
-Carousel di homepage menampilkan semua proyek di `projects` sesuai urutannya, jadi urutan katalog juga menentukan urutan slide. Slide bergeser setiap enam detik. Hover, fokus keyboard, sentuhan, tab browser yang disembunyikan, atau carousel yang sedang di luar layar menahan slide; setelah dilepas, hitungan berlanjut dari posisi terakhir. Garis di bawah slide menunjukkan sisa waktu dan bisa diklik untuk pindah proyek. Dengan preferensi reduced motion, slide tetap berganti tetapi tanpa animasi geser.
+## Sinkronisasi dengan GitHub
+
+Home dan Projects mengambil daftar repo `DranxX` dari GitHub API saat halaman dibuka, lalu menyimpannya di browser selama satu jam. Repo hasil fork selalu dilewati, begitu juga repo di `github.ignore` pada `assets/js/site.config.js` (saat ini repo README profil dan repo situs ini).
+
+- Repo yang sudah ada di `projects` tetap memakai teks, tag, kategori, dan preview dari `data.js`. Kalau repo itu dihapus, di-rename, atau berubah jadi fork, card-nya hilang; kalau di-archive, card diberi label Archived.
+- Repo yang belum ada di `projects` muncul otomatis dengan nama, deskripsi, bahasa, dan topics dari GitHub. Topics `game`, `roblox`, `minecraft`, `software`, `tool`, `bot`, `automation`, `ai`, atau `machine-learning` menentukan filter kategorinya.
+- Untuk teks dua bahasa, kategori, atau gambar sendiri, tambahkan repo itu ke `projects`.
+- Kalau GitHub API gagal (offline atau kena batas 60 request per jam), situs memakai daftar terakhir yang tersimpan, atau `projects` di `data.js`.
+
+## Carousel homepage
+
+Carousel di homepage menampilkan semua proyek yang tidak di-archive, sesuai urutan katalog: proyek di `projects` lebih dulu, lalu repo baru dari GitHub. Slide bergeser setiap enam detik. Hover, fokus keyboard, sentuhan, tab browser yang disembunyikan, atau carousel yang sedang di luar layar menahan slide; setelah dilepas, hitungan berlanjut dari posisi terakhir. Garis di bawah slide menunjukkan sisa waktu dan bisa diklik untuk pindah proyek. Dengan preferensi reduced motion, slide tetap berganti tetapi tanpa animasi geser.
 
 ## Menambahkan halaman detail
 
