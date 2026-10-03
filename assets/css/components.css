@@ -482,7 +482,6 @@
   pointer-events: none;
 }
 
-.cursor-light,
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -491,15 +490,6 @@
   opacity: 0;
   pointer-events: none;
   will-change: transform;
-}
-
-.cursor-light {
-  z-index: 1;
-  width: 500px;
-  height: 500px;
-  margin: -250px 0 0 -250px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--blue) 11%, transparent), transparent 64%);
-  transition: opacity 300ms ease;
 }
 
 .cursor-dot {
@@ -512,7 +502,6 @@
   transition: width 180ms ease, height 180ms ease, margin 180ms ease, opacity 180ms ease, background-color 180ms ease;
 }
 
-.cursor-light.visible,
 .cursor-dot.visible { opacity: 1; }
 
 .cursor-dot.is-hovering {
@@ -555,6 +544,5 @@
 .back-to-top:hover { border-color: var(--yellow); }
 
 @media (hover: none), (pointer: coarse) {
-  .cursor-light,
   .cursor-dot { display: none; }
 }

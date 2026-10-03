@@ -313,10 +313,13 @@ if (!/Currently on Roblox/.test(homeSource)
   || !/Performance optimization/.test(homeSource)
   || !/Computer vision/.test(homeSource)
   || !/Roblox \/ Unity \/ Godot/.test(homeSource)) {
-  issues.push('index.html: the single-column hero must be followed by the framework marquee as a section boundary');
+  issues.push('index.html: the homepage introduction must be followed by the framework marquee as a section boundary');
 }
-if (/class="hero-identity/.test(homeSource) || /\.hero-identity/.test(`${pageStyleSource}\n${responsiveSource}`)) {
-  issues.push('Home: the rejected right-side identity visual must not return');
+for (const [locale, source] of [['en', homeSource], ['id', indonesianHomeSource]]) {
+  const logo = source.match(/<svg\b[^>]*class="studio-mark"[\s\S]*?<\/svg>/)?.[0];
+  if (!logo || /<(?:img|image|foreignObject)\b/.test(logo)) {
+    issues.push(`${locale}/index.html: the homepage logo must be drawn with inline SVG rather than a bitmap`);
+  }
 }
 if (!/\.scope-divider \.scope-marquee\s*\{[\s\S]*?rotate\(-1\.15deg\)/.test(pageStyleSource)) {
   issues.push('assets/css/pages.css: Home scope marquee must retain the angled Template-style section boundary');
@@ -609,10 +612,10 @@ if (/DateTimeFormat|data-wib-clock|setInterval\(updateClock/.test(appSource)) {
 }
 if (!/class SiteUi/.test(shellSource)
   || /skeleton-shell|skeleton-grid|id:\s*'preloader'/.test(shellSource)
-  || !/cursor-light/.test(shellSource)
+  || /cursor-light|cursorLight/.test(`${shellSource}\n${appSource}\n${componentStyleSource}`)
   || !/cursor-dot/.test(shellSource)
   || !/site-grain/.test(shellSource)) {
-  issues.push('assets/js/shell.js: retain grain and cursor feedback without a full-page loader');
+  issues.push('Site UI: retain grain and solid cursor feedback without a cursor glow or full-page loader');
 }
 if (!/preloader:\s*false/.test(appSource)
   || !/pageTransitions:\s*false/.test(appSource)

@@ -99,6 +99,5 @@ textarea { font: inherit; }
     transition-duration: .01ms !important;
   }
   .drx-reveal { opacity: 1 !important; transform: none !important; }
-  .cursor-light,
   .cursor-dot { display: none !important; }
 }

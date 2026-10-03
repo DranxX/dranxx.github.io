@@ -31,7 +31,7 @@
 }
 
 .hero-content {
-  width: min(1040px, 100%);
+  width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -69,9 +69,43 @@
 }
 
 .hero-bottom {
-  width: min(720px, 100%);
-  margin-top: clamp(56px, 6vw, 82px);
+  width: 100%;
+  margin-top: clamp(38px, 4vw, 58px);
   padding-top: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 27vw, 340px);
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-logo {
+  width: 100%;
+  max-width: 340px;
+  justify-self: end;
+  pointer-events: none;
+}
+
+.studio-mark { display: block; width: 100%; height: auto; overflow: visible; }
+.studio-mark-frame { stroke: #91d1e5; }
+.studio-mark-chevron { stroke: #faeca7; }
+.studio-mark-cap { fill: #91d3e9; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .studio-mark-frame,
+  .studio-mark-chevron { stroke-dasharray: 1; animation: studio-mark-draw 1400ms cubic-bezier(.35, 0, .2, 1) 350ms both; }
+  .studio-mark-chevron { animation-duration: 1100ms; animation-delay: 1000ms; }
+  .studio-mark-cap { transform-origin: 642px 400px; animation: studio-mark-cap-in 500ms ease-out 1750ms both; }
+}
+
+@keyframes studio-mark-draw {
+  from { stroke-dashoffset: 1; opacity: 0; }
+  8% { opacity: 1; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes studio-mark-cap-in {
+  from { opacity: 0; transform: translateY(-20px) scale(.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hero-copy { max-width: 590px; }

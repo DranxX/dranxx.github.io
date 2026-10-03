@@ -37,7 +37,6 @@
     };
     const progress = document.getElementById('scrollProgress');
     const backToTop = document.getElementById('backToTop');
-    const cursorLight = document.getElementById('cursorLight');
     const cursorDot = document.getElementById('cursorDot');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const introElements = [...document.querySelectorAll('.home-hero .drx-reveal, .page-hero .drx-reveal, .project-case-hero .drx-reveal')];
@@ -99,24 +98,19 @@
     setupTilt();
     document.addEventListener('dranxx:content-ready', setupTilt);
 
-    if (cursorLight && cursorDot && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    if (cursorDot && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       document.documentElement.classList.add('has-custom-cursor');
       let targetX = window.innerWidth / 2;
       let targetY = window.innerHeight / 2;
-      let glowX = targetX;
-      let glowY = targetY;
       let dotX = targetX;
       let dotY = targetY;
       let cursorFrame = 0;
 
       const animateCursor = () => {
-        glowX += (targetX - glowX) * .075;
-        glowY += (targetY - glowY) * .075;
         dotX += (targetX - dotX) * .34;
         dotY += (targetY - dotY) * .34;
-        cursorLight.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
         cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
-        if (Math.abs(targetX - glowX) > .1 || Math.abs(targetY - glowY) > .1 || Math.abs(targetX - dotX) > .1 || Math.abs(targetY - dotY) > .1) {
+        if (Math.abs(targetX - dotX) > .1 || Math.abs(targetY - dotY) > .1) {
           cursorFrame = window.requestAnimationFrame(animateCursor);
         } else {
           cursorFrame = 0;
@@ -126,13 +120,11 @@
       window.addEventListener('pointermove', event => {
         targetX = event.clientX;
         targetY = event.clientY;
-        cursorLight.classList.add('visible');
         cursorDot.classList.add('visible');
         if (!cursorFrame) cursorFrame = window.requestAnimationFrame(animateCursor);
       }, { passive: true });
       window.addEventListener('pointerout', event => {
         if (event.relatedTarget) return;
-        cursorLight.classList.remove('visible');
         cursorDot.classList.remove('visible');
       });
       document.addEventListener('pointerover', event => {

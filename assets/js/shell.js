@@ -165,10 +165,6 @@
         id: 'scrollProgress',
         'aria-hidden': 'true'
       });
-      const cursorLight = setAttributes(create('div', 'cursor-light'), {
-        id: 'cursorLight',
-        'aria-hidden': 'true'
-      });
       const cursorDot = setAttributes(create('div', 'cursor-dot'), {
         id: 'cursorDot',
         'aria-hidden': 'true'
@@ -179,7 +175,7 @@
         'aria-label': ui.backToTop
       });
       backToTop.append(setAttributes(create('i', 'bi bi-arrow-up'), { 'aria-hidden': 'true' }));
-      this.replaceChildren(grain, progress, cursorLight, cursorDot, backToTop);
+      this.replaceChildren(grain, progress, cursorDot, backToTop);
     }
   }
 

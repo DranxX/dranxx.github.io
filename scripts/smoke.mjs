@@ -125,7 +125,7 @@ try {
   const home = await get('/en/');
   if (!home.body.includes('Currently on Roblox')) throw new Error('/en/: expected current Roblox status is missing');
   if (!home.body.includes('class="scope-divider"') || !home.body.includes('drx-marquee-track')) throw new Error('/en/: expected cross-discipline section divider is missing');
-  if (home.body.includes('class="hero-identity') || !home.body.includes('data-collection="project-showcase"')) throw new Error('/en/: rejected identity visual returned or the project showcase is missing');
+  if (!home.body.includes('class="studio-mark"') || !home.body.includes('data-collection="project-showcase"')) throw new Error('/en/: the vector logo or project showcase is missing');
   const indonesianHome = await get('/id/');
   if (!indonesianHome.body.includes('Hai, saya DranxX</h1>') || !indonesianHome.body.includes('Currently on Roblox')) {
     throw new Error('/id/: Indonesian homepage copy is missing or stale English copy remains');
