@@ -348,7 +348,7 @@ if (!/class="profile-interests" aria-labelledby="interests-title"/.test(profileS
 }
 if (!/instagram\.com\/the_dranxx/.test(profileSource)
   || !/tiktok\.com\/@thedranxx/.test(profileSource)
-  || !/discord\.gg\/Bb3aY3Wrxj/.test(profileSource)) {
+  || !/dsc\.gg\/dranxx/.test(profileSource)) {
   issues.push('profile.html: verified corrected-README social links are incomplete');
 }
 

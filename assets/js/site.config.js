@@ -56,7 +56,7 @@
     }),
     social: [
       { label: 'GitHub', href: 'https://github.com/DranxX' },
-      { label: 'Discord', href: 'https://discord.gg/Bb3aY3Wrxj' },
+      { label: 'Discord', href: 'https://dsc.gg/dranxx' },
       { label: 'YouTube', href: 'https://youtube.com/@TheDranxX' },
       { label: 'Instagram', href: 'https://instagram.com/the_dranxx' },
       { label: 'TikTok', href: 'https://tiktok.com/@thedranxx' }
