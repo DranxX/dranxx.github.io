@@ -74,15 +74,6 @@
       }
     ],
 
-    featuredProjectIds: ['bentengan', 'corpus-cleaner', 'drxporter', 'drx-manager'],
-
-    homeProjectIds: [
-      'saza-js',
-      'saza-go',
-      'drxporter',
-      'drx-manager'
-    ],
-
     projects: [
       {
         id: 'bentengan',

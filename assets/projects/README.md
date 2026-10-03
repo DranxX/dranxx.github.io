@@ -37,7 +37,7 @@ Setiap entry memiliki `id`, `name`, `code`, `scopes`, `categoryLabel`, `descript
 
 `preview` opsional. Gunakan gambar asli proyek atau preview resmi repo; jika gambar gagal dimuat, card tetap menampilkan identitas, deskripsi, dan link. Corpus-cleaner memakai preview resmi GitHub yang disimpan di `assets/previews/corpus-cleaner.png`.
 
-`featuredProjectIds` memilih maksimal lima proyek untuk carousel. Gunakan ID dari katalog yang sama agar preview dan card tetap konsisten. Slide bergeser otomatis setiap enam detik dan berhenti saat hover, fokus keyboard, atau tab browser disembunyikan. Tombol play/pause, panah, dan pilihan nama proyek tetap tersedia. Preferensi reduced motion memulai carousel dalam keadaan dijeda; pengunjung masih bisa memutarnya sendiri.
+Carousel di homepage menampilkan semua proyek di `projects` sesuai urutannya, jadi urutan katalog juga menentukan urutan slide. Slide bergeser setiap enam detik. Hover, fokus keyboard, sentuhan, tab browser yang disembunyikan, atau carousel yang sedang di luar layar menahan slide; setelah dilepas, hitungan berlanjut dari posisi terakhir. Garis di bawah slide menunjukkan sisa waktu dan bisa diklik untuk pindah proyek. Dengan preferensi reduced motion, slide tetap berganti tetapi tanpa animasi geser.
 
 ## Menambahkan halaman detail
 

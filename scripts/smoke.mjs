@@ -124,7 +124,7 @@ try {
   const home = await get('/en/');
   if (!home.body.includes('Currently on Roblox')) throw new Error('/en/: expected current Roblox status is missing');
   if (!home.body.includes('class="scope-divider"') || !home.body.includes('drx-marquee-track')) throw new Error('/en/: expected cross-discipline section divider is missing');
-  if (home.body.includes('class="hero-identity') || !home.body.includes('data-selection="home-featured"')) throw new Error('/en/: rejected identity visual returned or curated Home projects are missing');
+  if (home.body.includes('class="hero-identity') || !home.body.includes('data-collection="project-showcase"')) throw new Error('/en/: rejected identity visual returned or the project showcase is missing');
   const indonesianHome = await get('/id/');
   if (!indonesianHome.body.includes('Saya DranxX.') || indonesianHome.body.includes('Currently on Roblox')) {
     throw new Error('/id/: Indonesian homepage copy is missing or stale English copy remains');
@@ -132,9 +132,6 @@ try {
   const projectsPage = await get('/en/projects.html');
   for (const marker of ['data-project-search', 'data-project-filter="all"', 'data-project-empty', 'data-project-clear']) {
     if (!projectsPage.body.includes(marker)) throw new Error(`/en/projects.html: missing discovery marker ${marker}`);
-  }
-  if (!projectsPage.body.includes('data-case-study-list') || !projectsPage.body.includes('projects.data.js')) {
-    throw new Error('/en/projects.html: selected case-study entry is missing');
   }
   const caseStudyPage = await get('/en/Project_Bentengan.html');
   if (!caseStudyPage.body.includes('data-project-case-study="bentengan"') || !caseStudyPage.body.includes('Project_Bentengan.html')) {

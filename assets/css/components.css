@@ -290,8 +290,7 @@
 .catalog-filter:hover { color: var(--foreground); border-color: var(--blue); background: var(--ink-3); }
 .catalog-filter[aria-pressed="true"] { color: var(--foreground); border-color: var(--yellow); background: var(--ink-3); box-shadow: inset 0 -2px 0 var(--yellow); }
 .catalog-filter:focus-visible,
-.carousel-arrow:focus-visible,
-.carousel-choice:focus-visible,
+.showcase-step:focus-visible,
 .system-details summary:focus-visible,
 .case-credits summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 

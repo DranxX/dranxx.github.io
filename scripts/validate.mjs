@@ -129,7 +129,7 @@ for (const page of pages) {
   }
   const requiredFeatureScripts = page.endsWith('/resources.html')
     ? ['assets/js/resources.data.js', 'assets/js/resources.js']
-    : (page.endsWith('/projects.html') || page.endsWith('/Project_Bentengan.html'))
+    : page.endsWith('/Project_Bentengan.html')
       ? ['assets/js/projects.data.js', 'assets/js/projects.js']
       : [];
   for (const script of requiredFeatureScripts) {
@@ -262,12 +262,10 @@ if (!/class ResourceCatalog/.test(resourceRuntimeSource)
   issues.push('assets/js/resources.js: modular catalog, stable-only publication, direct download, or detail modal behavior is missing');
 }
 if (!/data-project-case-study="bentengan"/.test(caseStudySource)
-  || !/class ProjectCollection/.test(caseStudyRuntimeSource)
   || !/class ProjectCaseStudy/.test(caseStudyRuntimeSource)
   || !/if \(this\.project\.links\.play\)/.test(caseStudyRuntimeSource)
-  || !/addEventListener\('error',[\s\S]*?image\.remove\(\)/.test(caseStudyRuntimeSource)
-  || !/data-case-study-list/.test(projectsSource)) {
-  issues.push('Bentengan case study: project index, detailed renderer, optional media fallback, or conditional Play action is missing');
+  || !/addEventListener\('error',[\s\S]*?image\.remove\(\)/.test(caseStudyRuntimeSource)) {
+  issues.push('Bentengan case study: detailed renderer, optional media fallback, or conditional Play action is missing');
 }
 if (!/\.resource-grid\s*\{[\s\S]*?repeat\(3,/.test(pageStyleSource)
   || !/\.resource-modal/.test(pageStyleSource)
@@ -379,10 +377,18 @@ if (!/addEventListener\(['"]error['"][\s\S]*?preview\.remove\(\)/.test(collectio
   || !/project-code/.test(collectionSource)) {
   issues.push('assets/js/collections.js: repository previews must retain an offline/error fallback');
 }
-if (!/home-featured/.test(collectionSource)
-  || !/data\.homeProjectIds/.test(collectionSource)
-  || /scope-sample/.test(collectionSource)) {
-  issues.push('assets/js/collections.js: Home must use the explicit user-approved featured project list');
+if (!/'project-showcase': renderShowcase/.test(collectionSource)
+  || !/const items = getOrderedProjects\(\);\s*const total = items\.length;/.test(collectionSource)
+  || /homeProjectIds|featuredProjectIds|scope-sample/.test(collectionSource)) {
+  issues.push('assets/js/collections.js: Home showcase must render every catalog project');
+}
+for (const [page, source] of [['en/index.html', homeSource], ['id/index.html', indonesianHomeSource]]) {
+  if (!/<div class="scope-divider"[\s\S]*?<\/div>\s*<section class="section home-section" aria-labelledby="work-title">[\s\S]*?data-collection="project-showcase"/.test(source)) {
+    issues.push(`${page}: project showcase must directly follow the hero and scope divider`);
+  }
+}
+if (!/\.showcase-progress/.test(pageStyleSource) || /\.carousel-choice|data-case-study-list/.test(`${pageStyleSource}\n${projectsSource}`)) {
+  issues.push('Project showcase: progress styles are missing or the old thumbnail carousel returned');
 }
 
 try {
@@ -391,8 +397,6 @@ try {
   vm.runInNewContext(dataSource, context, { filename: 'assets/js/data.js' });
   const portfolioData = context.window.DRANXX_DATA;
   const projects = Array.isArray(portfolioData?.projects) ? portfolioData.projects : [];
-  const featuredProjectIds = Array.isArray(portfolioData?.featuredProjectIds) ? portfolioData.featuredProjectIds : [];
-  const homeProjectIds = Array.isArray(portfolioData?.homeProjectIds) ? portfolioData.homeProjectIds : [];
   const technologyGroups = Array.isArray(portfolioData?.technologyGroups) ? portfolioData.technologyGroups : [];
   const languages = Array.isArray(portfolioData?.languages) ? portfolioData.languages : [];
 
@@ -481,17 +485,7 @@ try {
   const discordBot = projects.find(item => item.name === 'DiscordBot');
   if (!discordBot?.scopes.includes('automation')) issues.push('assets/js/data.js: DiscordBot must be classified under bots and automation');
 
-  const expectedHomeIds = ['saza-js', 'saza-go', 'drxporter', 'drx-manager'];
-  if (!featuredProjectIds.includes('bentengan') || featuredProjectIds.length > 5 || new Set(featuredProjectIds).size !== featuredProjectIds.length) {
-    issues.push('assets/js/data.js: selected previews must include Bentengan and contain at most five unique projects');
-  }
-  if (homeProjectIds.join(',') !== expectedHomeIds.join(',') || homeProjectIds.includes('npc-dialogue')) {
-    issues.push('assets/js/data.js: Home featured projects must lead with SAZA Bot JS and exclude NPC Dialogue');
-  }
   const projectIds = new Set(projects.map(project => project.id));
-  [...featuredProjectIds, ...homeProjectIds].forEach(id => {
-    if (!projectIds.has(id)) issues.push(`assets/js/data.js: curated project ID does not exist: ${id}`);
-  });
 
   if (projects.find(project => project.id === 'corpus-cleaner')?.url !== 'https://github.com/DranxX/corpus-cleaner') {
     issues.push('assets/js/data.js: corpus-cleaner must link to the requested repository');
