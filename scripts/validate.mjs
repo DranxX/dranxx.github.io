@@ -300,7 +300,7 @@ if (!/dataset\.proficiency/.test(collectionSource)
   || !/\.language-item\[data-proficiency="beginner"\]/.test(pageStyleSource)) {
   issues.push('Profile languages: semantic card data or green/yellow/red treatments are missing');
 }
-if (!/Game &amp; software developer/.test(homeSource)
+if (!/Currently on Roblox/.test(homeSource)
   || !/<h1[^>]*id="home-title">Hi, I’m DranxX<\/h1>/.test(homeSource)
   || !/<section class="home-hero"[\s\S]*?<\/section>\s*<div class="scope-divider"/.test(homeSource)
   || !/drx-marquee-track/.test(homeSource)
@@ -706,7 +706,8 @@ if (!/'Project_Bentengan'/.test(shellSource)
 }
 if (!/<html lang="id"/.test(indonesianHomeSource)
   || !/Hai, saya DranxX<\/h1>/.test(indonesianHomeSource)
-  || /Currently on Roblox|Saat ini di Roblox|View projects|How I think/.test(indonesianHomeSource)) {
+  || !/Saat ini di Roblox/.test(indonesianHomeSource)
+  || /Currently on Roblox|View projects|How I think/.test(indonesianHomeSource)) {
   issues.push('id/index.html: Indonesian homepage copy is incomplete or stale English copy remains');
 }
 
