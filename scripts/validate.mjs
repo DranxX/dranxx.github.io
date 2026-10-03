@@ -108,6 +108,11 @@ for (const page of pages) {
   const duplicates = [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
   idCount += new Set(ids).size;
   if (duplicates.length) issues.push(`${page}: duplicate IDs: ${duplicates.join(', ')}`);
+  // Headings are titles, not sentences: no trailing period.
+  for (const [, , inner] of html.matchAll(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/g)) {
+    const text = inner.replace(/<[^>]+>/g, '').trim();
+    if (text.endsWith('.')) issues.push(`${page}: heading "${text}" must not end with a period`);
+  }
 
   const requiredMarkup = [
     [/^<!doctype html>/i, 'doctype'],
@@ -261,16 +266,21 @@ if (/wrap split language-layout/.test(profileSource) || !/class="section-head dr
 if (!/data-resource-catalog/.test(resourcesSource)
   || !/data-resource-filters/.test(resourcesSource)
   || !/data-resource-list/.test(resourcesSource)
-  || !/data-resource-modal-root/.test(resourcesSource)
-  || !/MyRobloxAssets/.test(resourcesSource)) {
-  issues.push('resources.html: catalog, filters, list, modal root, or source disclosure is missing');
+  || !/data-resource-modal-root/.test(resourcesSource)) {
+  issues.push('resources.html: catalog, filters, list, or modal root is missing');
+}
+if (/Title: '[^']*\.'/.test(caseStudyRuntimeSource)) {
+  issues.push('assets/js/projects.js: case-study section titles must not end with a period');
 }
 if (!/class ResourceCatalog/.test(resourceRuntimeSource)
   || !/version\.published && version\.channel === 'stable'/.test(resourceRuntimeSource)
   || !/rawBase/.test(resourceRuntimeSource)
   || !/download:\s*resource\.fileName/.test(resourceRuntimeSource)
-  || !/data-resource-details/.test(resourceRuntimeSource)) {
-  issues.push('assets/js/resources.js: modular catalog, stable-only publication, direct download, or detail modal behavior is missing');
+  || !/data-resource-details/.test(resourceRuntimeSource)
+  || !/getSourceUrl/.test(resourceRuntimeSource)
+  || !/resource\.installation/.test(resourceRuntimeSource)
+  || !/resource\.terms/.test(resourceRuntimeSource)) {
+  issues.push('assets/js/resources.js: modular catalog, stable-only publication, direct download, per-resource source, setup, and terms, or detail modal behavior is missing');
 }
 if (!/data-project-case-study="bentengan"/.test(caseStudySource)
   || !/class ProjectCaseStudy/.test(caseStudyRuntimeSource)
@@ -290,8 +300,8 @@ if (!/dataset\.proficiency/.test(collectionSource)
   || !/\.language-item\[data-proficiency="beginner"\]/.test(pageStyleSource)) {
   issues.push('Profile languages: semantic card data or green/yellow/red treatments are missing');
 }
-if (!/Currently on Roblox/.test(homeSource)
-  || !/<h1[^>]*id="home-title">Hi, I’m DranxX\.<\/h1>/.test(homeSource)
+if (!/Game &amp; software developer/.test(homeSource)
+  || !/<h1[^>]*id="home-title">Hi, I’m DranxX<\/h1>/.test(homeSource)
   || !/<section class="home-hero"[\s\S]*?<\/section>\s*<div class="scope-divider"/.test(homeSource)
   || !/drx-marquee-track/.test(homeSource)
   || !/Performance optimization/.test(homeSource)
@@ -527,6 +537,7 @@ try {
   const items = Array.isArray(resourceData?.items) ? resourceData.items : [];
   resourceCount = items.length;
   if (items.length < 6) issues.push('assets/js/resources.data.js: the six public MyRobloxAssets packages must be present');
+  const resourceConfigSource = fs.readFileSync(path.join(root, 'assets/js/site.config.js'), 'utf8');
   if (!Array.isArray(resourceData?.categories) || !resourceData.categories.some(category => category.id === 'all')) {
     issues.push('assets/js/resources.data.js: resource category metadata is incomplete');
   }
@@ -536,8 +547,11 @@ try {
       issues.push(`assets/js/resources.data.js: resource ${index + 1} is missing modular card or source metadata`);
       return;
     }
-    if (item.sourceId !== 'myRobloxAssets' || !item.sourcePath.endsWith('.rbxm') || item.fileName !== path.basename(item.sourcePath)) {
-      issues.push(`assets/js/resources.data.js: ${item.name} must map to a direct MyRobloxAssets RBXM file`);
+    if (!new RegExp(`\\b${item.sourceId}:\\s*Object\\.freeze`).test(resourceConfigSource) || item.fileName !== path.basename(item.sourcePath)) {
+      issues.push(`assets/js/resources.data.js: ${item.name} must map to a configured resource source and a direct file`);
+    }
+    if (!item.terms || (item.installation !== undefined && (!Array.isArray(item.installation) || !item.installation.length))) {
+      issues.push(`assets/js/resources.data.js: ${item.name} needs usage terms, and installation steps must be a non-empty list when present`);
     }
     const versions = Array.isArray(item.versions) ? item.versions : [];
     const stable = versions.find(version => version.id === item.latestVersionId && version.published && version.channel === 'stable');
@@ -682,7 +696,7 @@ if (!/projectBentengan:\s*'Project_Bentengan'/.test(config)
   || !/play:\s*''/.test(config)
   || !/resourceSources/.test(config)
   || !/MyRobloxAssets/.test(config)
-  || !/resourceFallbackIcon/.test(config)) {
+  || !/icon:\s*`\$\{assetBase\}\/brands\/roblox-studio\.svg`/.test(config)) {
   issues.push('assets/js/site.config.js: modular Bentengan media/link or resource source configuration is incomplete');
 }
 if (!/'Project_Bentengan'/.test(shellSource)
@@ -691,8 +705,8 @@ if (!/'Project_Bentengan'/.test(shellSource)
   issues.push('assets/js/shell.js: localized case-study routing must preserve the current query and hash');
 }
 if (!/<html lang="id"/.test(indonesianHomeSource)
-  || !/Hai, saya DranxX\./.test(indonesianHomeSource)
-  || /Currently on Roblox|View projects|How I think/.test(indonesianHomeSource)) {
+  || !/Hai, saya DranxX<\/h1>/.test(indonesianHomeSource)
+  || /Currently on Roblox|Saat ini di Roblox|View projects|How I think/.test(indonesianHomeSource)) {
   issues.push('id/index.html: Indonesian homepage copy is incomplete or stale English copy remains');
 }
 

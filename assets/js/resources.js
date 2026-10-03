@@ -39,14 +39,12 @@
         updated: 'Diperbarui',
         overview: 'Tentang resource',
         installation: 'Cara pasang',
-        installationSteps: ['Download file RBXM.', 'Buka Roblox Studio, lalu pilih Insert from File di Explorer.', 'Pindahkan instance ke service yang sesuai.', 'Periksa pengaturan dan script sebelum digunakan dalam game yang sudah dirilis.'],
         versions: 'Riwayat versi',
         source: 'Lihat source code',
         sourceLabel: name => `Lihat source code ${name} di GitHub`,
         terms: 'Ketentuan penggunaan',
-        termsText: 'Gratis untuk proyek pribadi maupun komersial dan boleh dimodifikasi. Cantumkan kredit @TheDranxX. Paket ini tidak boleh dijual ulang sebagai aset buatanmu sendiri.',
         empty: 'Tidak ada resource yang cocok. Coba kata kunci atau kategori lain.',
-        emptyCategory: 'Belum ada resource pada kategori ini.',
+        emptyCategory: 'Tidak ada resource pada kategori ini.',
         stable: 'Stable',
         searchLabel: 'Cari resource',
         searchPlaceholder: 'Nama atau fungsi. Misalnya: chat',
@@ -65,14 +63,12 @@
         updated: 'Updated',
         overview: 'About this resource',
         installation: 'Installation',
-        installationSteps: ['Download the RBXM file.', 'Open Roblox Studio and choose Insert from File in Explorer.', 'Move the included instances into the appropriate services.', 'Review configuration and scripts before using the package in a live game.'],
         versions: 'Version history',
         source: 'View source',
         sourceLabel: name => `View ${name} source on GitHub`,
         terms: 'Usage terms',
-        termsText: 'Free for personal and commercial projects. You may modify the package, but must credit @TheDranxX. Do not resell it as your own work.',
         empty: 'No matching resource. Try another keyword or category.',
-        emptyCategory: 'No resources are available in this category yet.',
+        emptyCategory: 'No resources in this category.',
         stable: 'Stable',
         searchLabel: 'Find a resource',
         searchPlaceholder: 'Name or function. Try: chat',
@@ -88,6 +84,11 @@
 
     getSource(resource) {
       return this.config.resourceSources?.[resource.sourceId] || null;
+    }
+
+    getFormat(resource) {
+      const extension = /\.[^./]+$/.exec(resource.fileName || '');
+      return extension ? extension[0].toLowerCase() : '-';
     }
 
     encodePath(value) {
@@ -123,7 +124,7 @@
 
     createIcon(resource) {
       const mark = setAttributes(create('span', 'resource-mark media-pending'), { 'aria-hidden': 'true', 'aria-busy': 'true' });
-      const fallback = create('span', 'resource-mark-fallback', 'RBLX');
+      const fallback = create('span', 'resource-mark-fallback', resource.mark || resource.name.slice(0, 3).toUpperCase());
       const image = setAttributes(create('img'), {
         alt: '',
         width: '44',
@@ -144,7 +145,13 @@
         finishIcon();
         image.remove();
       }, { once: true });
-      image.src = resource.icon || this.config.resourceFallbackIcon;
+      const iconUrl = resource.icon || this.getSource(resource)?.icon;
+      if (!iconUrl) {
+        finishIcon();
+        mark.append(fallback);
+        return mark;
+      }
+      image.src = iconUrl;
       mark.append(fallback, image);
       if (image.complete && image.naturalWidth > 0) markLoaded();
       return mark;
@@ -179,7 +186,7 @@
       const versionGroup = create('div');
       versionGroup.append(create('dt', '', this.copy.currentVersion), create('dd', '', version.version));
       const formatGroup = create('div');
-      formatGroup.append(create('dt', '', this.copy.fileFormat), create('dd', '', '.rbxm'));
+      formatGroup.append(create('dt', '', this.copy.fileFormat), create('dd', '', this.getFormat(resource)));
       meta.append(versionGroup, formatGroup);
 
       const actions = create('div', 'resource-actions');
@@ -294,18 +301,21 @@
       [
         [this.copy.currentVersion, version.version],
         [this.copy.updated, this.formatDate(version.releasedAt)],
-        [this.copy.fileFormat, '.rbxm']
+        [this.copy.fileFormat, this.getFormat(resource)]
       ].forEach(([term, value]) => {
         const group = create('div');
         group.append(create('dt', '', term), create('dd', '', value));
         meta.append(group);
       });
 
-      const install = create('section', 'resource-modal-section');
-      install.append(create('h3', '', this.copy.installation));
-      const steps = create('ol', 'resource-install-steps');
-      this.copy.installationSteps.forEach(step => steps.append(create('li', '', step)));
-      install.append(steps);
+      let install = null;
+      if (resource.installation?.length) {
+        install = create('section', 'resource-modal-section');
+        install.append(create('h3', '', this.copy.installation));
+        const steps = create('ol', 'resource-install-steps');
+        resource.installation.forEach(step => steps.append(create('li', '', step)));
+        install.append(steps);
+      }
 
       const versionHistory = create('section', 'resource-modal-section');
       versionHistory.append(create('h3', '', this.copy.versions));
@@ -319,9 +329,12 @@
       });
       versionHistory.append(versionList);
 
-      const terms = create('aside', 'resource-terms');
-      terms.append(create('h3', '', this.copy.terms), create('p', '', this.copy.termsText));
-      body.replaceChildren(intro, meta, install, versionHistory, terms);
+      let terms = null;
+      if (resource.terms) {
+        terms = create('aside', 'resource-terms');
+        terms.append(create('h3', '', this.copy.terms), create('p', '', resource.terms));
+      }
+      body.replaceChildren(...[intro, meta, install, versionHistory, terms].filter(Boolean));
 
       const source = setAttributes(create('a', 'drx-btn drx-btn-outline', this.copy.source), {
         href: this.getSourceUrl(resource, version),

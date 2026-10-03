@@ -9,13 +9,13 @@
         number: '01',
         title: t('Clear data flow', 'Alur data yang jelas'),
         label: t('System design', 'Desain sistem'),
-        description: t('I decide early which script owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya menentukan script mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih mudah diperbaiki dan dikembangkan.')
+        description: t('I decide early which part of the code owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya menentukan bagian kode mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih mudah diperbaiki dan dikembangkan.')
       },
       {
         number: '02',
         title: t('The server decides', 'Server yang menentukan'),
         label: t('Security', 'Keamanan'),
-        description: t('The client only sends input. Prices, rewards, hits, and match results are checked on the server, including when someone sends bad or repeated requests.', 'Client cukup mengirim input. Harga, reward, hit, dan hasil match diperiksa di server, termasuk saat ada yang mengirim request salah atau berulang.')
+        description: t('The client only sends input. Prices, permissions, rewards, and results are checked on the server, including when someone sends bad or repeated requests.', 'Client cukup mengirim input. Harga, izin akses, reward, dan hasil akhir diperiksa di server, termasuk saat ada yang mengirim request salah atau berulang.')
       },
       {
         number: '03',
@@ -25,9 +25,9 @@
       },
       {
         number: '04',
-        title: t('Feedback players can read', 'Feedback yang jelas'),
+        title: t('Feedback users can read', 'Feedback yang jelas'),
         label: t('UX & motion', 'UX & animasi'),
-        description: t('UI and animation should tell players what just happened: a match was found, a hit landed, a purchase went through.', 'UI dan animasi harus memberi tahu pemain apa yang baru terjadi: match ditemukan, serangan mengenai target, pembelian berhasil.')
+        description: t('UI and animation should tell people what just happened: a match was found, a file was saved, a purchase went through.', 'UI dan animasi harus memberi tahu pengguna apa yang baru terjadi: match ditemukan, file tersimpan, pembelian berhasil.')
       }
     ],
 
@@ -226,7 +226,7 @@
       },
       {
         title: t('Game development', 'Game development'),
-        note: t('Currently focused on Roblox', 'Saat ini berfokus pada Roblox'),
+        note: t('Engines and tools for building games', 'Engine dan tools untuk membuat game'),
         items: [
           { name: 'Roblox Studio', iconSrc: `${assetBase}/brands/roblox-studio.svg`, short: 'RBLX' },
           { name: 'Unity', iconSrc: `${assetBase}/brands/unity.svg`, iconSurface: 'mono', short: 'UN' },

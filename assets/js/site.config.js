@@ -11,8 +11,8 @@
     titleSuffix: isIndonesian ? 'DranxX - Portofolio Developer' : 'DranxX - Developer Portfolio',
     email: 'dranxx.contact@gmail.com',
     tagline: isIndonesian
-      ? 'Membangun game dan tools selama 5 tahun, saat ini berfokus pada Roblox.'
-      : 'Building games and tools for 5 years, currently focused on Roblox.',
+      ? 'Game dan software developer dari Indonesia, dengan pengalaman 5 tahun mengerjakan proyek di bidang game, software, AI/ML, dan keamanan.'
+      : 'Game and software developer from Indonesia, with 5 years of projects across games, software, AI/ML, and security.',
     // Nav labels stay the same in both locales: the mixed Resources/Proyek state read as unfinished.
     nav: [
       { key: 'home', label: 'Home', href: './' },
@@ -45,10 +45,10 @@
         repository: 'MyRobloxAssets',
         repositoryUrl: 'https://github.com/DranxX/MyRobloxAssets',
         rawBase: 'https://raw.githubusercontent.com/DranxX/MyRobloxAssets',
-        defaultRef: 'main'
+        defaultRef: 'main',
+        icon: `${assetBase}/brands/roblox-studio.svg`
       })
     }),
-    resourceFallbackIcon: `${assetBase}/brands/roblox-studio.svg`,
     github: Object.freeze({
       user: 'DranxX',
       // The profile README and this site's own repo are not projects.
