@@ -9,25 +9,25 @@
         number: '01',
         title: t('Clear data flow', 'Alur data yang jelas'),
         label: t('System design', 'Desain sistem'),
-        description: t('I decide early which script owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya tentukan script mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih gampang diperbaiki dan dikembangkan.')
+        description: t('I decide early which script owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya menentukan script mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih mudah diperbaiki dan dikembangkan.')
       },
       {
         number: '02',
         title: t('The server decides', 'Server yang menentukan'),
         label: t('Security', 'Keamanan'),
-        description: t('The client only sends input. Prices, rewards, hits, and match results are checked on the server, including when someone sends bad or repeated requests.', 'Client cukup mengirim input. Harga, reward, hit, dan hasil match dicek di server, termasuk saat ada yang mengirim request salah atau berulang.')
+        description: t('The client only sends input. Prices, rewards, hits, and match results are checked on the server, including when someone sends bad or repeated requests.', 'Client cukup mengirim input. Harga, reward, hit, dan hasil match diperiksa di server, termasuk saat ada yang mengirim request salah atau berulang.')
       },
       {
         number: '03',
-        title: t('Measure before optimizing', 'Ukur dulu, baru optimasi'),
+        title: t('Measure before optimizing', 'Ukur sebelum optimasi'),
         label: t('Optimization', 'Optimasi'),
-        description: t('I profile first and fix the part that is actually slow, while keeping an eye on frame time, memory, and network usage.', 'Saya profiling dulu, lalu memperbaiki bagian yang memang lambat sambil memantau frame time, memori, dan pemakaian network.')
+        description: t('I profile first and fix the part that is actually slow, while keeping an eye on frame time, memory, and network usage.', 'Saya melakukan profiling terlebih dahulu, lalu memperbaiki bagian yang memang lambat sambil memantau frame time, memori, dan penggunaan network.')
       },
       {
         number: '04',
         title: t('Feedback players can read', 'Feedback yang jelas'),
         label: t('UX & motion', 'UX & animasi'),
-        description: t('UI and animation should tell players what just happened: a match was found, a hit landed, a purchase went through.', 'UI dan animasi harus memberi tahu pemain apa yang baru terjadi: match ditemukan, hit kena, pembelian berhasil.')
+        description: t('UI and animation should tell players what just happened: a match was found, a hit landed, a purchase went through.', 'UI dan animasi harus memberi tahu pemain apa yang baru terjadi: match ditemukan, serangan mengenai target, pembelian berhasil.')
       }
     ],
 
@@ -37,7 +37,7 @@
         number: '01',
         title: t('Gameplay Systems', 'Sistem Gameplay'),
         accent: t('Game Systems', 'Sistem'),
-        description: t('Need matchmaking, combat, or persistent player data? I build the server rules and connect the client controllers, so input, UI, and saved data follow the same game state.', 'Butuh matchmaking, combat, atau data pemain yang tersimpan? Saya bangun aturan di server dan hubungkan controller client, supaya input, UI, dan data mengikuti state game yang sama.'),
+        description: t('Need matchmaking, combat, or persistent player data? I build the server rules and connect the client controllers, so input, UI, and saved data follow the same game state.', 'Butuh matchmaking, combat, atau data pemain yang tersimpan? Saya membangun aturan di server dan menghubungkannya dengan controller di client, sehingga input, UI, dan data mengikuti state game yang sama.'),
         deliverables: t(['Gameplay: rounds, combat, objectives, movement, and input', 'Backend: party queues, cross-server matchmaking, teleport, and rejoin', 'Player systems: inventory, shop, receipts, progression, and rankings'], ['Gameplay: ronde, combat, objective, movement, dan input', 'Backend: party, matchmaking lintas server, teleport, dan rejoin', 'Sistem pemain: inventory, shop, receipt, progres, dan ranking']),
         proof: { label: t('See these systems in Bentengan', 'Lihat implementasinya di Bentengan'), url: 'Project_Bentengan', image: `${assetBase}/projects/bentengan/card.webp` },
         tags: ['Roblox Studio', 'Unity', 'Luau', t('Gameplay architecture', 'Arsitektur gameplay')]
@@ -47,7 +47,7 @@
         number: '02',
         title: t('Software & Developer Tools', 'Software & Developer Tools'),
         accent: 'Software',
-        description: t('If you keep moving the same files, copying data, or running the same commands, I can turn that into a tool or integration that fits the workflow you already use.', 'Kalau kamu sering memindahkan file, menyalin data, atau menjalankan perintah yang sama berulang kali, saya bisa membuatkan tools atau integrasi yang cocok dengan workflow yang sudah kamu pakai.'),
+        description: t('If you keep moving the same files, copying data, or running the same commands, I can turn that into a tool or integration that fits the workflow you already use.', 'Jika kamu sering memindahkan file, menyalin data, atau menjalankan perintah yang sama berulang kali, saya bisa membuatkan tools atau integrasi yang cocok dengan workflow yang sudah kamu pakai.'),
         deliverables: t(['Local utilities and file-processing tools', 'API integrations and bot workflows', 'Editor and game-engine tooling'], ['Utility lokal dan tools pengolahan file', 'Integrasi API dan workflow bot', 'Tooling untuk editor dan game engine']),
         proof: { label: t('Explore DrXporter', 'Lihat DrXporter'), url: 'https://github.com/DranxX/DrXporter' },
         tags: ['Python', 'TypeScript', t('Automation', 'Otomatisasi'), t('Developer tooling', 'Developer tools')]
@@ -57,7 +57,7 @@
         number: '03',
         title: t('AI / ML Experiments', 'Eksperimen AI / ML'),
         accent: 'AI / ML',
-        description: t('I build small prototypes for text processing, fine-tuning, or computer vision, then go through the output with you to see where the model holds up and where it does not.', 'Saya membuat prototype kecil untuk pengolahan teks, fine-tuning, atau computer vision, lalu mengecek hasilnya bersama kamu: bagian mana yang sudah bagus dan mana yang belum.'),
+        description: t('I build small prototypes for text processing, fine-tuning, or computer vision, then go through the output with you to see where the model holds up and where it does not.', 'Saya membuat prototype kecil untuk pengolahan teks, fine-tuning, atau computer vision, lalu meninjau hasilnya bersama kamu untuk melihat bagian yang sudah berjalan baik dan yang masih perlu diperbaiki.'),
         deliverables: t(['Data preparation and processing scripts', 'Training and inference workflows', 'Prototype evaluation with sample outputs'], ['Script persiapan dan pengolahan data', 'Workflow training dan inference', 'Evaluasi prototype dengan contoh output']),
         proof: { label: t('Explore corpus-cleaner', 'Lihat corpus-cleaner'), url: 'https://github.com/DranxX/corpus-cleaner' },
         tags: ['Python', 'TensorFlow', 'PyTorch', 'OpenCV']
@@ -67,8 +67,8 @@
         number: '04',
         title: t('Security & Performance', 'Keamanan & Performa'),
         accent: t('Security', 'Keamanan'),
-        description: t('A feature can work normally and still fail on bad input, duplicate requests, or disconnects. I trace those paths, review server validation, and profile suspected bottlenecks.', 'Fitur bisa berjalan normal tapi bermasalah saat input salah, request ganda, atau koneksi putus. Saya telusuri alurnya, cek validasi server, dan lakukan profiling pada bottleneck yang dicurigai.'),
-        deliverables: t(['Code review with findings and proposed fixes', 'Server validation, rate limits, and recovery paths', 'Profiling and focused performance changes'], ['Code review dengan temuan dan usulan perbaikan', 'Validasi server, rate limit, dan recovery saat terjadi error', 'Profiling dan perbaikan performa di bottleneck-nya']),
+        description: t('A feature can work normally and still fail on bad input, duplicate requests, or disconnects. I trace those paths, review server validation, and profile suspected bottlenecks.', 'Sebuah fitur bisa berjalan normal, namun tetap bermasalah saat menerima input salah, request ganda, atau koneksi terputus. Saya menelusuri alurnya, memeriksa validasi server, dan melakukan profiling pada bottleneck yang dicurigai.'),
+        deliverables: t(['Code review with findings and proposed fixes', 'Server validation, rate limits, and recovery paths', 'Profiling and focused performance changes'], ['Code review dengan temuan dan usulan perbaikan', 'Validasi server, rate limit, dan recovery saat terjadi error', 'Profiling dan perbaikan performa pada bottleneck']),
         proof: { label: t('See Bentengan engineering decisions', 'Lihat keputusan teknis Bentengan'), url: 'Project_Bentengan#decisions' },
         tags: ['Threat modeling', 'Pentesting', 'Profiling', t('Optimization', 'Optimasi')]
       }
@@ -129,7 +129,7 @@
         archived: false,
         fork: false,
         source: 'original',
-        description: t('Reusable Roblox models and scripts, with RBXM packages you can import into Studio. Browse the source, inspect how each system works, and adapt it to your game.', 'Kumpulan model dan script Roblox dengan paket RBXM yang bisa langsung diimpor ke Studio. Buka source-nya, pelajari cara kerja tiap sistem, lalu sesuaikan dengan game-mu.'),
+        description: t('Reusable Roblox models and scripts, with RBXM packages you can import into Studio. Browse the source, inspect how each system works, and adapt it to your game.', 'Kumpulan model dan script Roblox dengan paket RBXM yang bisa langsung diimpor ke Studio. Buka source-nya, pelajari cara kerja tiap sistem, lalu sesuaikan dengan game kamu.'),
         tags: ['Roblox Studio', 'Luau'],
         url: 'https://github.com/DranxX/MyRobloxAssets'
       },
@@ -144,7 +144,7 @@
         archived: false,
         fork: false,
         source: 'original',
-        description: t('Build a WhatsApp bot in Go without starting its connection and storage layers from scratch. Uses whatsmeow, a plugin registry, SQLite, reconnection handling, and spam protection.', 'Starter bot WhatsApp berbasis Go dan whatsmeow. Sudah punya registry plugin, penyimpanan SQLite, reconnect, dan proteksi spam, jadi pengembangan bisa fokus ke fitur bot-nya.'),
+        description: t('Build a WhatsApp bot in Go without starting its connection and storage layers from scratch. Uses whatsmeow, a plugin registry, SQLite, reconnection handling, and spam protection.', 'Starter bot WhatsApp berbasis Go dan whatsmeow. Sudah dilengkapi registry plugin, penyimpanan SQLite, reconnect, dan proteksi spam, sehingga pengembangan bisa langsung berfokus pada fitur bot.'),
         tags: ['Go', 'WhatsMeow', 'SQLite', 'Plugins'],
         url: 'https://github.com/DranxX/SAZA-Bot-Go'
       },
@@ -159,7 +159,7 @@
         archived: false,
         fork: false,
         source: 'original',
-        description: t('A JavaScript starter for WhatsApp bots using Baileys. Includes formatted responses and an npm or Bun workflow as a base for adding your own commands.', 'Starter bot WhatsApp dengan JavaScript dan Baileys. Format respons dan workflow npm atau Bun sudah tersedia, tinggal tambahkan command sendiri.'),
+        description: t('A JavaScript starter for WhatsApp bots using Baileys. Includes formatted responses and an npm or Bun workflow as a base for adding your own commands.', 'Starter bot WhatsApp dengan JavaScript dan Baileys. Format respons dan workflow npm atau Bun sudah tersedia, sehingga kamu cukup menambahkan command sendiri.'),
         tags: ['JavaScript', 'Baileys', 'Node.js', 'Bun'],
         url: 'https://github.com/DranxX/SAZA-Bot-JS'
       },
@@ -174,7 +174,7 @@
         archived: false,
         fork: false,
         source: 'original',
-        description: t('A Windows file explorer built with Rust and egui. Color tags help organize files, while built-in previews let you inspect them without opening a separate app.', 'File explorer Windows yang saya bangun dengan Rust dan egui. Tag warna membantu mengelompokkan file, sementara preview bawaan memudahkan cek isi file tanpa membuka aplikasi lain.'),
+        description: t('A Windows file explorer built with Rust and egui. Color tags help organize files, while built-in previews let you inspect them without opening a separate app.', 'File explorer Windows yang saya bangun dengan Rust dan egui. Tag warna membantu mengelompokkan file, sementara preview bawaan memudahkan pemeriksaan isi file tanpa membuka aplikasi lain.'),
         tags: ['Rust', 'egui', 'Windows'],
         url: 'https://github.com/DranxX/DrxManager'
       },
@@ -203,7 +203,7 @@
         archived: false,
         fork: false,
         source: 'original',
-        description: t('A small Flask endpoint on Vercel that sends a player message to Gemini and returns a short reply in an NPC voice. Built for NPC dialogue in Roblox, and usable from any game that can make HTTP requests.', 'Endpoint Flask kecil di Vercel yang meneruskan pesan pemain ke Gemini lalu membalas singkat dengan gaya bicara NPC. Dibuat untuk dialog NPC di Roblox, tapi bisa dipakai game lain yang bisa mengirim request HTTP.'),
+        description: t('A small Flask endpoint on Vercel that sends a player message to Gemini and returns a short reply in an NPC voice. Built for NPC dialogue in Roblox, and usable from any game that can make HTTP requests.', 'Endpoint Flask kecil di Vercel yang meneruskan pesan pemain ke Gemini lalu membalas singkat dengan gaya bicara NPC. Dibuat untuk dialog NPC di Roblox, dan juga dapat digunakan oleh game lain yang mendukung request HTTP.'),
         tags: ['Python', 'Flask', 'Gemini', 'Vercel'],
         url: 'https://github.com/DranxX/chatbot'
       }
@@ -226,7 +226,7 @@
       },
       {
         title: t('Game development', 'Game development'),
-        note: t('Mostly Roblox right now', 'Saat ini paling banyak di Roblox'),
+        note: t('Currently focused on Roblox', 'Saat ini berfokus pada Roblox'),
         items: [
           { name: 'Roblox Studio', iconSrc: `${assetBase}/brands/roblox-studio.svg`, short: 'RBLX' },
           { name: 'Unity', iconSrc: `${assetBase}/brands/unity.svg`, iconSurface: 'mono', short: 'UN' },
@@ -260,10 +260,10 @@
 
     languages: [
        { name: t('Indonesian', 'Bahasa Indonesia'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('First language', 'Bahasa sehari-hari'), flag: `${assetBase}/icons/flags/id.svg` },
-       { name: t('English', 'Bahasa Inggris'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('Used for work', 'Dipakai untuk kerja'), flag: `${assetBase}/icons/flags/gb.svg` },
-       { name: t('Japanese', 'Bahasa Jepang'), proficiency: 'developing', proficiencyLabel: t('Developing', 'Berkembang'), level: t('Understand most of it', 'Paham secara umum'), flag: `${assetBase}/icons/flags/jp.svg` },
-       { name: t('Chinese', 'Bahasa Mandarin'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Baru belajar dasar'), flag: `${assetBase}/icons/flags/cn.svg` },
-       { name: t('French', 'Bahasa Prancis'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Baru belajar dasar'), flag: `${assetBase}/icons/flags/fr.svg` }
+       { name: t('English', 'Bahasa Inggris'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('Working language', 'Bahasa kerja'), flag: `${assetBase}/icons/flags/gb.svg` },
+       { name: t('Japanese', 'Bahasa Jepang'), proficiency: 'developing', proficiencyLabel: t('Developing', 'Berkembang'), level: t('General understanding', 'Pemahaman umum'), flag: `${assetBase}/icons/flags/jp.svg` },
+       { name: t('Chinese', 'Bahasa Mandarin'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Mempelajari dasar'), flag: `${assetBase}/icons/flags/cn.svg` },
+       { name: t('French', 'Bahasa Prancis'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Mempelajari dasar'), flag: `${assetBase}/icons/flags/fr.svg` }
     ]
   });
 })();

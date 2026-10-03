@@ -62,7 +62,7 @@
         systems: 'Core systems',
         contribution: 'Role & credits',
         overviewLabel: 'Project overview',
-        overviewTitle: 'Dari cari match sampai rebut benteng.',
+        overviewTitle: 'Dari mencari match sampai merebut benteng.',
         architectureLabel: 'Match flow',
         architectureTitle: 'Satu match, tiga place.',
         systemsLabel: 'Engineering scope',

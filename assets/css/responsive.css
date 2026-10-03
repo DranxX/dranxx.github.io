@@ -188,6 +188,11 @@
   .technology-group { padding: 26px 22px; }
   .technology-group:first-child,
   .technology-group:last-child { --technology-columns: 2; }
+  .technology-item { position: relative; gap: 8px; padding: 7px; }
+  .technology-mark,
+  .technology-mark img { width: 30px; height: 30px; flex-basis: 30px; }
+  .technology-name { overflow-wrap: anywhere; }
+  .technology-badge { position: absolute; top: -1px; right: -1px; }
 
   .language-list { grid-template-columns: 1fr; }
   .language-item {
@@ -217,7 +222,7 @@
   .project-case-identity { margin-top: -32px; grid-template-columns: 76px minmax(0, 1fr); }
   .project-case-logo { width: 76px; height: 76px; }
   .project-case-title { padding-top: 40px; }
-  .project-case-role { margin-top: 16px; font-size: 8.5px; }
+  .project-case-role { margin-top: 16px; }
   .project-case-state { align-items: flex-start; flex-direction: column; gap: 7px; }
   .project-section-nav a { padding-inline: 15px; }
   .project-snapshot div { grid-template-columns: 1fr; gap: 8px; }
@@ -233,6 +238,35 @@
   .footer-about,
   .footer-contact { grid-column: auto; }
   .footer-bottom { padding: 20px 0; flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 900px), (pointer: coarse) {
+  /* Phones and tablets, including landscape tablets: small uppercase labels and meta text never drop below 10px. */
+  :is(.section-label, .hero-kicker, .tag, .status, .drx-label, .drx-field-description, .form-note, .project-view, .project-category,
+    .project-result-bar span, .showcase-eyebrow span, .technology-index, .technology-badge, .principle-index, .project-flow-index,
+    .project-system-index, .project-case-role, .project-case-state span, .project-media-placeholder span, .project-section-nav a,
+    .resource-category, .resource-channel, .resource-count, .language-proficiency, .language-item p, .profile-link-label,
+    .profile-links span, .profile-overline, .footer-column h2, .footer-bottom span, .footer-bottom em, .language-switch,
+    .nav-links a, .page-content dt, .drx-accordion-trigger small) { font-size: 10px; }
+  .tag.drx-badge,
+  .form-shell .drx-label,
+  .form-shell .drx-field-description,
+  .project-query-row .drx-label,
+  .resource-query-row .drx-label { font-size: 10px; }
+
+  /* Touch targets: standalone links get at least 24px of height without changing their look. */
+  .text-link,
+  .contact-list a,
+  .contact-details a { min-height: 24px; }
+  .contact-details a { display: inline-flex; align-items: center; }
+
+  /* Carousel steps: less side padding so each step keeps a wider tap area on narrow screens. */
+  .showcase-progress { padding: 0 10px; gap: 4px; }
+}
+
+@media (pointer: coarse) {
+  /* Touch screens keep their own overlay scrollbar; the 9px custom bar would take page width and zoom short pages out. */
+  ::-webkit-scrollbar { width: 0; height: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

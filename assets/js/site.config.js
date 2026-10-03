@@ -11,8 +11,8 @@
     titleSuffix: isIndonesian ? 'DranxX - Portofolio Developer' : 'DranxX - Developer Portfolio',
     email: 'dranxx.contact@gmail.com',
     tagline: isIndonesian
-      ? 'Membangun game dan tools selama 5 tahun, sekarang paling banyak di Roblox.'
-      : 'Building games and tools for 5 years, now mostly on Roblox.',
+      ? 'Membangun game dan tools selama 5 tahun, saat ini berfokus pada Roblox.'
+      : 'Building games and tools for 5 years, currently focused on Roblox.',
     // Nav labels stay the same in both locales: the mixed Resources/Proyek state read as unfinished.
     nav: [
       { key: 'home', label: 'Home', href: './' },

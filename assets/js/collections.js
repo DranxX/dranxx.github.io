@@ -4,7 +4,7 @@
   const assetBase = config.assetBase || '../assets';
   const isIndonesian = config.locale === 'id';
   const copy = isIndonesian ? {
-    ask: 'Tanya soal ini',
+    ask: 'Diskusikan bidang ini',
     openRepository: 'Buka repositori',
     openRepositoryLabel: name => `Buka repositori ${name} di GitHub`,
     publicRepository: 'Source code',
@@ -160,7 +160,7 @@
         item.deliverables.forEach(value => list.append(create('li', '', value)));
         intro.append(list, createTags(item.tags));
         const links = create('div', 'service-offer-links');
-        const contact = create('a', 'text-link', isIndonesian ? 'Bahas kebutuhanmu' : 'Discuss your needs');
+        const contact = create('a', 'text-link', isIndonesian ? 'Diskusikan kebutuhanmu' : 'Discuss your needs');
         contact.href = `contact?topic=${encodeURIComponent(item.id)}`;
         links.append(contact);
         const proof = create('a', 'service-proof-link', item.proof.label);

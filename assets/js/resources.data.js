@@ -58,7 +58,7 @@
         name: 'Chat System',
         category: 'systems',
         categoryLabel: t('Communication system', 'Sistem komunikasi'),
-        description: t('A chat-system model to inspect and adapt for your Roblox game.', 'Model sistem chat yang bisa dipelajari dan disesuaikan untuk game Roblox-mu.'),
+        description: t('A chat-system model to inspect and adapt for your Roblox game.', 'Model sistem chat yang bisa dipelajari dan disesuaikan untuk game Roblox kamu.'),
         detail: t('Import the model, review its instances and scripts, then configure it for how players communicate in your game.', 'Impor modelnya, periksa instance dan script yang tersedia, lalu sesuaikan pengaturannya dengan cara pemain berkomunikasi di game-mu.'),
         tags: ['Roblox Studio', 'RBXM', 'Chat'],
         sourceId: 'myRobloxAssets',

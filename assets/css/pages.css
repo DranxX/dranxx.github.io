@@ -324,7 +324,7 @@
   padding: 8px 10px;
   color: var(--ink);
   background: var(--yellow);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
   letter-spacing: .11em;
   pointer-events: none;
@@ -341,7 +341,7 @@
 .project-content { padding: 22px 22px 26px; }
 .project-eyebrow { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .project-repository-meta { min-width: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.project-category { color: var(--muted); font-size: 8.5px; letter-spacing: .1em; text-align: right; text-transform: uppercase; }
+.project-category { color: var(--muted); font-size: 9px; letter-spacing: .1em; text-align: right; text-transform: uppercase; }
 .project-content h2 { margin-top: 22px; font-family: var(--font-display); font-size: 27px; font-weight: 700; line-height: .95; text-transform: uppercase; }
 .project-title-link { display: inline-flex; align-items: center; gap: 8px; }
 .project-title-link i { color: var(--muted); font-size: 12px; }
@@ -396,7 +396,7 @@
   gap: 8px;
   border: 1px solid var(--line);
   color: var(--foreground);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: .055em;
   line-height: 1.25;
   text-transform: uppercase;
@@ -513,7 +513,7 @@
 
 .technology-name { min-width: 0; color: var(--foreground); font-size: 10px; line-height: 1.3; }
 .technology-item.is-primary { border-color: color-mix(in srgb, var(--yellow) 55%, var(--line)); }
-.technology-badge { margin-left: auto; padding: 3px 6px; color: var(--ink); background: var(--yellow); font-size: 7.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.technology-badge { margin-left: auto; padding: 3px 6px; color: var(--ink); background: var(--yellow); font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 
 .language-list {
   display: grid;
@@ -557,7 +557,7 @@
 }
 
 .language-flag img { width: 52px; height: 35px; display: block; object-fit: cover; }
-.language-proficiency { margin-top: 18px; display: inline-flex; align-items: center; gap: 7px; color: var(--proficiency-color); font-size: 8px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.language-proficiency { margin-top: 18px; display: inline-flex; align-items: center; gap: 7px; color: var(--proficiency-color); font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 .language-proficiency::before { width: 5px; height: 5px; border-radius: 50%; background: currentColor; content: ''; }
 .language-item h3 { margin-top: 10px; font-family: var(--font-display); font-size: 27px; font-weight: 650; line-height: 1; text-transform: uppercase; }
 .language-item p { margin-top: auto; padding-top: 24px; color: var(--muted); font-size: 9.5px; letter-spacing: .08em; text-align: left; text-transform: uppercase; }
@@ -568,7 +568,7 @@
 .resource-discovery { margin-bottom: 18px; border: 1px solid var(--line); background: var(--ink); }
 .resource-query-row { padding: 22px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 .resource-query-row .drx-field { margin: 0; }
-.resource-query-row .drx-label { display: block; margin-bottom: 9px; }
+.resource-query-row .drx-label { display: block; margin-bottom: 9px; font-size: 9px; }
 .resource-query-row .drx-input,
 .resource-query-row .drx-select { min-height: 44px; }
 .resource-result-bar { min-height: 42px; padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; }
@@ -608,7 +608,7 @@
 .resource-mark-fallback { color: var(--blue); font-size: 7px; font-weight: 700; letter-spacing: .08em; }
 .resource-mark.has-icon .resource-mark-fallback { opacity: 0; }
 .resource-category,
-.resource-channel { color: var(--muted); font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; }
+.resource-channel { color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
 .resource-channel { display: inline-flex; align-items: center; gap: 6px; color: var(--success); }
 .resource-channel::before { width: 5px; height: 5px; border-radius: 50%; background: currentColor; content: ''; }
 .resource-title { margin-top: 28px; font-family: var(--font-display); font-size: 30px; font-weight: 720; letter-spacing: -.015em; line-height: .94; text-transform: uppercase; }
@@ -617,7 +617,7 @@
 .resource-meta { margin: auto 0 0; padding-top: 25px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .resource-meta div { padding-top: 11px; border-top: 1px solid var(--line); }
 .resource-meta dt,
-.resource-modal-meta dt { color: var(--muted); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+.resource-modal-meta dt { color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
 .resource-meta dd,
 .resource-modal-meta dd { margin-top: 7px; color: var(--foreground); font-family: var(--font-display); font-size: 15px; font-weight: 650; }
 .resource-actions { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -644,7 +644,7 @@
 .resource-version-list { border-top: 1px solid var(--line); }
 .resource-version { padding: 15px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
 .resource-version strong { display: inline-block; margin-right: 10px; font-family: var(--font-display); font-size: 16px; }
-.resource-version span { color: var(--muted); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+.resource-version span { color: var(--muted); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
 .resource-version p { margin-top: 5px; color: var(--muted); font-size: 10px; line-height: 1.55; }
 .resource-terms { margin-top: 28px; padding: 18px 20px; border-left: 2px solid var(--yellow); background: var(--ink-3); }
 .resource-terms p { color: var(--muted); font-size: 10.5px; line-height: 1.72; }
@@ -718,7 +718,7 @@
 .project-overview-copy .tag-list { margin-top: 28px; }
 .project-snapshot { border-top: 1px solid var(--line); }
 .project-snapshot div { padding: 19px 0; display: grid; grid-template-columns: 130px 1fr; gap: 24px; border-bottom: 1px solid var(--line); }
-.project-snapshot dt { color: var(--muted); font-size: 8.5px; letter-spacing: .13em; text-transform: uppercase; }
+.project-snapshot dt { color: var(--muted); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
 .project-snapshot dd { font-family: var(--font-display); font-size: 20px; font-weight: 650; text-transform: uppercase; }
 .project-architecture,
 .project-systems,

@@ -118,7 +118,7 @@
           ], [
             'Tiga pilihan map, jumlah vote live, dan perubahan vote yang mengurangi pilihan sebelumnya. Server memeriksa match ID, roster, pilihan, dan frekuensi request.',
             'Timer 90 detik dipangkas menjadi maksimal 20 detik saat lebih dari separuh roster sudah vote, lalu maksimal 5 detik saat semua sudah vote.',
-            'Kalau seri, vote yang masuk paling awal jadi penentu. Kalau tidak ada yang vote, pemain kembali ke lobby. Hasil map dikirim sebelum teleport.',
+            'Jika seri, vote yang masuk paling awal menjadi penentu. Jika tidak ada yang vote, pemain kembali ke lobby. Hasil map dikirim sebelum teleport.',
             'Mount GUI manual dan request snapshot menangani UI yang terlambat siap menerima event. Pemain keluar atau roster tidak valid membatalkan handoff.'
           ])
         },
@@ -133,7 +133,7 @@
             'Catches, rescues, captures, jail time, and contribution feed stats and deterministic MVP selection. Remaining players return to the lobby after results.'
           ], [
             'State Idle, Countdown, InProgress, dan Ended menghubungkan spawn, weapon, barrier, skor, dan timer. Tim pertama dengan empat poin menang; skor 3–3 masuk tiebreaker.',
-            'Hit lawan mengirim pemain ke jail; hit teman membebaskannya. Jail mencabut weapon dan state sprint; rescue mengembalikannya. Kalau semua anggota tim yang masih terhubung masuk jail, tim itu kalah di ronde tersebut.',
+            'Hit lawan mengirim pemain ke jail; hit teman membebaskannya. Jail mencabut weapon dan state sprint; rescue mengembalikannya. Jika semua anggota tim yang masih terhubung masuk jail, tim tersebut kalah di ronde itu.',
             'Capture benteng membutuhkan ronde aktif, weapon valid, benteng lawan, roster aktif, serta jarak dan cooldown yang sesuai.',
             'Win, Draw, Void, dan GameStopped punya jalur hasil terpisah. Stat kompetitif ditampung lalu dibuang untuk match tidak valid; custom match tidak memberi progres kompetitif.',
             'Catch, rescue, capture, waktu jail, dan kontribusi masuk ke stat serta pemilihan MVP yang deterministik. Pemain yang tersisa kembali ke lobby setelah hasil match.'
@@ -233,7 +233,7 @@
             'Settings tersimpan mencakup volume, voice, shadow, dan camera shake. Voice khusus tim mengatur mixing berdasarkan jarak dan disambungkan ulang setelah respawn.',
             'Emote memvalidasi ownership, slot, state pemain, movement, cooldown, dan frekuensi request. Bergerak atau mati menghentikan playback serta membersihkan efek dan state weapon.',
             'SFX tombol dan footsteps memakai sound group bersama. Footsteps mengikuti material dan movement, dengan fallback serta batas playback.',
-            'Prompt grup mengikuti jumlah game/waktu, cooldown, dan handshake kesiapan client. Pengumuman staff memakai cek rank, filter teks, pesan lintas server, dan fallback lokal.',
+            'Prompt grup mengikuti jumlah game/waktu, cooldown, dan handshake kesiapan client. Pengumuman staff memakai pengecekan rank, filter teks, pesan lintas server, dan fallback lokal.',
             'Package camera shake dan freecam diintegrasikan dengan permission, input, anchor, serta pemulihan GUI; package dasarnya berasal dari pihak ketiga.'
           ])
         },
@@ -246,7 +246,7 @@
             'General movement monitoring is mainly used for logging. The jail is stricter: escapees are pulled back, and three escapes in one session can get a player kicked.',
             'Recovery paths cover the lobby (party changes, stale queues, missed messages), transfers (failed teleports, expired rejoins, empty rosters), and data (failed profile loads, duplicate UI events, receipt saves, and flushing on shutdown).'
           ], [
-            'Setiap aksi dari client punya satu remote sebagai pemiliknya, lalu dicek dengan schema, rentang angka, allowlist, ownership, dan cooldown. Client tidak bisa menentukan harga, reward, tim, atau hasil match.',
+            'Setiap aksi dari client punya satu remote sebagai pemiliknya, lalu diperiksa dengan schema, rentang angka, allowlist, ownership, dan cooldown. Client tidak bisa menentukan harga, reward, tim, atau hasil match.',
             'Handler dibungkus pengaman supaya input buruk tidak merusak server, dan warning yang berulang di-throttle. Monitoring movement mencatat speed, teleport, fly, noclip, dan physics yang tidak wajar, dengan masa toleransi setelah aksi yang tepercaya.',
             'Monitoring movement umum terutama dipakai untuk logging. Jail lebih ketat: pemain yang kabur ditarik kembali, dan tiga kali kabur dalam satu sesi bisa berujung kick.',
             'Jalur recovery mencakup sisi lobby (perubahan party, antrean lama, pesan terlewat), perpindahan (teleport gagal, rejoin kedaluwarsa, roster kosong), dan data (profil gagal load, event UI ganda, save receipt, dan flush saat shutdown).'
