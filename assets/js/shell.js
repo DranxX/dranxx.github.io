@@ -40,7 +40,7 @@
       });
 
       const logo = setAttributes(create('a', 'nav-logo drx-navbar-logo'), {
-        href: 'index.html',
+        href: './',
         'aria-label': ui.homeLabel
       });
       logo.append(createBrand(''));
@@ -60,19 +60,18 @@
       });
 
       const mobileContact = create('li', 'mobile-only drx-mobile-only');
-      mobileContact.append(createLink(ui.navContact || 'Contact', 'contact.html', 'drx-navbar-cta-mobile'));
+      mobileContact.append(createLink(ui.navContact || 'Contact', 'contact', 'drx-navbar-cta-mobile'));
       navLinks.append(mobileContact);
 
-      const contact = createLink(ui.navContact || 'Contact', 'contact.html', 'drx-btn drx-btn-solid-primary portfolio-cta drx-navbar-cta');
+      const contact = createLink(ui.navContact || 'Contact', 'contact', 'drx-btn drx-btn-solid-primary portfolio-cta drx-navbar-cta');
       if (currentPage === 'contact') contact.setAttribute('aria-current', 'page');
 
-      const routeTail = window.location.pathname.endsWith('/')
-        ? 'index.html'
-        : window.location.pathname.split('/').filter(Boolean).at(-1) || 'index.html';
-      const currentFile = routeTail.includes('.') ? routeTail : `${routeTail}.html`;
-      const knownPages = new Set(['index.html', 'projects.html', 'Project_Bentengan.html', 'services.html', 'profile.html', 'contact.html', 'platform.html', 'products.html', 'resources.html', 'partners.html', '404.html']);
-      const alternateFile = knownPages.has(currentFile) ? currentFile : 'index.html';
-      const alternateHref = `../${ui.alternateLocale}/${alternateFile}${window.location.search}${window.location.hash}`;
+      // Old .html links still resolve, so both /en/projects and /en/projects.html map to the same route.
+      const routeTail = window.location.pathname.endsWith('/') ? '' : window.location.pathname.split('/').filter(Boolean).at(-1) || '';
+      const currentRoute = routeTail.replace(/\.html$/, '').replace(/^index$/, '');
+      const knownRoutes = new Set(['', 'projects', 'Project_Bentengan', 'services', 'profile', 'contact', 'platform', 'products', 'resources', 'partners', '404']);
+      const alternateRoute = knownRoutes.has(currentRoute) ? currentRoute : '';
+      const alternateHref = `../${ui.alternateLocale}/${alternateRoute}${window.location.search}${window.location.hash}`;
       const languageSwitch = setAttributes(createLink(ui.languageCode, alternateHref, 'language-switch'), {
         'aria-label': ui.languageLabel,
         lang: ui.alternateLocale
@@ -119,7 +118,7 @@
         navList.append(listItem);
       });
       const contactItem = create('li');
-      contactItem.append(createLink(ui.contact, 'contact.html'));
+      contactItem.append(createLink(ui.contact, 'contact'));
       navList.append(contactItem);
       navigate.append(navList);
 

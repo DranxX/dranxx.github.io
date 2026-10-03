@@ -3,6 +3,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { stampHtml } from './stamp-assets.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const locales = ['en', 'id'];
@@ -36,7 +37,8 @@ const featureScripts = [
 ];
 const ownedScripts = [...projectScripts, ...featureScripts];
 const drxScript = 'assets/vendor/drx/js/drx.js';
-const scriptTools = ['scripts/serve.mjs', 'scripts/smoke.mjs', 'scripts/validate.mjs'];
+const scriptTools = ['scripts/serve.mjs', 'scripts/smoke.mjs', 'scripts/validate.mjs', 'scripts/stamp-assets.mjs'];
+const linksAsset = (html, attribute, file) => new RegExp(`${attribute}="\\.\\./${file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\?v=[0-9a-f]+)?"`).test(html);
 const issues = [];
 let idCount = 0;
 let projectCount = 0;
@@ -44,6 +46,13 @@ let technologyCount = 0;
 let languageCount = 0;
 let resourceCount = 0;
 let caseStudyCount = 0;
+
+// GitHub Pages serves /en/projects from projects.html and /en/ from index.html, so links may omit both.
+const targetExists = target => {
+  if (fs.existsSync(target)) return !fs.statSync(target).isDirectory() || fs.existsSync(path.join(target, 'index.html'));
+  return !path.extname(target) && fs.existsSync(`${target}.html`);
+};
+const cleanRoute = fileName => (fileName === 'index.html' ? '' : fileName.replace(/\.html$/, ''));
 
 const localTarget = (sourceFile, rawTarget) => {
   const cleaned = rawTarget.split('#')[0].split('?')[0];
@@ -113,8 +122,8 @@ for (const page of pages) {
     [/<site-ui\b/i, 'shared interaction layer'],
     [/<noscript>/i, 'no-script fallback'],
     [/class=["'][^"']*nojs-nav[^"']*["']/i, 'no-script navigation'],
-    [new RegExp(`href=["']\\.\\./${drxStyle.replaceAll('/', '\\/')}["']`), 'DRX CSS entrypoint'],
-    [new RegExp(`src=["']\\.\\./${drxScript.replaceAll('/', '\\/')}["']`), 'DRX JavaScript entrypoint']
+    [new RegExp(`href=["']\\.\\./${drxStyle.replaceAll('/', '\\/')}(?:\\?v=[0-9a-f]+)?["']`), 'DRX CSS entrypoint'],
+    [new RegExp(`src=["']\\.\\./${drxScript.replaceAll('/', '\\/')}(?:\\?v=[0-9a-f]+)?["']`), 'DRX JavaScript entrypoint']
   ];
 
   for (const [pattern, label] of requiredMarkup) {
@@ -122,18 +131,19 @@ for (const page of pages) {
   }
 
   for (const stylesheet of projectStyles) {
-    if (!html.includes(`href="../${stylesheet}"`)) issues.push(`${page}: missing stylesheet ../${stylesheet}`);
+    if (!linksAsset(html, 'href', stylesheet)) issues.push(`${page}: missing stylesheet ../${stylesheet}`);
   }
   for (const script of projectScripts) {
-    if (!html.includes(`src="../${script}"`)) issues.push(`${page}: missing script ../${script}`);
+    if (!linksAsset(html, 'src', script)) issues.push(`${page}: missing script ../${script}`);
   }
+  if (stampHtml(page, html) !== html) issues.push(`${page}: stylesheet or script versions are stale; run npm run stamp`);
   const requiredFeatureScripts = page.endsWith('/resources.html')
     ? ['assets/js/resources.data.js', 'assets/js/resources.js']
     : page.endsWith('/Project_Bentengan.html')
       ? ['assets/js/projects.data.js', 'assets/js/projects.js']
       : [];
   for (const script of requiredFeatureScripts) {
-    if (!html.includes(`src="../${script}"`)) issues.push(`${page}: missing feature script ../${script}`);
+    if (!linksAsset(html, 'src', script)) issues.push(`${page}: missing feature script ../${script}`);
   }
 
   if (publicPages.includes(page) && /name=["']robots["'][^>]*noindex/i.test(html)) {
@@ -148,8 +158,8 @@ for (const page of pages) {
     issues.push(`${page}: document language must match its locale directory`);
   }
   for (const locale of locales) {
-    const fileName = path.basename(page);
-    if (!html.includes(`hreflang="${locale}" href="../${locale}/${fileName}"`)) {
+    const route = cleanRoute(path.basename(page));
+    if (!html.includes(`hreflang="${locale}" href="../${locale}/${route}"`)) {
       issues.push(`${page}: missing ${locale} alternate-language route`);
     }
   }
@@ -157,7 +167,8 @@ for (const page of pages) {
   for (const match of html.matchAll(/\b(href|src)=["']([^"']+)["']/gi)) {
     const [, attribute, rawTarget] = match;
     const target = localTarget(page, rawTarget);
-    if (target && !fs.existsSync(target)) issues.push(`${page}: ${attribute} target is missing: ${rawTarget}`);
+    if (target && !targetExists(target)) issues.push(`${page}: ${attribute} target is missing: ${rawTarget}`);
+    if (attribute === 'href' && target && /\.html$/.test(rawTarget.split(/[?#]/)[0])) issues.push(`${page}: link should use the extensionless route: ${rawTarget}`);
   }
 
   for (const match of html.matchAll(/<a\b[^>]*\btarget=["']_blank["'][^>]*>/gi)) {
@@ -375,6 +386,13 @@ if (!/addEventListener\(['"]error['"][\s\S]*?preview\.remove\(\)/.test(collectio
   || !/project-code/.test(collectionSource)) {
   issues.push('assets/js/collections.js: repository previews must retain an offline/error fallback');
 }
+const contactRuntimeSource = fs.readFileSync(path.join(root, 'assets/js/app.js'), 'utf8');
+if (!/formsubmit\.co\/ajax\/\$\{config\.email\}/.test(contactRuntimeSource)
+  || !/data-contact-form/.test(contactSource)
+  || !/name="_honey"/.test(contactSource)
+  || !/href="mailto:dranxx\.contact@gmail\.com">dranxx\.contact@gmail\.com<\/a>/.test(contactSource)) {
+  issues.push('contact.html: the form must send through FormSubmit with a honeypot, and the address must be a plain mailto link');
+}
 if (!/'project-showcase': renderShowcase/.test(collectionSource)
   || !/const items = getOrderedProjects\(\)\.filter\(item => !item\.archived\);/.test(collectionSource)
   || /homeProjectIds|featuredProjectIds|scope-sample/.test(collectionSource)) {
@@ -415,7 +433,8 @@ try {
       issues.push(`assets/js/data.js: ${project.name} must use one or more supported evidence-based scopes`);
     }
     if (project.kind === 'case-study') {
-      if (!fs.existsSync(path.join(root, 'en', project.url))) issues.push(`assets/js/data.js: ${project.name} detail route is missing`);
+      const detailTarget = localTarget('en/index.html', project.url);
+      if (!detailTarget || !targetExists(detailTarget)) issues.push(`assets/js/data.js: ${project.name} detail route is missing`);
       return;
     }
     const repository = project.kind === 'repository' || !project.kind;
@@ -538,7 +557,7 @@ try {
   const caseStudyDataSource = fs.readFileSync(path.join(root, 'assets/js/projects.data.js'), 'utf8');
   const context = { window: { DRANXX_CONFIG: {
     locale: 'en',
-    routes: { projectBentengan: 'Project_Bentengan.html' },
+    routes: { projectBentengan: 'Project_Bentengan' },
     projectMedia: { bentengan: { logo: '../assets/projects/bentengan/icon.webp', banner: '../assets/projects/bentengan/banner.webp' } },
     projectLinks: { bentengan: { play: '' } }
   } } };
@@ -547,7 +566,7 @@ try {
   const items = Array.isArray(data?.items) ? data.items : [];
   caseStudyCount = items.length;
   const bentengan = items.find(item => item.id === 'bentengan');
-  if (!bentengan || bentengan.route !== 'Project_Bentengan.html' || bentengan.flow?.length !== 4 || bentengan.systems?.length < 6) {
+  if (!bentengan || bentengan.route !== 'Project_Bentengan' || bentengan.flow?.length !== 4 || bentengan.systems?.length < 6) {
     issues.push('assets/js/projects.data.js: Bentengan must retain its exact route, four-stage flow, and detailed engineering scope');
   }
   if (!bentengan?.ownership?.built?.length || !bentengan?.ownership?.integrated?.length || !bentengan?.ownership?.excluded?.length
@@ -631,7 +650,7 @@ if (packageData.scripts?.start !== 'node scripts/serve.mjs') issues.push('packag
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 for (const page of publicPages) {
-  const route = page.endsWith('/index.html') ? `/${page.split('/')[0]}/` : `/${page}`;
+  const route = `/${page.split('/')[0]}/${cleanRoute(path.basename(page))}`;
   const escapedRoute = route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   if (!new RegExp(`<loc>[^<]+${escapedRoute}<\\/loc>`).test(sitemap)) issues.push(`sitemap.xml: public route is missing: ${route}`);
 }
@@ -639,16 +658,17 @@ for (const page of compatibilityPages) {
   if (sitemap.includes(`/${page}`)) issues.push(`sitemap.xml: retired route must not be indexed: /${page}`);
 }
 if (!sitemap.includes('https://dranxx.github.io/')) issues.push('sitemap.xml: expected GitHub Pages origin is missing');
+if (/\.html/.test(sitemap)) issues.push('sitemap.xml: URLs must use extensionless routes');
 
 const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
 if (!robots.includes('https://dranxx.github.io/sitemap.xml')) issues.push('robots.txt: sitemap origin is stale');
 
 const config = fs.readFileSync(path.join(root, 'assets/js/site.config.js'), 'utf8');
-for (const page of ['index.html', 'projects.html', 'resources.html', 'services.html', 'profile.html']) {
-  if (!config.includes(page)) issues.push(`site.config.js: public navigation route is missing: ${page}`);
+for (const route of ['./', 'projects', 'resources', 'services', 'profile']) {
+  if (!config.includes(`href: '${route}'`)) issues.push(`site.config.js: public navigation route is missing: ${route}`);
 }
 for (const page of compatibilityPageNames) {
-  if (config.includes(page)) issues.push(`site.config.js: retired route must not appear in navigation: ${page}`);
+  if (config.includes(`'${cleanRoute(page)}'`) || config.includes(page)) issues.push(`site.config.js: retired route must not appear in navigation: ${page}`);
 }
 
 if (!/const locale = document\.documentElement\.lang/.test(config)
@@ -656,7 +676,7 @@ if (!/const locale = document\.documentElement\.lang/.test(config)
   || !/bahasa Indonesia/i.test(config)) {
   issues.push('assets/js/site.config.js: locale detection or bilingual navigation copy is missing');
 }
-if (!/projectBentengan:\s*'Project_Bentengan\.html'/.test(config)
+if (!/projectBentengan:\s*'Project_Bentengan'/.test(config)
   || !/projects\/bentengan\/icon\.webp/.test(config)
   || !/projects\/bentengan\/banner\.webp/.test(config)
   || !/play:\s*''/.test(config)
@@ -665,7 +685,7 @@ if (!/projectBentengan:\s*'Project_Bentengan\.html'/.test(config)
   || !/resourceFallbackIcon/.test(config)) {
   issues.push('assets/js/site.config.js: modular Bentengan media/link or resource source configuration is incomplete');
 }
-if (!/Project_Bentengan\.html/.test(shellSource)
+if (!/'Project_Bentengan'/.test(shellSource)
   || !/window\.location\.search/.test(shellSource)
   || !/window\.location\.hash/.test(shellSource)) {
   issues.push('assets/js/shell.js: localized case-study routing must preserve the current query and hash');

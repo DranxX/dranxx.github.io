@@ -15,16 +15,16 @@
       : '5 years of projects across game development, software, AI/ML, and security.',
     // Nav labels stay the same in both locales: the mixed Resources/Proyek state read as unfinished.
     nav: [
-      { key: 'home', label: 'Home', href: 'index.html' },
-      { key: 'projects', label: 'Projects', href: 'projects.html' },
-      { key: 'resources', label: 'Resources', href: 'resources.html' },
-      { key: 'services', label: 'Services', href: 'services.html' },
-      { key: 'profile', label: 'Profile', href: 'profile.html' }
+      { key: 'home', label: 'Home', href: './' },
+      { key: 'projects', label: 'Projects', href: 'projects' },
+      { key: 'resources', label: 'Resources', href: 'resources' },
+      { key: 'services', label: 'Services', href: 'services' },
+      { key: 'profile', label: 'Profile', href: 'profile' }
     ],
     routes: Object.freeze({
-      projectBentengan: 'Project_Bentengan.html',
-      projects: 'projects.html',
-      resources: 'resources.html'
+      projectBentengan: 'Project_Bentengan',
+      projects: 'projects',
+      resources: 'resources'
     }),
     projectMedia: Object.freeze({
       bentengan: Object.freeze({

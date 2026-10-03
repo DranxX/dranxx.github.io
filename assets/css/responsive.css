@@ -139,7 +139,7 @@
   .cta-panel { padding: 36px 30px; flex-direction: column; align-items: flex-start; }
   .home-cta { margin-top: 52px; }
 
-  .form-actions { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
   .contact-copy,
   .form-shell { padding: 34px 28px; }
 

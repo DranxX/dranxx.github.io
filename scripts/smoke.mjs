@@ -48,14 +48,15 @@ server.stderr.on('data', chunk => { serverError += chunk.toString(); });
 const localeTests = ['en', 'id'].flatMap(locale => [
   { route: `/${locale}/`, status: 200, type: 'text/html', kind: 'public', locale },
   { route: `/${locale}/projects`, status: 200, type: 'text/html', kind: 'public', locale },
-  { route: `/${locale}/Project_Bentengan.html`, status: 200, type: 'text/html', kind: 'public', locale },
-  { route: `/${locale}/resources.html`, status: 200, type: 'text/html', kind: 'public', locale },
-  { route: `/${locale}/services.html`, status: 200, type: 'text/html', kind: 'public', locale },
-  { route: `/${locale}/profile.html`, status: 200, type: 'text/html', kind: 'public', locale },
+  { route: `/${locale}/Project_Bentengan`, status: 200, type: 'text/html', kind: 'public', locale },
+  { route: `/${locale}/resources`, status: 200, type: 'text/html', kind: 'public', locale },
+  { route: `/${locale}/services`, status: 200, type: 'text/html', kind: 'public', locale },
+  { route: `/${locale}/profile`, status: 200, type: 'text/html', kind: 'public', locale },
+  { route: `/${locale}/contact`, status: 200, type: 'text/html', kind: 'public', locale },
   { route: `/${locale}/contact.html`, status: 200, type: 'text/html', kind: 'public', locale },
-  { route: `/${locale}/platform.html`, status: 200, type: 'text/html', kind: 'compatibility', locale },
-  { route: `/${locale}/products.html`, status: 200, type: 'text/html', kind: 'compatibility', locale },
-  { route: `/${locale}/partners.html`, status: 200, type: 'text/html', kind: 'compatibility', locale }
+  { route: `/${locale}/platform`, status: 200, type: 'text/html', kind: 'compatibility', locale },
+  { route: `/${locale}/products`, status: 200, type: 'text/html', kind: 'compatibility', locale },
+  { route: `/${locale}/partners`, status: 200, type: 'text/html', kind: 'compatibility', locale }
 ]);
 
 const tests = [
@@ -129,21 +130,21 @@ try {
   if (!indonesianHome.body.includes('Hai, saya DranxX.') || indonesianHome.body.includes('Currently on Roblox')) {
     throw new Error('/id/: Indonesian homepage copy is missing or stale English copy remains');
   }
-  const projectsPage = await get('/en/projects.html');
+  const projectsPage = await get('/en/projects');
   for (const marker of ['data-project-search', 'data-project-filter="all"', 'data-project-empty', 'data-project-clear']) {
-    if (!projectsPage.body.includes(marker)) throw new Error(`/en/projects.html: missing discovery marker ${marker}`);
+    if (!projectsPage.body.includes(marker)) throw new Error(`/en/projects: missing discovery marker ${marker}`);
   }
-  const caseStudyPage = await get('/en/Project_Bentengan.html');
-  if (!caseStudyPage.body.includes('data-project-case-study="bentengan"') || !caseStudyPage.body.includes('Project_Bentengan.html')) {
-    throw new Error('/en/Project_Bentengan.html: detailed Bentengan renderer or localized route is missing');
+  const caseStudyPage = await get('/en/Project_Bentengan');
+  if (!caseStudyPage.body.includes('data-project-case-study="bentengan"') || !caseStudyPage.body.includes('href="../id/Project_Bentengan"')) {
+    throw new Error('/en/Project_Bentengan: detailed Bentengan renderer or localized route is missing');
   }
-  const resourcesPage = await get('/en/resources.html');
+  const resourcesPage = await get('/en/resources');
   for (const marker of ['data-resource-catalog', 'data-resource-filters', 'data-resource-list', 'data-resource-modal-root']) {
-    if (!resourcesPage.body.includes(marker)) throw new Error(`/en/resources.html: missing catalog marker ${marker}`);
+    if (!resourcesPage.body.includes(marker)) throw new Error(`/en/resources: missing catalog marker ${marker}`);
   }
-  const profilePage = await get('/en/profile.html');
+  const profilePage = await get('/en/profile');
   if (!profilePage.body.includes('class="profile-link-grid"') || !profilePage.body.includes('class="profile-interest-grid"')) {
-    throw new Error('/en/profile.html: expanded social or interest layout is missing');
+    throw new Error('/en/profile: expanded social or interest layout is missing');
   }
   const manifest = JSON.parse((await get('/assets/vendor/drx/framework.manifest.json')).body);
   if (manifest.components?.length !== 64) throw new Error('DRX manifest component count changed unexpectedly');

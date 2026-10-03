@@ -373,6 +373,7 @@
 .drx-accordion-body { padding: 0 48px 26px 43px; color: var(--muted); font-size: 12px; line-height: 1.8; }
 
 /* Forms ----------------------------------------------------------------- */
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .form-shell .drx-field { margin-bottom: 18px; }
 .nojs-form-warning { margin-bottom: 20px; padding: 14px; border-left: 2px solid var(--yellow); color: var(--muted); background: var(--ink); font-size: 10px; }
 .nojs-form-warning a { color: var(--yellow); }
@@ -385,7 +386,9 @@
 }
 
 .form-shell .drx-field-description { color: var(--muted); font-size: 9.5px; line-height: 1.65; }
-.form-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.form-submit { width: 100%; }
+.form-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.form-note { margin-top: 10px; color: var(--muted); font-size: 9.5px; }
 .form-message { min-height: 20px; margin-top: 12px; color: var(--muted); font-size: 9.5px; }
 
 /* Footer and fixed feedback -------------------------------------------- */
@@ -432,7 +435,7 @@
 
 .footer-column h2 {
   margin-bottom: 17px;
-  color: var(--muted);
+  color: var(--yellow);
   font-family: var(--font-mono);
   font-size: 9px;
   font-weight: 500;

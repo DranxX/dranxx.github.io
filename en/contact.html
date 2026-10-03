@@ -7,29 +7,29 @@
   <meta name="description" content="Get in touch with DranxX about a project, technical problem, collaboration, or simply to say hello.">
   <meta name="theme-color" content="#080810">
   <title>Contact - DranxX</title>
-  <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../assets/vendor/drx/drx-framework.css">
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/pages.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-  <script src="../assets/js/site.config.js" defer></script>
-  <script src="../assets/js/data.js" defer></script>
-  <script src="../assets/js/shell.js" defer></script>
-  <script src="../assets/js/collections.js" defer></script>
-  <script src="../assets/vendor/drx/js/drx.js" defer></script>
-  <script src="../assets/js/app.js" defer></script>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css?v=870cef9358">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css?v=adfb165c71">
+  <link rel="stylesheet" href="../assets/vendor/drx/drx-framework.css?v=6d7eaf5164">
+  <link rel="stylesheet" href="../assets/css/tokens.css?v=6765e6f348">
+  <link rel="stylesheet" href="../assets/css/base.css?v=09aaa2a95a">
+  <link rel="stylesheet" href="../assets/css/layout.css?v=1a7f051949">
+  <link rel="stylesheet" href="../assets/css/components.css?v=d2a27bb8dc">
+  <link rel="stylesheet" href="../assets/css/pages.css?v=89ef29a278">
+  <link rel="stylesheet" href="../assets/css/responsive.css?v=65e4c9a96a">
+  <script src="../assets/js/site.config.js?v=6e06d35ca8" defer></script>
+  <script src="../assets/js/data.js?v=56c54fc4a4" defer></script>
+  <script src="../assets/js/shell.js?v=21e7416dad" defer></script>
+  <script src="../assets/js/collections.js?v=5b0b99c900" defer></script>
+  <script src="../assets/vendor/drx/js/drx.js?v=2608beed07" defer></script>
+  <script src="../assets/js/app.js?v=23e61886dd" defer></script>
   <noscript><style>.drx-reveal{opacity:1!important;transform:none!important}.form-shell form{display:none}</style></noscript>
-  <link rel="alternate" hreflang="en" href="../en/contact.html">
-  <link rel="alternate" hreflang="id" href="../id/contact.html">
+  <link rel="alternate" hreflang="en" href="../en/contact">
+  <link rel="alternate" hreflang="id" href="../id/contact">
 </head>
 <body data-page="contact">
   <a class="skip-link" href="#main-content">Skip navigation</a>
   <site-ui></site-ui>
-  <site-header><noscript><nav class="nojs-nav" aria-label="Primary navigation"><a class="nojs-brand" href="index.html">Dra<em>nxX</em></a><span class="nojs-links"><a href="projects.html">Projects</a><a href="resources.html">Resources</a><a href="services.html">Services</a><a href="profile.html">Profile</a><a href="contact.html">Contact</a></span></nav></noscript></site-header>
+  <site-header><noscript><nav class="nojs-nav" aria-label="Primary navigation"><a class="nojs-brand" href="./">Dra<em>nxX</em></a><span class="nojs-links"><a href="projects">Projects</a><a href="resources">Resources</a><a href="services">Services</a><a href="profile">Profile</a><a href="contact">Contact</a></span></nav></noscript></site-header>
 
   <main class="page-content" id="main-content">
     <header class="page-hero">
@@ -47,12 +47,9 @@
           <div class="contact-copy">
             <div class="section-label">Email</div>
             <h2>Send an email.</h2>
-            <p>Write to me directly, or fill in the form to start a draft in Gmail or your own email app. Nothing is sent until you press send there.</p>
+            <p>Click the address to write from your email app, or use the form. Messages from the form go straight to my inbox.</p>
 
-            <div class="contact-address">
-              <a href="mailto:dranxx.contact@gmail.com" data-contact-email>dranxx.contact@gmail.com</a>
-              <button class="drx-btn drx-btn-outline drx-btn-sm" type="button" data-copy-email>Copy</button>
-            </div>
+            <a class="contact-address" href="mailto:dranxx.contact@gmail.com">dranxx.contact@gmail.com</a>
 
             <dl class="contact-details">
               <div><dt>GitHub</dt><dd><a href="https://github.com/DranxX" target="_blank" rel="noreferrer noopener">github.com/DranxX</a></dd></div>
@@ -61,10 +58,16 @@
 
           <div class="form-shell">
             <noscript><p class="nojs-form-warning">The form needs JavaScript. Email <a href="mailto:dranxx.contact@gmail.com">dranxx.contact@gmail.com</a> directly instead.</p></noscript>
-            <form data-mailto-form>
-              <div class="drx-field">
-                <label class="drx-label" for="name">Name</label>
-                <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
+            <form data-contact-form>
+              <div class="field-row">
+                <div class="drx-field">
+                  <label class="drx-label" for="name">Name</label>
+                  <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
+                </div>
+                <div class="drx-field">
+                  <label class="drx-label" for="email">Your email</label>
+                  <input class="drx-input" id="email" name="email" type="email" autocomplete="email" required>
+                </div>
               </div>
 
               <div class="drx-field">
@@ -73,10 +76,9 @@
                 <span class="drx-field-description">Do not include passwords, API keys, private place files, or other secrets.</span>
               </div>
 
-              <div class="form-actions">
-                <button class="drx-btn drx-btn-solid-primary" type="submit" value="gmail">Open in Gmail</button>
-                <button class="drx-btn drx-btn-outline" type="submit" value="app">Use my email app</button>
-              </div>
+              <input class="form-trap" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button class="drx-btn drx-btn-solid-primary form-submit" type="submit">Send message</button>
+              <p class="form-note">Sent through FormSubmit.</p>
               <p class="form-message" data-form-message role="status" aria-live="polite"></p>
             </form>
           </div>

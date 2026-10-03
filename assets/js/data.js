@@ -39,7 +39,7 @@
         accent: t('Game Systems', 'Sistem'),
         description: t('Need matchmaking, combat, or persistent player data? I build the server rules and connect the client controllers, so input, UI, and saved data follow the same game state.', 'Butuh matchmaking, combat, atau data pemain yang tersimpan? Saya bangun aturan di server dan hubungkan controller client, supaya input, UI, dan data mengikuti state game yang sama.'),
         deliverables: t(['Gameplay: rounds, combat, objectives, movement, and input', 'Backend: party queues, cross-server matchmaking, teleport, and rejoin', 'Player systems: inventory, shop, receipts, progression, and rankings'], ['Gameplay: ronde, combat, objective, movement, dan input', 'Backend: party, matchmaking lintas server, teleport, dan rejoin', 'Sistem pemain: inventory, shop, receipt, progres, dan ranking']),
-        proof: { label: t('See these systems in Bentengan', 'Lihat implementasinya di Bentengan'), url: 'Project_Bentengan.html', image: `${assetBase}/projects/bentengan/card.webp` },
+        proof: { label: t('See these systems in Bentengan', 'Lihat implementasinya di Bentengan'), url: 'Project_Bentengan', image: `${assetBase}/projects/bentengan/card.webp` },
         tags: ['Roblox Studio', 'Unity', 'Luau', t('Gameplay architecture', 'Arsitektur gameplay')]
       },
       {
@@ -69,7 +69,7 @@
         accent: t('Security', 'Keamanan'),
         description: t('A feature can work normally and still fail on bad input, duplicate requests, or disconnects. I trace those paths, review server validation, and profile suspected bottlenecks.', 'Fitur bisa berjalan normal tapi bermasalah saat input salah, request ganda, atau koneksi putus. Saya telusuri alurnya, cek validasi server, dan lakukan profiling pada bottleneck yang dicurigai.'),
         deliverables: t(['Code review with findings and proposed fixes', 'Server validation, rate limits, and recovery paths', 'Profiling and focused performance changes'], ['Review kode dengan temuan dan usulan perbaikan', 'Validasi server, rate limit, dan jalur recovery', 'Profiling dan perbaikan performa sesuai bottleneck']),
-        proof: { label: t('See Bentengan engineering decisions', 'Lihat keputusan teknis Bentengan'), url: 'Project_Bentengan.html#decisions' },
+        proof: { label: t('See Bentengan engineering decisions', 'Lihat keputusan teknis Bentengan'), url: 'Project_Bentengan#decisions' },
         tags: [t('Threat modeling', 'Pemodelan ancaman'), 'Pentesting', 'Profiling', t('Optimization', 'Optimisasi')]
       }
     ],
@@ -85,7 +85,7 @@
         description: t('Team PvP on Roblox, from cross-server matchmaking to the final score. I built the gameplay and backend scripting: combat, party queues, rejoin, player data, and purchases.', 'PvP tim di Roblox, dari matchmaking lintas server sampai hasil pertandingan. Saya mengerjakan scripting gameplay dan backend: combat, antrean party, rejoin, data pemain, dan transaksi.'),
         tags: ['Luau', 'MemoryStore', 'ProfileStore'],
         preview: `${assetBase}/projects/bentengan/card.webp`,
-        url: 'Project_Bentengan.html'
+        url: 'Project_Bentengan'
       },
       {
         id: 'corpus-cleaner',

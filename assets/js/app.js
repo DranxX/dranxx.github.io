@@ -15,11 +15,9 @@
         'security-performance': 'Keamanan atau performa'
       },
       subject: label => `Pertanyaan dari portofolio: ${label}`,
-      greeting: 'Halo DranxX,',
-      openingGmail: 'Draf dibuka di tab Gmail baru.',
-      openingDraft: 'Membuka draf di aplikasi emailmu…',
-      copied: 'Tersalin',
-      copyFailed: 'Tekan Ctrl+C'
+      sending: 'Mengirim…',
+      sent: email => `Terkirim. Saya akan membalas ke ${email}.`,
+      sendFailed: `Pesan gagal terkirim. Silakan email langsung ke ${config?.email}.`
     } : {
       filteredBy: 'Results for',
       showingAll: 'All projects',
@@ -33,11 +31,9 @@
         'security-performance': 'Security or performance'
       },
       subject: label => `Portfolio inquiry: ${label}`,
-      greeting: 'Hi DranxX,',
-      openingGmail: 'The draft opened in a new Gmail tab.',
-      openingDraft: 'Opening a draft in your email app…',
-      copied: 'Copied',
-      copyFailed: 'Press Ctrl+C'
+      sending: 'Sending…',
+      sent: email => `Sent. I’ll reply to ${email}.`,
+      sendFailed: `Couldn’t send it. Please email ${config?.email} instead.`
     };
     const progress = document.getElementById('scrollProgress');
     const backToTop = document.getElementById('backToTop');
@@ -223,44 +219,43 @@
       document.addEventListener('dranxx:content-ready', applyProjectFilters);
     }
 
-    document.querySelectorAll('[data-copy-email]').forEach(button => {
-      const label = button.textContent;
-      let resetTimer = 0;
-      button.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(config.email);
-          button.textContent = copy.copied;
-        } catch {
-          const address = document.querySelector('[data-contact-email]');
-          if (address) window.getSelection()?.selectAllChildren(address);
-          button.textContent = copy.copyFailed;
-        }
-        window.clearTimeout(resetTimer);
-        resetTimer = window.setTimeout(() => { button.textContent = label; }, 2000);
-      });
-    });
-
-    document.querySelectorAll('[data-mailto-form]').forEach(form => {
+    // The site is static, so FormSubmit relays the form to config.email. The first message
+    // sent to a new address triggers an activation email that has to be confirmed once.
+    document.querySelectorAll('[data-contact-form]').forEach(form => {
       const requestedTopic = new URLSearchParams(window.location.search).get('topic');
       const topic = Object.hasOwn(copy.topics, requestedTopic) ? copy.topics[requestedTopic] : copy.projectFallback;
-      form.addEventListener('submit', event => {
+      const status = form.querySelector('[data-form-message]');
+      const submit = form.querySelector('[type="submit"]');
+      form.addEventListener('submit', async event => {
         event.preventDefault();
         if (!form.reportValidity()) return;
 
         const values = new FormData(form);
-        const name = String(values.get('name') || '').trim();
-        const message = String(values.get('message') || '').trim();
-        const subject = encodeURIComponent(copy.subject(topic));
-        const body = encodeURIComponent([copy.greeting, '', message, '', `- ${name}`].join('\n'));
-        const to = encodeURIComponent(config.email);
-        const status = form.querySelector('[data-form-message]');
-        // mailto: does nothing on machines without a mail app, so Gmail's web composer is offered as well.
-        if (event.submitter?.value === 'gmail') {
-          window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`, '_blank', 'noopener');
-          if (status) status.textContent = copy.openingGmail;
-        } else {
-          if (status) status.textContent = copy.openingDraft;
-          window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
+        const replyEmail = String(values.get('email') || '').trim();
+        submit.disabled = true;
+        status.textContent = copy.sending;
+        try {
+          const response = await fetch(`https://formsubmit.co/ajax/${config.email}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              name: String(values.get('name') || '').trim(),
+              email: replyEmail,
+              message: String(values.get('message') || '').trim(),
+              _subject: copy.subject(topic),
+              _template: 'table',
+              _honey: String(values.get('_honey') || '')
+            })
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || String(result.success) !== 'true') throw new Error(result.message || `FormSubmit responded with ${response.status}`);
+          form.reset();
+          status.textContent = copy.sent(replyEmail);
+        } catch (error) {
+          console.warn('The contact form could not be sent.', error);
+          status.textContent = copy.sendFailed;
+        } finally {
+          submit.disabled = false;
         }
       });
     });

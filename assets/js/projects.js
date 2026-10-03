@@ -252,7 +252,7 @@
       const cta = create('div', 'cta-panel project-case-cta drx-card drx-reveal');
       const ctaText = create('div');
       ctaText.append(create('span', 'section-label', this.copy.contact), create('h2', '', this.copy.endTitle));
-      cta.append(ctaText, this.createAction(this.copy.contact, 'contact.html?topic=games', true));
+      cta.append(ctaText, this.createAction(this.copy.contact, 'contact?topic=games', true));
       wrap.append(head, role, credits, cta);
       section.append(wrap);
       return section;

@@ -161,7 +161,7 @@
         intro.append(list, createTags(item.tags));
         const links = create('div', 'service-offer-links');
         const contact = create('a', 'text-link', isIndonesian ? 'Bahas kebutuhanmu' : 'Discuss your needs');
-        contact.href = `contact.html?topic=${encodeURIComponent(item.id)}`;
+        contact.href = `contact?topic=${encodeURIComponent(item.id)}`;
         links.append(contact);
         const proof = create('a', 'service-proof-link', item.proof.label);
         proof.href = item.proof.url;
@@ -203,7 +203,7 @@
         body
       );
       const link = create('a', 'text-link');
-      link.href = `contact.html?topic=${encodeURIComponent(item.id)}`;
+      link.href = `contact?topic=${encodeURIComponent(item.id)}`;
       link.append(copy.ask, setAttributes(create('i', 'bi bi-arrow-right'), { 'aria-hidden': 'true' }));
       article.append(link);
       fragment.append(article);
