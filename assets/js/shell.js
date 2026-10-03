@@ -137,7 +137,7 @@
       contact.append(create('h2', '', ui.contact));
       const contactList = create('ul');
       const emailItem = create('li');
-      emailItem.append(createLink(ui.sendMessage, `mailto:${config.email}`));
+      emailItem.append(createLink(config.email, `mailto:${config.email}`));
       contactList.append(emailItem);
       contact.append(contactList);
 
@@ -145,7 +145,7 @@
 
       const bottom = create('div', 'footer-bottom');
       const copyright = create('span');
-      copyright.append(`© ${new Date().getFullYear()} `, create('em', '', 'DranxX'), `. ${ui.portfolio}`);
+      copyright.append('© ', create('em', '', 'DranxX'), ' Studio');
       bottom.append(copyright);
 
       wrap.append(grid, bottom);

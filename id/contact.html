@@ -47,51 +47,24 @@
           <div class="contact-copy">
             <div class="section-label">Email</div>
             <h2>Kirim lewat email.</h2>
-            <p>Form ini menyiapkan draf di aplikasi emailmu. Kamu bisa memeriksa dan mengirimnya dari sana; situs ini tidak menyimpan isi pesan.</p>
+            <p>Kirim email langsung, atau isi form untuk membuat draf di Gmail atau aplikasi emailmu. Pesan baru terkirim setelah kamu menekan kirim di sana.</p>
+
+            <div class="contact-address">
+              <a href="mailto:dranxx.contact@gmail.com" data-contact-email>dranxx.contact@gmail.com</a>
+              <button class="drx-btn drx-btn-outline drx-btn-sm" type="button" data-copy-email>Salin</button>
+            </div>
 
             <dl class="contact-details">
-              <div><dt>Email</dt><dd><a href="mailto:bramadyafiqri@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i>Kirim email kepada saya</a></dd></div>
               <div><dt>GitHub</dt><dd><a href="https://github.com/DranxX" target="_blank" rel="noreferrer noopener">github.com/DranxX</a></dd></div>
             </dl>
-
-            <p class="contact-fallback">Kalau form tidak membuka aplikasi email, gunakan link email di atas.</p>
           </div>
 
           <div class="form-shell">
-            <noscript><p class="nojs-form-warning">Pembuat draf memerlukan JavaScript. Sebagai gantinya, kirim email langsung ke <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a>.</p></noscript>
+            <noscript><p class="nojs-form-warning">Form ini memerlukan JavaScript. Sebagai gantinya, kirim email langsung ke <a href="mailto:dranxx.contact@gmail.com">dranxx.contact@gmail.com</a>.</p></noscript>
             <form data-mailto-form>
-              <div class="field-grid">
-                <div class="drx-field">
-                  <label class="drx-label" for="name">Nama</label>
-                  <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
-                </div>
-                <div class="drx-field">
-                  <label class="drx-label" for="email">Email balasan</label>
-                  <input class="drx-input" id="email" name="email" type="email" autocomplete="email" required>
-                </div>
-              </div>
-
-              <div class="field-grid">
-                <div class="drx-field">
-                  <label class="drx-label" for="projectType">Apa yang ingin kamu bicarakan?</label>
-                  <select class="drx-select" id="projectType" name="projectType">
-                    <option value="project">Proyek atau kolaborasi</option>
-                    <option value="games">Sistem gameplay</option>
-                    <option value="software">Software atau tooling</option>
-                    <option value="ai-ml">Eksperimen AI / ML</option>
-                    <option value="security-performance">Keamanan atau performa</option>
-                    <option value="hello">Sekadar menyapa</option>
-                  </select>
-                </div>
-                <div class="drx-field">
-                  <label class="drx-label" for="timeline">Timeline</label>
-                  <select class="drx-select" id="timeline" name="timeline">
-                    <option>Secepatnya</option>
-                    <option>Dalam satu bulan</option>
-                    <option>Satu hingga tiga bulan</option>
-                    <option>Masih merencanakan</option>
-                  </select>
-                </div>
+              <div class="drx-field">
+                <label class="drx-label" for="name">Nama</label>
+                <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
               </div>
 
               <div class="drx-field">
@@ -100,8 +73,11 @@
                 <span class="drx-field-description">Jangan sertakan kata sandi, API key, file place privat, atau rahasia lainnya.</span>
               </div>
 
-              <button class="drx-btn drx-btn-solid-primary form-submit" type="submit">Siapkan draf email</button>
-              <p class="form-message" data-form-message role="status" aria-live="polite">Halaman ini tidak mengirimkan data apa pun.</p>
+              <div class="form-actions">
+                <button class="drx-btn drx-btn-solid-primary" type="submit" value="gmail">Buka di Gmail</button>
+                <button class="drx-btn drx-btn-outline" type="submit" value="app">Pakai aplikasi email</button>
+              </div>
+              <p class="form-message" data-form-message role="status" aria-live="polite"></p>
             </form>
           </div>
         </div>
@@ -109,6 +85,6 @@
     </section>
   </main>
 
-  <site-footer><noscript><footer class="nojs-footer">DranxX · portofolio developer · <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a></footer></noscript></site-footer>
+  <site-footer><noscript><footer class="nojs-footer">© DranxX Studio · <a href="mailto:dranxx.contact@gmail.com">dranxx.contact@gmail.com</a></footer></noscript></site-footer>
 </body>
 </html>

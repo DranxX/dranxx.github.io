@@ -7,29 +7,37 @@
       showingAll: 'Semua proyek',
       projectCount: count => `${count} proyek`,
       projectFallback: 'Proyek atau kolaborasi',
-      timelineFallback: 'Belum ditentukan',
+      topics: {
+        project: 'Proyek atau kolaborasi',
+        games: 'Sistem gameplay',
+        software: 'Software atau tooling',
+        'ai-ml': 'Eksperimen AI / ML',
+        'security-performance': 'Keamanan atau performa'
+      },
       subject: label => `Pertanyaan dari portofolio: ${label}`,
       greeting: 'Halo DranxX,',
-      name: 'Nama saya',
-      replyEmail: 'Email balasan',
-      scope: 'Bidang',
-      timeline: 'Timeline',
-      context: 'Konteks:',
-      openingDraft: 'Membuka draf pesan di aplikasi emailmu…'
+      openingGmail: 'Draf dibuka di tab Gmail baru.',
+      openingDraft: 'Membuka draf di aplikasi emailmu…',
+      copied: 'Tersalin',
+      copyFailed: 'Tekan Ctrl+C'
     } : {
       filteredBy: 'Results for',
       showingAll: 'All projects',
       projectCount: count => `${count} project${count === 1 ? '' : 's'}`,
       projectFallback: 'Project or collaboration',
-      timelineFallback: 'Not specified',
+      topics: {
+        project: 'Project or collaboration',
+        games: 'Gameplay systems',
+        software: 'Software or tooling',
+        'ai-ml': 'AI / ML experiments',
+        'security-performance': 'Security or performance'
+      },
       subject: label => `Portfolio inquiry: ${label}`,
       greeting: 'Hi DranxX,',
-      name: 'My name',
-      replyEmail: 'Reply email',
-      scope: 'Scope',
-      timeline: 'Timeline',
-      context: 'Context:',
-      openingDraft: 'Opening a prefilled draft in your mail app…'
+      openingGmail: 'The draft opened in a new Gmail tab.',
+      openingDraft: 'Opening a draft in your email app…',
+      copied: 'Copied',
+      copyFailed: 'Press Ctrl+C'
     };
     const progress = document.getElementById('scrollProgress');
     const backToTop = document.getElementById('backToTop');
@@ -215,40 +223,45 @@
       document.addEventListener('dranxx:content-ready', applyProjectFilters);
     }
 
-    const projectType = document.getElementById('projectType');
-    if (projectType) {
-      const requestedTopic = new URLSearchParams(window.location.search).get('topic');
-      const matchingOption = [...projectType.options].find(option => option.value === requestedTopic);
-      if (matchingOption) projectType.value = matchingOption.value;
-    }
+    document.querySelectorAll('[data-copy-email]').forEach(button => {
+      const label = button.textContent;
+      let resetTimer = 0;
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(config.email);
+          button.textContent = copy.copied;
+        } catch {
+          const address = document.querySelector('[data-contact-email]');
+          if (address) window.getSelection()?.selectAllChildren(address);
+          button.textContent = copy.copyFailed;
+        }
+        window.clearTimeout(resetTimer);
+        resetTimer = window.setTimeout(() => { button.textContent = label; }, 2000);
+      });
+    });
 
     document.querySelectorAll('[data-mailto-form]').forEach(form => {
+      const requestedTopic = new URLSearchParams(window.location.search).get('topic');
+      const topic = Object.hasOwn(copy.topics, requestedTopic) ? copy.topics[requestedTopic] : copy.projectFallback;
       form.addEventListener('submit', event => {
         event.preventDefault();
         if (!form.reportValidity()) return;
 
         const values = new FormData(form);
         const name = String(values.get('name') || '').trim();
-        const replyEmail = String(values.get('email') || '').trim();
-        const projectLabel = form.querySelector('[name="projectType"] option:checked')?.textContent || copy.projectFallback;
-        const timeline = String(values.get('timeline') || copy.timelineFallback);
         const message = String(values.get('message') || '').trim();
-        const subject = copy.subject(projectLabel);
-        const body = [
-          copy.greeting,
-          '',
-          `${copy.name}: ${name}`,
-          `${copy.replyEmail}: ${replyEmail}`,
-          `${copy.scope}: ${projectLabel}`,
-          `${copy.timeline}: ${timeline}`,
-          '',
-          copy.context,
-          message
-        ].join('\n');
-        const mailto = `mailto:${config.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const subject = encodeURIComponent(copy.subject(topic));
+        const body = encodeURIComponent([copy.greeting, '', message, '', `- ${name}`].join('\n'));
+        const to = encodeURIComponent(config.email);
         const status = form.querySelector('[data-form-message]');
-        if (status) status.textContent = copy.openingDraft;
-        window.location.href = mailto;
+        // mailto: does nothing on machines without a mail app, so Gmail's web composer is offered as well.
+        if (event.submitter?.value === 'gmail') {
+          window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`, '_blank', 'noopener');
+          if (status) status.textContent = copy.openingGmail;
+        } else {
+          if (status) status.textContent = copy.openingDraft;
+          window.location.href = `mailto:${config.email}?subject=${subject}&body=${body}`;
+        }
       });
     });
 

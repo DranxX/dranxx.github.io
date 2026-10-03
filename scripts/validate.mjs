@@ -280,7 +280,7 @@ if (!/dataset\.proficiency/.test(collectionSource)
   issues.push('Profile languages: semantic card data or green/yellow/red treatments are missing');
 }
 if (!/Currently on Roblox/.test(homeSource)
-  || !/<h1[^>]*id="home-title">I’m DranxX\.<\/h1>/.test(homeSource)
+  || !/<h1[^>]*id="home-title">Hi, I’m DranxX\.<\/h1>/.test(homeSource)
   || !/<section class="home-hero"[\s\S]*?<\/section>\s*<div class="scope-divider"/.test(homeSource)
   || !/drx-marquee-track/.test(homeSource)
   || !/Performance optimization/.test(homeSource)
@@ -305,8 +305,7 @@ if (!/\.hero-title\s*\{[^}]*text-transform:\s*none/.test(pageStyleSource)
   issues.push('Brand identity: hero and Profile must keep DranxX casing while navbar and footer use the approved uppercase treatment');
 }
 if (/Sitemap/.test(shellSource)
-  || !/ui\.portfolio/.test(shellSource)
-  || !/Personal portfolio\./.test(fs.readFileSync(path.join(root, 'assets/js/site.config.js'), 'utf8'))) {
+  || !/'© ', create\('em', '', 'DranxX'\), ' Studio'/.test(shellSource)) {
   issues.push('assets/js/shell.js: footer must use plain portfolio copy without the unexplained Sitemap link');
 }
 if (/UTC\+7/.test(homeSource)) {
@@ -672,7 +671,7 @@ if (!/Project_Bentengan\.html/.test(shellSource)
   issues.push('assets/js/shell.js: localized case-study routing must preserve the current query and hash');
 }
 if (!/<html lang="id"/.test(indonesianHomeSource)
-  || !/Saya DranxX\./.test(indonesianHomeSource)
+  || !/Hai, saya DranxX\./.test(indonesianHomeSource)
   || /Currently on Roblox|View projects|How I think/.test(indonesianHomeSource)) {
   issues.push('id/index.html: Indonesian homepage copy is incomplete or stale English copy remains');
 }

@@ -141,6 +141,8 @@
   transform: translate(-3px, -3px);
 }
 
+.drx-btn-outline { border-color: var(--muted); background: transparent; color: var(--foreground); }
+
 .drx-btn-outline:hover,
 .drx-btn-outline:focus-visible {
   border-color: var(--blue);
@@ -371,18 +373,11 @@
 .drx-accordion-body { padding: 0 48px 26px 43px; color: var(--muted); font-size: 12px; line-height: 1.8; }
 
 /* Forms ----------------------------------------------------------------- */
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
 .form-shell .drx-field { margin-bottom: 18px; }
 .nojs-form-warning { margin-bottom: 20px; padding: 14px; border-left: 2px solid var(--yellow); color: var(--muted); background: var(--ink); font-size: 10px; }
 .nojs-form-warning a { color: var(--yellow); }
 .form-shell .drx-label { color: var(--muted); font-size: 9.5px; letter-spacing: .13em; }
 .form-shell .drx-input,
-.form-shell .drx-select,
 .form-shell .drx-textarea {
   border-radius: 0;
   background-color: var(--ink);
@@ -390,7 +385,7 @@
 }
 
 .form-shell .drx-field-description { color: var(--muted); font-size: 9.5px; line-height: 1.65; }
-.form-submit { width: 100%; }
+.form-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .form-message { min-height: 20px; margin-top: 12px; color: var(--muted); font-size: 9.5px; }
 
 /* Footer and fixed feedback -------------------------------------------- */

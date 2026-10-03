@@ -9,10 +9,10 @@
     siteName: 'DranxX',
     ownerName: 'Bramadya Fiqri Kurniawan Sinaga',
     titleSuffix: isIndonesian ? 'DranxX - Portofolio Developer' : 'DranxX - Developer Portfolio',
-    email: 'bramadyafiqri@gmail.com',
+    email: 'dranxx.contact@gmail.com',
     tagline: isIndonesian
-      ? 'Lima tahun mengerjakan proyek di bidang game development, software, AI/ML, dan keamanan.'
-      : 'Five years of projects across game development, software, AI/ML, and security.',
+      ? '5 tahun mengerjakan proyek di bidang game development, software, AI/ML, dan keamanan.'
+      : '5 years of projects across game development, software, AI/ML, and security.',
     // Nav labels stay the same in both locales: the mixed Resources/Proyek state read as unfinished.
     nav: [
       { key: 'home', label: 'Home', href: 'index.html' },
@@ -70,8 +70,6 @@
       toggleNavigation: 'Buka atau tutup navigasi',
       navigate: 'Navigasi',
       elsewhere: 'Links',
-      sendMessage: 'Kirim pesan',
-      portfolio: 'Portofolio pribadi.',
       backToTop: 'Kembali ke atas',
       languageLabel: 'Buka versi bahasa Inggris',
       languageCode: 'EN',
@@ -85,8 +83,6 @@
       toggleNavigation: 'Toggle navigation',
       navigate: 'Navigate',
       elsewhere: 'Links',
-      sendMessage: 'Send me a message',
-      portfolio: 'Personal portfolio.',
       backToTop: 'Back to top',
       languageLabel: 'Buka versi bahasa Indonesia',
       languageCode: 'ID',

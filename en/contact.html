@@ -47,51 +47,24 @@
           <div class="contact-copy">
             <div class="section-label">Email</div>
             <h2>Send an email.</h2>
-            <p>The form prepares a draft in your email app. You can review and send it there; this site does not store your message.</p>
+            <p>Write to me directly, or fill in the form to start a draft in Gmail or your own email app. Nothing is sent until you press send there.</p>
+
+            <div class="contact-address">
+              <a href="mailto:dranxx.contact@gmail.com" data-contact-email>dranxx.contact@gmail.com</a>
+              <button class="drx-btn drx-btn-outline drx-btn-sm" type="button" data-copy-email>Copy</button>
+            </div>
 
             <dl class="contact-details">
-              <div><dt>Email</dt><dd><a href="mailto:bramadyafiqri@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i>Write me an email</a></dd></div>
               <div><dt>GitHub</dt><dd><a href="https://github.com/DranxX" target="_blank" rel="noreferrer noopener">github.com/DranxX</a></dd></div>
             </dl>
-
-            <p class="contact-fallback">If the form does not open your email app, use the email link above.</p>
           </div>
 
           <div class="form-shell">
-            <noscript><p class="nojs-form-warning">The draft builder needs JavaScript. Email <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a> directly instead.</p></noscript>
+            <noscript><p class="nojs-form-warning">The form needs JavaScript. Email <a href="mailto:dranxx.contact@gmail.com">dranxx.contact@gmail.com</a> directly instead.</p></noscript>
             <form data-mailto-form>
-              <div class="field-grid">
-                <div class="drx-field">
-                  <label class="drx-label" for="name">Name</label>
-                  <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
-                </div>
-                <div class="drx-field">
-                  <label class="drx-label" for="email">Reply email</label>
-                  <input class="drx-input" id="email" name="email" type="email" autocomplete="email" required>
-                </div>
-              </div>
-
-              <div class="field-grid">
-                <div class="drx-field">
-                  <label class="drx-label" for="projectType">What’s on your mind?</label>
-                  <select class="drx-select" id="projectType" name="projectType">
-                    <option value="project">A project or collaboration</option>
-                    <option value="games">Gameplay systems</option>
-                    <option value="software">Software or tooling</option>
-                    <option value="ai-ml">AI / ML experiments</option>
-                    <option value="security-performance">Security or performance</option>
-                    <option value="hello">Just saying hello</option>
-                  </select>
-                </div>
-                <div class="drx-field">
-                  <label class="drx-label" for="timeline">Timeline</label>
-                  <select class="drx-select" id="timeline" name="timeline">
-                    <option>As soon as practical</option>
-                    <option>Within one month</option>
-                    <option>One to three months</option>
-                    <option>Still exploring</option>
-                  </select>
-                </div>
+              <div class="drx-field">
+                <label class="drx-label" for="name">Name</label>
+                <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
               </div>
 
               <div class="drx-field">
@@ -100,8 +73,11 @@
                 <span class="drx-field-description">Do not include passwords, API keys, private place files, or other secrets.</span>
               </div>
 
-              <button class="drx-btn drx-btn-solid-primary form-submit" type="submit">Prepare email draft</button>
-              <p class="form-message" data-form-message role="status" aria-live="polite">This form does not send your message automatically.</p>
+              <div class="form-actions">
+                <button class="drx-btn drx-btn-solid-primary" type="submit" value="gmail">Open in Gmail</button>
+                <button class="drx-btn drx-btn-outline" type="submit" value="app">Use my email app</button>
+              </div>
+              <p class="form-message" data-form-message role="status" aria-live="polite"></p>
             </form>
           </div>
         </div>
@@ -109,6 +85,6 @@
     </section>
   </main>
 
-  <site-footer><noscript><footer class="nojs-footer">DranxX · developer portfolio · <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a></footer></noscript></site-footer>
+  <site-footer><noscript><footer class="nojs-footer">© DranxX Studio · <a href="mailto:dranxx.contact@gmail.com">dranxx.contact@gmail.com</a></footer></noscript></site-footer>
 </body>
 </html>
