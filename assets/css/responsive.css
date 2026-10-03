@@ -201,7 +201,6 @@
   .language-proficiency { grid-column: 3; grid-row: 1; margin-top: 0; }
   .language-item h3 { grid-column: 2; grid-row: 1; margin-top: 0; }
   .language-item p { grid-column: 2 / -1; margin-top: 0; padding-top: 0; }
-  .language-legend { margin-top: -10px; justify-content: flex-start; }
   .resource-card { min-height: 0; padding: 21px; }
   .resource-actions { grid-template-columns: 1fr; }
   .resource-modal-overlay { padding: 8px; }

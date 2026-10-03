@@ -273,12 +273,11 @@ if (!/\.resource-grid\s*\{[\s\S]*?repeat\(3,/.test(pageStyleSource)
   || !/\.case-credits/.test(pageStyleSource)) {
   issues.push('assets/css/pages.css: resource library or Bentengan case-study layout is incomplete');
 }
-if (!/class="[^"]*language-legend[^"]*"/.test(profileSource)
-  || !/dataset\.proficiency/.test(collectionSource)
+if (!/dataset\.proficiency/.test(collectionSource)
   || !/\.language-item\[data-proficiency="active"\]/.test(pageStyleSource)
   || !/\.language-item\[data-proficiency="developing"\]/.test(pageStyleSource)
   || !/\.language-item\[data-proficiency="beginner"\]/.test(pageStyleSource)) {
-  issues.push('Profile languages: visible proficiency legend, semantic card data, or green/yellow/red treatments are missing');
+  issues.push('Profile languages: semantic card data or green/yellow/red treatments are missing');
 }
 if (!/Currently on Roblox/.test(homeSource)
   || !/<h1[^>]*id="home-title">I’m DranxX\.<\/h1>/.test(homeSource)

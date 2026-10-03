@@ -142,7 +142,7 @@ try {
     if (!resourcesPage.body.includes(marker)) throw new Error(`/en/resources.html: missing catalog marker ${marker}`);
   }
   const profilePage = await get('/en/profile.html');
-  if (!profilePage.body.includes('class="profile-link-grid"') || !profilePage.body.includes('class="profile-interest-grid"') || !profilePage.body.includes('language-legend')) {
+  if (!profilePage.body.includes('class="profile-link-grid"') || !profilePage.body.includes('class="profile-interest-grid"')) {
     throw new Error('/en/profile.html: expanded social or interest layout is missing');
   }
   const manifest = JSON.parse((await get('/assets/vendor/drx/framework.manifest.json')).body);
