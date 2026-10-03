@@ -1,0 +1,332 @@
+/*
+ * DranxX Web parity layer
+ *
+ * Keeps the DRX component API intact while aligning its default presentation
+ * with the current DranxX-Web visual system. This file intentionally loads
+ * last so utilities and opt-in variants remain available.
+ */
+
+html {
+  min-width: 320px;
+  background: var(--drx-bg);
+}
+
+body {
+  font-size: var(--drx-text-base);
+  line-height: 1.65;
+  transition: background var(--drx-duration-normal), color var(--drx-duration-normal);
+}
+
+::selection {
+  background: var(--drx-primary);
+  color: var(--drx-ink);
+}
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: var(--drx-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--drx-bg-4);
+  border: 2px solid var(--drx-bg);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--drx-primary-active); }
+
+:focus-visible {
+  outline: 1px solid var(--drx-primary);
+  outline-offset: 4px;
+}
+
+h1 {
+  letter-spacing: -0.025em;
+  line-height: 0.82;
+}
+
+h2 {
+  letter-spacing: -0.015em;
+  line-height: 0.92;
+}
+
+.drx-container {
+  width: min(var(--drx-container), calc(100% - 96px));
+  max-width: none;
+  padding-inline: 0;
+}
+
+.drx-container-sm { max-width: 640px; }
+.drx-container-md { max-width: 768px; }
+.drx-container-lg { max-width: 1024px; }
+.drx-container-xl { max-width: 1280px; }
+.drx-container-full { width: 100%; max-width: 100%; padding-inline: 48px; }
+
+.drx-section { padding: 108px 0; }
+.drx-section-sm { padding: 72px 0; }
+.drx-section-lg { padding: 128px 0; }
+
+.drx-section-label {
+  margin-bottom: 38px;
+  color: var(--drx-text-muted);
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+}
+
+.drx-section-label::before { background: currentColor; }
+.drx-page-body { padding-top: var(--drx-nav-height); }
+
+/* Navigation */
+.drx-navbar {
+  height: var(--drx-nav-height);
+  padding: 0 18px 0 40px;
+  background: rgba(var(--drx-bg-rgb), 0.9);
+  backdrop-filter: blur(14px);
+  transition: background var(--drx-duration-normal);
+}
+
+.drx-navbar-logo { font-size: 19px; }
+.drx-navbar-right { gap: 10px; }
+.drx-navbar-links { gap: 1px; }
+
+.drx-navbar-links a {
+  padding: 7px 9px;
+  font-size: 8.5px;
+  letter-spacing: 0.13em;
+}
+
+.drx-navbar-links a::after {
+  right: 9px;
+  bottom: 2px;
+  left: 9px;
+  transition-timing-function: var(--drx-ease-out);
+}
+
+.drx-navbar-cta {
+  min-height: 34px;
+  padding: 0 14px !important;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.drx-navbar-cta:hover {
+  transform: translateY(-2px) !important;
+}
+
+.drx-theme-toggle {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-size: 15px;
+}
+
+.drx-navbar-toggle {
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--drx-border);
+}
+
+.drx-navbar-toggle span { width: 18px; height: 1px; }
+.drx-sidebar { top: var(--drx-nav-height); background: var(--drx-bg); }
+
+/* Buttons and form controls */
+.drx-btn {
+  min-height: 42px;
+  padding: 0 18px;
+  gap: 9px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  box-shadow: none;
+}
+
+.drx-btn:hover { transform: translateY(-2px); box-shadow: none; }
+.drx-btn:active { transform: translateY(0); }
+.drx-btn-sm { min-height: 34px; padding: 0 14px; font-size: 10px; }
+.drx-btn-md { min-height: 42px; padding: 0 18px; font-size: 12px; }
+.drx-btn-lg { min-height: 48px; padding: 0 24px; font-size: 13px; }
+.drx-btn-icon { min-height: 36px; padding: 0; }
+.drx-btn-link { min-height: auto; }
+.drx-btn-link:hover { color: var(--drx-secondary); text-decoration: none; }
+
+.drx-input,
+.drx-textarea,
+.drx-select {
+  min-height: 45px;
+  padding: 11px 13px;
+  border-color: var(--drx-text-dim);
+  border-radius: 0;
+  background-color: var(--drx-bg);
+  font-size: 11px;
+  box-shadow: none;
+}
+
+.drx-select { padding-right: 36px; }
+.drx-input::placeholder,
+.drx-textarea::placeholder { color: var(--drx-text-muted); font-size: 10px; }
+
+.drx-input:hover,
+.drx-textarea:hover,
+.drx-select:hover { border-color: var(--drx-text-muted); }
+
+.drx-input:focus,
+.drx-textarea:focus,
+.drx-select:focus {
+  border-color: var(--drx-primary);
+  background-color: var(--drx-bg-3);
+  box-shadow: none;
+}
+
+.drx-label {
+  margin-bottom: 8px;
+  color: var(--drx-text-muted);
+  font-size: 8.5px;
+  letter-spacing: 0.15em;
+}
+
+.drx-form-group { gap: 8px; }
+.drx-form-group > .drx-label { margin-bottom: 0; }
+
+/* Surfaces */
+.drx-card,
+.drx-box,
+.drx-surface,
+.drx-surface-raised,
+.drx-modal,
+.drx-drawer,
+.drx-sheet,
+.drx-popover,
+.drx-menu,
+.drx-toast {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.drx-card { background: var(--drx-bg-2); }
+.drx-card-hover:hover {
+  background: var(--drx-bg-3);
+  border-color: var(--drx-border-strong);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.drx-surface-raised,
+.drx-popover,
+.drx-menu,
+.drx-toast { box-shadow: none; }
+
+.drx-modal-overlay,
+.drx-drawer-overlay { backdrop-filter: blur(2px); }
+
+.drx-modal {
+  transform: translateY(12px);
+  transition-timing-function: var(--drx-ease-out);
+}
+
+.drx-modal-overlay.drx-active .drx-modal { transform: translateY(0); }
+
+/* Data and feedback */
+.drx-table th { background: var(--drx-bg-2); }
+.drx-table-hover tr:hover td { background: var(--drx-bg-3); }
+
+.drx-accordion { border-right: 0; border-left: 0; }
+.drx-accordion-trigger { min-height: 68px; }
+.drx-accordion-trigger:hover { background: var(--drx-bg-2); }
+
+.drx-alert,
+.drx-toast,
+.drx-badge,
+.drx-tag { border-radius: 0; }
+
+.drx-toast { background: var(--drx-bg-2); }
+.drx-skeleton { border-radius: 0; }
+
+/* Footer */
+.drx-footer { padding: 58px 0 30px; }
+.drx-footer-inner { gap: 42px; margin-bottom: 44px; }
+.drx-footer-brand { font-size: 19px; margin-bottom: 16px; }
+.drx-footer-desc { max-width: 280px; font-size: 11px; line-height: 1.8; }
+.drx-footer-col h4 { margin-bottom: 17px; font-size: 8.5px; letter-spacing: 0.18em; }
+.drx-footer-col ul a { font-size: 11px; }
+.drx-footer-col ul a:hover,
+.drx-footer-links a:hover { color: var(--drx-primary); }
+.drx-footer-bottom { padding-top: 23px; }
+.drx-footer-copy { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Hero and motion */
+.drx-hero-tag { color: var(--drx-text-muted); }
+.drx-hero-tag-line { width: 24px; background: currentColor; }
+.drx-hero-desc { font-size: 12px; line-height: 1.85; }
+.drx-hero-bg-gradient,
+.drx-hero-bg-dots,
+.drx-hero-bg-diagonal { display: none; }
+
+.drx-reveal {
+  transform: translateY(24px);
+  transition-duration: 650ms;
+  transition-timing-function: var(--drx-ease-out);
+}
+
+.drx-page-content {
+  transition-duration: 450ms;
+  transition-timing-function: var(--drx-ease-out);
+}
+
+body.loading .drx-page-content,
+body.page-transitioning .drx-page-content { transform: scale(1.008); }
+
+.drx-preloader {
+  transition-duration: 620ms;
+  transition-timing-function: var(--drx-ease-sharp);
+}
+
+.drx-preloader-inner { gap: 22px; }
+.drx-preloader.fade-out .drx-preloader-inner { transform: scale(0.94) translate(-10px, -10px); }
+.drx-geometric-loader { width: 34px; height: 34px; }
+.drx-loader-text { min-width: 210px; margin-left: 0.7em; letter-spacing: 0.7em; opacity: 1; text-align: center; }
+
+@media (max-width: 1180px) {
+  .drx-container { width: calc(100% - 64px); }
+  .drx-container-full { width: 100%; padding-inline: 32px; }
+}
+
+@media (max-width: 900px) {
+  .drx-container { width: calc(100% - 48px); padding-inline: 0; }
+  .drx-container-full { width: 100%; padding-inline: 24px; }
+  .drx-navbar { padding-inline: 28px 18px; }
+
+  .drx-navbar-links {
+    top: var(--drx-nav-height);
+    bottom: 0;
+    padding: 34px 28px;
+    gap: 7px;
+    overflow-y: auto;
+    background: var(--drx-bg);
+    transform: translateY(-14px);
+  }
+
+  .drx-navbar-links.open { transform: translateY(0); }
+  .drx-navbar-links li { margin-bottom: 0; }
+  .drx-navbar-links a {
+    width: 100%;
+    padding: 7px 0;
+    color: var(--drx-text);
+    font-family: var(--drx-font-heading);
+    font-size: clamp(29px, 7vw, 42px);
+    font-weight: var(--drx-weight-bold);
+    letter-spacing: 0.02em;
+  }
+
+  .drx-navbar-links a::after { right: 0; left: 0; }
+}
+
+@media (max-width: 720px) {
+  .drx-section { padding: 82px 0; }
+  .drx-section-sm { padding: 58px 0; }
+}
+
+@media (max-width: 560px) {
+  .drx-container { width: calc(100% - 32px); }
+  .drx-container-full { width: 100%; padding-inline: 16px; }
+  .drx-navbar { padding: 0 14px 0 18px; }
+}

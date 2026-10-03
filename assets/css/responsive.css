@@ -1,0 +1,251 @@
+@media (max-width: 1180px) {
+  .service-offer { grid-column: span 6; }
+  .service-offer-games { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: 30px; }
+  .service-offer-games .service-proof { margin-top: 0; padding-top: 0; border-top: 0; align-self: center; }
+  .service-offer-security-performance { grid-column: 1 / -1; }
+  .wrap { width: calc(100% - 64px); }
+  .focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-project-grid .project-card:first-child { grid-column: auto; display: block; }
+  .home-project-grid .project-card:first-child .project-cover { min-height: 0; aspect-ratio: 2 / 1; border-right: 0; border-bottom: 1px solid var(--line); }
+  .home-project-grid .project-card:first-child .project-content { padding: 22px 22px 26px; }
+  .technology-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .language-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-case-identity { padding-inline: 20px; grid-template-columns: 118px minmax(0, 1fr); }
+  .project-case-logo { width: 118px; height: 118px; }
+  .project-case-actions { grid-column: 2; justify-content: flex-start; }
+  .project-case-title { padding-top: 66px; }
+}
+
+@media (max-width: 900px) {
+  .wrap { width: calc(100% - 48px); }
+  .section { padding: 72px 0; }
+  .section-compact { padding: 48px 0; }
+
+  .site-nav.drx-navbar { padding-inline: 28px 18px; }
+  .mobile-only { display: block; }
+  .mobile-only .drx-navbar-cta-mobile { display: flex; }
+
+  .section-head { grid-template-columns: 1fr; gap: 28px; }
+  .section-copy { max-width: 650px; }
+  .split { grid-template-columns: 1fr; gap: 44px; }
+
+  .page-hero { min-height: 390px; padding-block: calc(var(--nav-height) + 66px) 50px; }
+  .page-title { max-width: 800px; }
+  .page-code { right: 8px; opacity: .45; }
+
+  .home-hero { min-height: auto; }
+  .home-hero .wrap.hero-layout { min-height: 600px; padding: 72px 0 68px; }
+  .hero-title { font-size: clamp(74px, 13vw, 118px); }
+  .hero-bottom { margin-top: clamp(54px, 8vw, 72px); }
+
+  .service-card { grid-template-columns: 48px minmax(0, 1fr); gap: 18px 24px; }
+  .service-body,
+  .service-card .text-link { grid-column: 2; }
+  .service-card .text-link { justify-self: start; }
+  .process-step { grid-template-columns: 50px minmax(170px, .62fr) 1fr; gap: 22px; }
+  .project-followup { padding-top: 0; }
+  .project-query-row { grid-template-columns: minmax(0, 1fr); }
+  .project-facet-row { align-items: stretch; flex-direction: column; }
+
+  .profile-layout { grid-template-columns: 1fr; }
+  .profile-sidebar { padding: 28px 24px; display: grid; grid-template-columns: minmax(180px, 240px) 1fr; gap: 30px; }
+  .profile-avatar { margin-bottom: 0; }
+  .profile-links { grid-column: 1 / -1; margin-top: 0; }
+  .profile-link-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .profile-main { padding: 38px 34px; }
+  .profile-name { font-size: clamp(64px, 9vw, 88px); }
+
+  .language-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-study-card { grid-template-columns: 1fr; }
+  .case-study-card-media { min-height: 330px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .project-case-banner { min-height: 330px; }
+  .project-overview-layout { grid-template-columns: 1fr; gap: 44px; }
+
+  .contact-layout { grid-template-columns: 1fr; }
+  .contact-copy,
+  .form-shell { padding: 38px 34px; }
+
+  .footer-grid { grid-template-columns: 1.4fr repeat(2, minmax(120px, .7fr)); }
+  .footer-contact { grid-column: 2 / -1; }
+}
+
+@media (max-width: 720px) {
+  .service-offers { grid-template-columns: 1fr; }
+  .service-offer { grid-column: auto; padding: 24px; }
+  .service-offer-games { display: block; }
+  .service-offer-games .service-proof { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .service-offer .service-title { font-size: 32px; }
+  .decision-panel { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+  .system-row { grid-template-columns: 24px minmax(0, 1fr); gap: 12px; padding-block: 24px; }
+  .system-details { grid-column: 2; }
+  .system-intro h3 { font-size: 26px; }
+  .carousel-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .carousel-toolbar { padding: 10px 14px; }
+  .carousel-status { font-size: 11px; }
+  .carousel-choice { gap: 8px; font-size: 11px; }
+  .carousel-choice-preview { width: 40px; height: 30px; }
+  .project-toolbar { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .wrap { width: calc(100% - 32px); }
+  .section { padding: 64px 0; }
+  .section-compact { padding: 44px 0; }
+  .resource-library-head { align-items: flex-start; flex-direction: column; }
+  .resource-query-row { grid-template-columns: 1fr; }
+  .resource-result-bar { align-items: center; flex-direction: row; gap: 12px; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .resource-source-panel { align-items: flex-start; flex-direction: column; }
+  .resource-source-panel .drx-btn { width: 100%; }
+  .case-study-card-content { padding: 30px 26px; }
+  .project-case-banner { min-height: 270px; aspect-ratio: 1.7 / 1; }
+  .project-case-identity { margin-top: -40px; padding-inline: 14px; grid-template-columns: 94px minmax(0, 1fr); gap: 18px; }
+  .project-case-logo { width: 94px; height: 94px; box-shadow: 6px 6px 0 color-mix(in srgb, var(--yellow) 22%, transparent); }
+  .project-logo-placeholder { font-size: 28px; }
+  .project-case-title { padding-top: 50px; }
+  .project-case-title h1 { font-size: clamp(56px, 16vw, 82px); }
+  .project-case-actions { grid-column: 1 / -1; padding-top: 12px; }
+  .project-case-actions .drx-btn { flex: 1 1 190px; }
+  .project-flow { grid-template-columns: 1fr; }
+  .project-flow-stage { min-height: 0; padding: 24px; }
+  .project-flow-stage h3 { margin-top: 20px; }
+  .project-flow-arrow { top: auto; right: 26px; bottom: -9px; transform: rotate(90deg); }
+  .project-flow-stage { scroll-snap-align: start; }
+  .project-snapshot div { grid-template-columns: 110px 1fr; }
+
+  .display-heading { font-size: clamp(40px, 12vw, 62px); }
+  .nojs-nav { position: relative; padding: 18px 24px; align-items: flex-start; flex-direction: column; }
+  .nojs-links { gap: 12px 18px; }
+  .page-hero { min-height: 360px; }
+  .page-title { font-size: clamp(54px, 14vw, 80px); }
+  .page-code { display: none; }
+
+  .home-hero .wrap.hero-layout { min-height: 550px; padding: 64px 0 60px; }
+  .hero-title { margin-top: 34px; font-size: clamp(64px, 17vw, 94px); }
+  .hero-bottom { margin-top: 54px; }
+  .scope-divider { height: 68px; margin: -4px 0 30px; }
+  .scope-divider .scope-marquee { width: 106vw; transform: translate(-50%, -50%) rotate(-.8deg); }
+  .scope-divider .drx-marquee-item { padding-block: 12px; }
+  .scope-divider .drx-marquee-name { font-size: 16px; }
+
+  .projects-grid,
+  .provenance-grid { grid-template-columns: 1fr; }
+  .project-query-row { grid-template-columns: 1fr; }
+  .project-result-bar { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .project-result-bar [data-project-summary] { text-align: left; }
+  .home-project-grid .project-card:first-child { display: block; }
+  .home-project-grid .project-card:first-child .project-cover { min-height: 0; aspect-ratio: 1.7; border-right: 0; border-bottom: 1px solid var(--line); }
+  .home-project-grid .project-card:first-child .project-content { padding: 22px 22px 26px; }
+  .project-description { min-height: 0; }
+  .project-cover { aspect-ratio: 1.7; }
+
+  .process-step { grid-template-columns: 42px 1fr; }
+  .process-step p { grid-column: 2; }
+
+  .profile-main { padding: 34px 28px; }
+  .profile-interest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technology-grid { grid-template-columns: 1fr; }
+
+  .cta-panel { padding: 36px 30px; flex-direction: column; align-items: flex-start; }
+  .home-cta { margin-top: 52px; }
+
+  .field-grid { grid-template-columns: 1fr; gap: 0; }
+  .contact-copy,
+  .form-shell { padding: 34px 28px; }
+
+  .archive-page { min-height: 680px; padding-block: calc(var(--nav-height) + 60px) 60px; }
+  .archive-panel { min-height: 460px; padding: 38px 30px; }
+
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer-about { grid-column: 1 / -1; }
+  .footer-contact { grid-column: auto; }
+}
+
+@media (max-width: 520px) {
+  .wrap { width: calc(100% - 28px); }
+  .site-nav.drx-navbar { padding: 0 12px 0 18px; }
+  .nav-logo { font-size: 17px; }
+  .theme-toggle { width: 35px; height: 35px; }
+
+  .section { padding: 56px 0; }
+  .home-hero .wrap.hero-layout { min-height: 520px; padding-block: 58px 54px; }
+  .hero-title { font-size: clamp(56px, 18vw, 78px); line-height: .82; }
+  .hero-bottom { margin-top: 46px; }
+  .scope-divider { height: 58px; margin-bottom: 24px; }
+  .scope-divider .scope-marquee { width: 108vw; transform: translate(-50%, -50%) rotate(-.6deg); }
+  .scope-divider .drx-marquee-name { font-size: 15px; }
+
+  .focus-grid { grid-template-columns: 1fr; }
+  .principle-card { min-height: 240px; }
+  .service-card { padding-block: 26px; grid-template-columns: 1fr; gap: 12px; }
+  .service-number,
+  .service-body,
+  .service-card .text-link { grid-column: 1; }
+  .service-title { font-size: 28px; }
+
+  .project-toolbar { align-items: flex-start; flex-direction: column; }
+  .project-filter-meta { width: 100%; justify-content: space-between; }
+  .project-query-row,
+  .project-facet-row { padding-inline: 16px; }
+
+  .profile-sidebar { grid-template-columns: 1fr; }
+  .profile-avatar { max-width: 240px; }
+  .profile-links { grid-column: auto; }
+  .profile-link-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .profile-main { padding: 34px 24px; }
+  .profile-name { font-size: 66px; }
+  .profile-interest-grid { grid-template-columns: 1fr; }
+  .technology-group { min-height: 210px; padding: 26px 22px; }
+  .technology-list { grid-template-columns: 1fr; }
+
+  .language-list { grid-template-columns: 1fr; }
+  .language-item {
+    min-height: 118px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 54px 1fr auto;
+    gap: 8px 16px;
+    align-items: center;
+  }
+  .language-proficiency { grid-column: 3; grid-row: 1; margin-top: 0; }
+  .language-item h3 { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .language-item p { grid-column: 2 / -1; margin-top: 0; padding-top: 0; }
+  .language-legend { margin-top: -10px; justify-content: flex-start; }
+  .resource-card { min-height: 0; padding: 21px; }
+  .resource-actions { grid-template-columns: 1fr; }
+  .resource-modal-overlay { padding: 8px; }
+  .resource-modal { width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
+  .resource-modal-intro { grid-template-columns: 1fr; }
+  .resource-modal-meta { grid-template-columns: 1fr; }
+  .resource-version { align-items: flex-start; flex-direction: column; }
+  .resource-version .text-link { align-self: flex-start; }
+  .resource-modal-footer { align-items: stretch; flex-direction: column-reverse; }
+  .resource-modal-footer .drx-btn { width: 100%; }
+  .case-study-card-media { min-height: 250px; }
+  .project-media-placeholder { padding: 20px; }
+  .project-case-hero { padding-top: calc(var(--nav-height) + 18px); }
+  .project-case-banner { min-height: 220px; }
+  .project-case-identity { margin-top: -32px; grid-template-columns: 76px minmax(0, 1fr); }
+  .project-case-logo { width: 76px; height: 76px; }
+  .project-case-title { padding-top: 40px; }
+  .project-case-role { margin-top: 16px; font-size: 8.5px; }
+  .project-case-state { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .project-section-nav a { padding-inline: 15px; }
+  .project-snapshot div { grid-template-columns: 1fr; gap: 8px; }
+
+  .drx-accordion-trigger > span:first-child { font-size: 18px; }
+  .drx-accordion-body { padding-left: 0; padding-right: 30px; }
+
+  .contact-details > div { grid-template-columns: 1fr; gap: 5px; }
+  .archive-panel { padding: 32px 24px; }
+  .archive-code { margin-top: 58px; font-size: 70px; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .footer-about,
+  .footer-contact { grid-column: auto; }
+  .footer-bottom { padding: 20px 0; flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scope-divider .drx-marquee-track { animation: none !important; transform: none !important; }
+  .scope-divider .drx-marquee-item:nth-child(2) { display: none; }
+}

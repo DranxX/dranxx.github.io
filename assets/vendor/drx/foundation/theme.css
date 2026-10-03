@@ -1,0 +1,78 @@
+:root,
+[data-theme="dark"] {
+  --drx-bg: var(--drx-ink);
+  --drx-bg-2: var(--drx-ink-2);
+  --drx-bg-3: var(--drx-ink-3);
+  --drx-bg-4: var(--drx-ink-4);
+  --drx-bg-rgb: var(--drx-ink-3-rgb);
+  --drx-text: var(--drx-fg);
+  --drx-text-muted: var(--drx-mid);
+  --drx-text-dim: var(--drx-dim);
+  --drx-border: var(--drx-line);
+  --drx-border-strong: var(--drx-line-strong);
+  --drx-surface: var(--drx-ink-2);
+  --drx-surface-hover: var(--drx-ink-3);
+  --drx-surface-active: var(--drx-ink-4);
+  color-scheme: dark;
+}
+
+:root.light,
+[data-theme="light"] {
+  --drx-ink: #ffffff;
+  --drx-ink-2: #f4f4f7;
+  --drx-ink-3: #ebedef;
+  --drx-ink-4: #d9dce2;
+  --drx-ink-3-rgb: 235, 237, 239;
+  --drx-primary: #d4a017;
+  --drx-primary-hover: #c9a820;
+  --drx-primary-active: #b8860b;
+  --drx-primary-muted: rgba(212, 160, 23, 0.15);
+  --drx-secondary: #467fa8;
+  --drx-secondary-hover: #568fb6;
+  --drx-secondary-active: #315f7d;
+  --drx-secondary-muted: rgba(70, 127, 168, 0.15);
+  --drx-fg: #0a0a0c;
+  --drx-mid: #565665;
+  --drx-dim: #b4b4c1;
+  --drx-line: rgba(0, 0, 0, 0.12);
+  --drx-line-strong: rgba(0, 0, 0, 0.22);
+  --drx-overlay: rgba(0, 0, 0, 0.4);
+  --drx-bg: var(--drx-ink);
+  --drx-bg-2: var(--drx-ink-2);
+  --drx-bg-3: var(--drx-ink-3);
+  --drx-bg-4: var(--drx-ink-4);
+  --drx-bg-rgb: var(--drx-ink-3-rgb);
+  --drx-text: var(--drx-fg);
+  --drx-text-muted: var(--drx-mid);
+  --drx-text-dim: var(--drx-dim);
+  --drx-border: var(--drx-line);
+  --drx-border-strong: var(--drx-line-strong);
+  --drx-surface: var(--drx-ink-2);
+  --drx-surface-hover: var(--drx-ink-3);
+  --drx-surface-active: var(--drx-ink-4);
+  --drx-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --drx-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --drx-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --drx-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --drx-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+  color-scheme: light;
+}
+
+[data-theme="brand"] {
+  --drx-bg: #0c0c18;
+  --drx-bg-2: #12122a;
+  --drx-bg-3: #1a1a38;
+  --drx-bg-4: #242448;
+  --drx-bg-rgb: 26, 26, 56;
+  --drx-primary: #ffd700;
+  --drx-primary-hover: #ffe44d;
+  --drx-primary-active: #ccac00;
+  --drx-secondary: #00bcd4;
+  --drx-secondary-hover: #26c6da;
+  --drx-secondary-active: #0097a7;
+  --drx-text: #e8e8f0;
+  --drx-text-muted: #6a6a88;
+  --drx-text-dim: #3a3a58;
+  --drx-border: rgba(255, 255, 255, 0.08);
+  color-scheme: dark;
+}

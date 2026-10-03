@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id" style="background:var(--drx-bg,#080810)">
+<head>
+  <link rel="icon" type="image/webp" href="../assets/profile_nobg.webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hubungi DranxX untuk membicarakan proyek, masalah teknis, kolaborasi, atau sekadar menyapa.">
+  <meta name="theme-color" content="#080810">
+  <title>Kontak - DranxX</title>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/vendor/drx/drx-framework.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script src="../assets/js/site.config.js" defer></script>
+  <script src="../assets/js/data.js" defer></script>
+  <script src="../assets/js/shell.js" defer></script>
+  <script src="../assets/js/collections.js" defer></script>
+  <script src="../assets/vendor/drx/js/drx.js" defer></script>
+  <script src="../assets/js/app.js" defer></script>
+  <noscript><style>.drx-reveal{opacity:1!important;transform:none!important}.form-shell form{display:none}</style></noscript>
+  <link rel="alternate" hreflang="en" href="../en/contact.html">
+  <link rel="alternate" hreflang="id" href="../id/contact.html">
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main-content">Lewati navigasi</a>
+  <site-ui></site-ui>
+  <site-header><noscript><nav class="nojs-nav" aria-label="Navigasi utama"><a class="nojs-brand" href="index.html">Dra<em>nxX</em></a><span class="nojs-links"><a href="projects.html">Projects</a><a href="resources.html">Resources</a><a href="services.html">Services</a><a href="profile.html">Profile</a><a href="contact.html">Contact</a></span></nav></noscript></site-header>
+
+  <main class="page-content" id="main-content">
+    <header class="page-hero">
+      <div class="wrap">
+        <div class="section-label drx-reveal">Contact</div>
+        <h1 class="page-title drx-reveal">Hubungi <span class="blue">saya.</span></h1>
+        <p class="page-lead drx-reveal">Punya proyek, pertanyaan, atau sekadar ingin menyapa? Kirim email lewat link atau form di bawah.</p>
+        <span class="page-code" aria-hidden="true">MSG</span>
+      </div>
+    </header>
+
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="contact-layout drx-reveal">
+          <div class="contact-copy">
+            <div class="section-label">Email</div>
+            <h2>Kirim lewat email.</h2>
+            <p>Form ini menyiapkan draf di aplikasi emailmu. Kamu bisa memeriksa dan mengirimnya dari sana; situs ini tidak menyimpan isi pesan.</p>
+
+            <dl class="contact-details">
+              <div><dt>Email</dt><dd><a href="mailto:bramadyafiqri@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i>Kirim email kepada saya</a></dd></div>
+              <div><dt>GitHub</dt><dd><a href="https://github.com/DranxX" target="_blank" rel="noreferrer noopener">github.com/DranxX</a></dd></div>
+            </dl>
+
+            <p class="contact-fallback">Kalau form tidak membuka aplikasi email, gunakan link email di atas.</p>
+          </div>
+
+          <div class="form-shell">
+            <noscript><p class="nojs-form-warning">Pembuat draf memerlukan JavaScript. Sebagai gantinya, kirim email langsung ke <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a>.</p></noscript>
+            <form data-mailto-form>
+              <div class="field-grid">
+                <div class="drx-field">
+                  <label class="drx-label" for="name">Nama</label>
+                  <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
+                </div>
+                <div class="drx-field">
+                  <label class="drx-label" for="email">Email balasan</label>
+                  <input class="drx-input" id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="drx-field">
+                  <label class="drx-label" for="projectType">Apa yang ingin kamu bicarakan?</label>
+                  <select class="drx-select" id="projectType" name="projectType">
+                    <option value="project">Proyek atau kolaborasi</option>
+                    <option value="games">Sistem gameplay</option>
+                    <option value="software">Software atau tooling</option>
+                    <option value="ai-ml">Eksperimen AI / ML</option>
+                    <option value="security-performance">Keamanan atau performa</option>
+                    <option value="hello">Sekadar menyapa</option>
+                  </select>
+                </div>
+                <div class="drx-field">
+                  <label class="drx-label" for="timeline">Timeline</label>
+                  <select class="drx-select" id="timeline" name="timeline">
+                    <option>Secepatnya</option>
+                    <option>Dalam satu bulan</option>
+                    <option>Satu hingga tiga bulan</option>
+                    <option>Masih merencanakan</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="drx-field">
+                <label class="drx-label" for="message">Pesan</label>
+                <textarea class="drx-textarea" id="message" name="message" rows="9" placeholder="Ceritakan proyek, pertanyaan, atau masalah yang ingin kamu bahas…" required></textarea>
+                <span class="drx-field-description">Jangan sertakan kata sandi, API key, file place privat, atau rahasia lainnya.</span>
+              </div>
+
+              <button class="drx-btn drx-btn-solid-primary form-submit" type="submit">Siapkan draf email</button>
+              <p class="form-message" data-form-message role="status" aria-live="polite">Halaman ini tidak mengirimkan data apa pun.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer><noscript><footer class="nojs-footer">DranxX · portofolio developer · <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a></footer></noscript></site-footer>
+</body>
+</html>

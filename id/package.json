@@ -1,0 +1,13 @@
+{
+  "name": "dranxx-web",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ../scripts/serve.mjs",
+    "dev": "node ../scripts/serve.mjs",
+    "validate": "node ../scripts/validate.mjs",
+    "smoke": "node ../scripts/smoke.mjs",
+    "check": "npm run validate && npm run smoke"
+  }
+}

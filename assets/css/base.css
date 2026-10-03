@@ -1,0 +1,104 @@
+html {
+  background: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+site-header,
+site-footer { display: block; }
+
+site-ui { display: contents; }
+
+a { color: inherit; }
+button,
+input,
+select,
+textarea { font: inherit; }
+
+[hidden] { display: none !important; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 12000;
+  padding: 10px 14px;
+  background: var(--yellow);
+  color: #080810;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.page-content {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.media-pending::before {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--ink-3) 35%, var(--ink-2) 50%, var(--ink-3) 65%);
+  background-size: 250% 100%;
+  opacity: 0;
+  animation: skeletonAppear 1ms 200ms forwards, skeletonSweep 1.4s ease-out 200ms 3;
+}
+
+@keyframes skeletonAppear {
+  to { opacity: 1; }
+}
+
+@keyframes skeletonSweep {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-pending::before { animation: skeletonAppear 1ms 200ms forwards !important; background: var(--ink-3); }
+}
+
+.home-hero .drx-reveal,
+.page-hero .drx-reveal { transition-delay: var(--enter-delay, 0ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .drx-reveal { opacity: 1 !important; transform: none !important; }
+  .cursor-light,
+  .cursor-dot { display: none !important; }
+}

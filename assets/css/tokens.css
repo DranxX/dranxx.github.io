@@ -1,0 +1,41 @@
+:root,
+[data-theme="dark"] { --drx-text-muted: #9292ab; }
+
+:root.light,
+[data-theme="light"] {
+  --drx-text-muted: #565665;
+  --drx-primary: #795900;
+  --drx-primary-hover: #6b4f00;
+  --drx-primary-active: #634900;
+  --drx-secondary: #315f7d;
+}
+
+:root {
+  --ink: var(--drx-bg);
+  --ink-2: var(--drx-bg-2);
+  --ink-3: var(--drx-bg-3);
+  --ink-4: var(--drx-bg-4);
+  --ink-rgb: var(--drx-bg-rgb);
+  --foreground: var(--drx-text);
+  --muted: var(--drx-text-muted);
+  --dim: var(--drx-text-dim);
+  --line: var(--drx-border);
+  --line-strong: var(--drx-border-strong);
+  --yellow: var(--drx-primary);
+  --yellow-2: var(--drx-primary-active);
+  --blue: var(--drx-secondary);
+  --blue-2: var(--drx-secondary-active);
+  --success: var(--drx-success);
+  --warning: var(--drx-warning);
+  --danger: var(--drx-danger);
+  --font-display: var(--drx-font-heading);
+  --font-mono: var(--drx-font-mono);
+  --container: 1180px;
+  --nav-height: var(--drx-nav-height);
+  --ease-out: var(--drx-ease-out);
+  --space-section: clamp(72px, 6vw, 88px);
+  --space-section-compact: clamp(46px, 4vw, 58px);
+  --text-copy: 13px;
+  --text-detail: 11.5px;
+  --text-meta: 9px;
+}

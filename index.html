@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#080810">
+  <title>DranxX — Choose language</title>
+  <link rel="icon" type="image/webp" href="assets/profile_nobg.webp">
+  <script>
+    (() => {
+      const languages = navigator.languages || [navigator.language || 'en'];
+      const locale = languages.some(language => /^id(?:-|$)/i.test(language)) ? 'id' : 'en';
+      window.location.replace(`./${locale}/`);
+    })();
+  </script>
+  <style>
+    html,body{min-height:100%;margin:0;background:#080810;color:#ededf7;font:14px/1.6 monospace}body{display:grid;place-items:center}main{padding:32px;text-align:center}a{margin:0 10px;color:#f1cc32;text-underline-offset:5px}
+  </style>
+</head>
+<body>
+  <main>
+    <p>Select language / Pilih bahasa</p>
+    <a href="en/">English</a>
+    <a href="id/" lang="id">Bahasa Indonesia</a>
+  </main>
+</body>
+</html>

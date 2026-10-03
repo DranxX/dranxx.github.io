@@ -1,0 +1,108 @@
+.wrap {
+  width: min(var(--container), calc(100% - 96px));
+  margin-inline: auto;
+}
+
+.section {
+  padding: var(--space-section) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-compact { padding: var(--space-section-compact) 0; }
+.section-alt { background: var(--ink-2); }
+
+.grid {
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: clamp(40px, 4vw, 60px);
+  align-items: start;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, .62fr);
+  gap: clamp(36px, 4vw, 56px);
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.section-copy {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: var(--text-copy);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.section-tail { margin-top: 30px; }
+
+.page-hero {
+  min-height: 420px;
+  padding: calc(var(--nav-height) + 76px) 0 56px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero::before {
+  position: absolute;
+  inset: var(--nav-height) 0 0;
+  opacity: .72;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent calc(100% / 12 - 1px),
+    var(--line) calc(100% / 12 - 1px),
+    var(--line) calc(100% / 12)
+  );
+  content: '';
+  pointer-events: none;
+}
+
+.page-hero .wrap { position: relative; z-index: 1; }
+
+.page-title {
+  max-width: 900px;
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-size: clamp(60px, 7.8vw, 104px);
+  font-weight: 800;
+  letter-spacing: -.026em;
+  line-height: .86;
+  text-transform: uppercase;
+}
+
+.page-title .yellow { color: var(--yellow); }
+.page-title .blue { color: var(--blue); }
+
+.page-lead {
+  max-width: 650px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: var(--text-copy);
+  font-weight: 300;
+  line-height: 1.82;
+}
+
+.page-code {
+  position: absolute;
+  right: 24px;
+  bottom: -4px;
+  color: var(--dim);
+  font-family: var(--font-display);
+  font-size: clamp(92px, 13vw, 170px);
+  font-weight: 800;
+  letter-spacing: -.05em;
+  line-height: .65;
+  opacity: .42;
+  pointer-events: none;
+}

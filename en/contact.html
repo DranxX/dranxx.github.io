@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" style="background:var(--drx-bg,#080810)">
+<head>
+  <link rel="icon" type="image/webp" href="../assets/profile_nobg.webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with DranxX about a project, technical problem, collaboration, or simply to say hello.">
+  <meta name="theme-color" content="#080810">
+  <title>Contact - DranxX</title>
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/vendor/drx/drx-framework.css">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <script src="../assets/js/site.config.js" defer></script>
+  <script src="../assets/js/data.js" defer></script>
+  <script src="../assets/js/shell.js" defer></script>
+  <script src="../assets/js/collections.js" defer></script>
+  <script src="../assets/vendor/drx/js/drx.js" defer></script>
+  <script src="../assets/js/app.js" defer></script>
+  <noscript><style>.drx-reveal{opacity:1!important;transform:none!important}.form-shell form{display:none}</style></noscript>
+  <link rel="alternate" hreflang="en" href="../en/contact.html">
+  <link rel="alternate" hreflang="id" href="../id/contact.html">
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main-content">Skip navigation</a>
+  <site-ui></site-ui>
+  <site-header><noscript><nav class="nojs-nav" aria-label="Primary navigation"><a class="nojs-brand" href="index.html">Dra<em>nxX</em></a><span class="nojs-links"><a href="projects.html">Projects</a><a href="resources.html">Resources</a><a href="services.html">Services</a><a href="profile.html">Profile</a><a href="contact.html">Contact</a></span></nav></noscript></site-header>
+
+  <main class="page-content" id="main-content">
+    <header class="page-hero">
+      <div class="wrap">
+        <div class="section-label drx-reveal">Contact</div>
+        <h1 class="page-title drx-reveal">Get in <span class="blue">touch.</span></h1>
+        <p class="page-lead drx-reveal">Have a project, a question, or just want to say hello? Use the email link or form below.</p>
+        <span class="page-code" aria-hidden="true">MSG</span>
+      </div>
+    </header>
+
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="contact-layout drx-reveal">
+          <div class="contact-copy">
+            <div class="section-label">Email</div>
+            <h2>Send an email.</h2>
+            <p>The form prepares a draft in your email app. You can review and send it there; this site does not store your message.</p>
+
+            <dl class="contact-details">
+              <div><dt>Email</dt><dd><a href="mailto:bramadyafiqri@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i>Write me an email</a></dd></div>
+              <div><dt>GitHub</dt><dd><a href="https://github.com/DranxX" target="_blank" rel="noreferrer noopener">github.com/DranxX</a></dd></div>
+            </dl>
+
+            <p class="contact-fallback">If the form does not open your email app, use the email link above.</p>
+          </div>
+
+          <div class="form-shell">
+            <noscript><p class="nojs-form-warning">The draft builder needs JavaScript. Email <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a> directly instead.</p></noscript>
+            <form data-mailto-form>
+              <div class="field-grid">
+                <div class="drx-field">
+                  <label class="drx-label" for="name">Name</label>
+                  <input class="drx-input" id="name" name="name" type="text" autocomplete="name" required>
+                </div>
+                <div class="drx-field">
+                  <label class="drx-label" for="email">Reply email</label>
+                  <input class="drx-input" id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="drx-field">
+                  <label class="drx-label" for="projectType">What’s on your mind?</label>
+                  <select class="drx-select" id="projectType" name="projectType">
+                    <option value="project">A project or collaboration</option>
+                    <option value="games">Gameplay systems</option>
+                    <option value="software">Software or tooling</option>
+                    <option value="ai-ml">AI / ML experiments</option>
+                    <option value="security-performance">Security or performance</option>
+                    <option value="hello">Just saying hello</option>
+                  </select>
+                </div>
+                <div class="drx-field">
+                  <label class="drx-label" for="timeline">Timeline</label>
+                  <select class="drx-select" id="timeline" name="timeline">
+                    <option>As soon as practical</option>
+                    <option>Within one month</option>
+                    <option>One to three months</option>
+                    <option>Still exploring</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="drx-field">
+                <label class="drx-label" for="message">Message</label>
+                <textarea class="drx-textarea" id="message" name="message" rows="9" placeholder="Tell me a little about it…" required></textarea>
+                <span class="drx-field-description">Do not include passwords, API keys, private place files, or other secrets.</span>
+              </div>
+
+              <button class="drx-btn drx-btn-solid-primary form-submit" type="submit">Prepare email draft</button>
+              <p class="form-message" data-form-message role="status" aria-live="polite">This form does not send your message automatically.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer><noscript><footer class="nojs-footer">DranxX · developer portfolio · <a href="mailto:bramadyafiqri@gmail.com">bramadyafiqri@gmail.com</a></footer></noscript></site-footer>
+</body>
+</html>
