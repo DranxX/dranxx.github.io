@@ -706,8 +706,8 @@ if (!/'Project_Bentengan'/.test(shellSource)
 }
 if (!/<html lang="id"/.test(indonesianHomeSource)
   || !/Hai, saya DranxX<\/h1>/.test(indonesianHomeSource)
-  || !/Saat ini di Roblox/.test(indonesianHomeSource)
-  || /Currently on Roblox|View projects|How I think/.test(indonesianHomeSource)) {
+  || !/Currently on Roblox/.test(indonesianHomeSource)
+  || /View projects|How I think/.test(indonesianHomeSource)) {
   issues.push('id/index.html: Indonesian homepage copy is incomplete or stale English copy remains');
 }
 

@@ -47,7 +47,7 @@
         emptyCategory: 'Tidak ada resource pada kategori ini.',
         stable: 'Stable',
         searchLabel: 'Cari resource',
-        searchPlaceholder: 'Nama atau fungsi. Misalnya: chat',
+        searchPlaceholder: 'Nama atau topik. Misalnya: chat',
         categoryLabel: 'Kategori',
         clear: 'Reset'
       } : {
@@ -71,7 +71,7 @@
         emptyCategory: 'No resources in this category.',
         stable: 'Stable',
         searchLabel: 'Find a resource',
-        searchPlaceholder: 'Name or function. Try: chat',
+        searchPlaceholder: 'Name or topic. Try: chat',
         categoryLabel: 'Category',
         clear: 'Reset'
       };
