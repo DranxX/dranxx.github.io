@@ -4,7 +4,7 @@
   const assetBase = config.assetBase || '../assets';
   const isIndonesian = config.locale === 'id';
   const copy = isIndonesian ? {
-    ask: 'Tanyakan tentang bidang ini',
+    ask: 'Tanya soal ini',
     openRepository: 'Buka repositori',
     openRepositoryLabel: name => `Buka repositori ${name} di GitHub`,
     publicRepository: 'Source code',
@@ -187,7 +187,7 @@
           }, { once: true });
           media.append(image);
           if (image.complete && image.naturalWidth > 0) finish();
-          figure.append(media, create('figcaption', '', isIndonesian ? 'Bentengan · PvP tim, tiga place, satu alur pertandingan.' : 'Bentengan · Team PvP across three connected places.'));
+          figure.append(media, create('figcaption', '', isIndonesian ? 'Bentengan · PvP beregu, tiga place, satu alur pertandingan.' : 'Bentengan · Team PvP across three connected places.'));
           offer.append(figure);
         }
         fragment.append(offer);

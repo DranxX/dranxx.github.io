@@ -11,8 +11,8 @@
     titleSuffix: isIndonesian ? 'DranxX - Portofolio Developer' : 'DranxX - Developer Portfolio',
     email: 'dranxx.contact@gmail.com',
     tagline: isIndonesian
-      ? '5 tahun mengerjakan proyek di bidang game development, software, AI/ML, dan keamanan.'
-      : '5 years of projects across game development, software, AI/ML, and security.',
+      ? 'Membangun game dan tools selama 5 tahun, sekarang paling banyak di Roblox.'
+      : 'Building games and tools for 5 years, now mostly on Roblox.',
     // Nav labels stay the same in both locales: the mixed Resources/Proyek state read as unfinished.
     nav: [
       { key: 'home', label: 'Home', href: './' },
@@ -63,12 +63,12 @@
     ],
     ui: Object.freeze(isIndonesian ? {
       primaryNavigation: 'Navigasi utama',
-      homeLabel: 'Beranda DranxX',
-      contact: 'Kontak',
+      homeLabel: 'Home DranxX',
+      contact: 'Contact',
       navContact: 'Contact',
       toggleTheme: 'Ganti tema warna',
       toggleNavigation: 'Buka atau tutup navigasi',
-      navigate: 'Navigasi',
+      navigate: 'Navigate',
       elsewhere: 'Links',
       backToTop: 'Kembali ke atas',
       languageLabel: 'Buka versi bahasa Inggris',

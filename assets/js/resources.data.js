@@ -15,10 +15,10 @@
 
   window.DRANXX_RESOURCES = Object.freeze({
     categories: [
-      { id: 'all', label: t('All resources', 'Semua resource') },
-      { id: 'systems', label: t('Systems', 'Sistem') },
-      { id: 'tools', label: t('Tools', 'Tools') },
-      { id: 'utilities', label: t('Utilities', 'Utilitas') }
+      { id: 'all', label: 'All resources' },
+      { id: 'systems', label: 'Systems' },
+      { id: 'tools', label: 'Tools' },
+      { id: 'utilities', label: 'Utilities' }
     ],
     items: [
       {
@@ -41,10 +41,10 @@
         id: 'blind-box',
         name: 'Blind Box',
         category: 'systems',
-        categoryLabel: t('Learning system', 'Sistem pembelajaran'),
+        categoryLabel: t('Reward system', 'Sistem reward'),
         description: t('A compact blind-box system to study and adapt in Roblox Studio.', 'Sistem blind box ringkas untuk dipelajari dan disesuaikan di Roblox Studio.'),
         detail: t('This package is learning material. Review its structure and settings before adding it to the economy of a live game.', 'Paket ini ditujukan untuk belajar. Periksa struktur dan pengaturannya sebelum dipakai dalam sistem ekonomi game yang sudah dirilis.'),
-        tags: ['Roblox Studio', 'RBXM', t('Learning', 'Pembelajaran')],
+        tags: ['Roblox Studio', 'RBXM', t('Learning', 'Untuk belajar')],
         sourceId: 'myRobloxAssets',
         sourcePath: 'BlindBoxByTheDranxX[ForLearningUse!].rbxm',
         fileName: 'BlindBoxByTheDranxX[ForLearningUse!].rbxm',
@@ -74,7 +74,7 @@
         name: 'Global Message',
         category: 'systems',
         categoryLabel: t('Messaging system', 'Sistem pesan'),
-        description: t('A reusable global-message system for Roblox games.', 'Sistem global message yang bisa digunakan kembali dalam game Roblox.'),
+        description: t('A reusable global-message system for Roblox games.', 'Sistem global message yang bisa dipakai ulang di game Roblox.'),
         detail: t('Check who can send messages, how text is filtered, and how messages are delivered before using the package in a live game.', 'Periksa siapa yang boleh mengirim pesan, penyaringan teks, dan alur pengirimannya sebelum paket ini dipakai dalam game yang sudah dirilis.'),
         tags: ['Roblox Studio', 'RBXM', 'Messaging'],
         sourceId: 'myRobloxAssets',
@@ -89,7 +89,7 @@
         id: 'obfuscation-system',
         name: 'Obfuscation System',
         category: 'utilities',
-        categoryLabel: t('Developer utility', 'Utilitas developer'),
+        categoryLabel: 'Developer utility',
         description: t('A Luau obfuscation experiment in an RBXM package, with readable source code included.', 'Eksperimen obfuscation Luau dalam paket RBXM, dilengkapi source code yang bisa dibaca.'),
         detail: t('Use it as a developer tool and learning reference. Server authority and input validation are still needed.', 'Gunakan sebagai tool developer dan bahan belajar. Otoritas di server dan validasi input tetap diperlukan.'),
         tags: ['Roblox Studio', 'Luau', 'RBXM'],

@@ -7,27 +7,27 @@
     principles: [
       {
         number: '01',
-        title: t('Own the state', 'Kuasai alur state'),
+        title: t('Clear data flow', 'Alur data yang jelas'),
         label: t('System design', 'Desain sistem'),
-        description: t('Make authority, lifecycle, and data flow explicit so a feature stays understandable after it grows.', 'Buat otoritas, siklus hidup, dan alur data terlihat jelas agar fitur tetap mudah dipahami ketika berkembang.')
+        description: t('I decide early which script owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya tentukan script mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih gampang diperbaiki dan dikembangkan.')
       },
       {
         number: '02',
-        title: t('Secure the boundary', 'Amankan batas sistem'),
+        title: t('The server decides', 'Server yang menentukan'),
         label: t('Security', 'Keamanan'),
-        description: t('Keep authority clear, validate untrusted input on the server, and consider abuse cases alongside the happy path.', 'Jaga pembagian otoritas tetap jelas, validasi input yang tidak tepercaya di server, dan pertimbangkan skenario penyalahgunaan selain alur normal.')
+        description: t('The client only sends input. Prices, rewards, hits, and match results are checked on the server, including when someone sends bad or repeated requests.', 'Client cukup mengirim input. Harga, reward, hit, dan hasil match dicek di server, termasuk saat ada yang mengirim request salah atau berulang.')
       },
       {
         number: '03',
-        title: t('Measure performance', 'Ukur performa'),
-        label: t('Optimization', 'Optimisasi'),
-        description: t('Profile first, optimize the actual bottleneck, and keep frame time, memory, and network cost visible.', 'Lakukan profiling lebih dulu, optimalkan bottleneck yang nyata, dan pantau frame time, memori, serta biaya jaringan.')
+        title: t('Measure before optimizing', 'Ukur dulu, baru optimasi'),
+        label: t('Optimization', 'Optimasi'),
+        description: t('I profile first and fix the part that is actually slow, while keeping an eye on frame time, memory, and network usage.', 'Saya profiling dulu, lalu memperbaiki bagian yang memang lambat sambil memantau frame time, memori, dan pemakaian network.')
       },
       {
         number: '04',
-        title: t('Clarify the action', 'Perjelas interaksi'),
+        title: t('Feedback players can read', 'Feedback yang jelas'),
         label: t('UX & motion', 'UX & animasi'),
-        description: t('Use interface hierarchy and restrained animation to explain state changes rather than decorating them.', 'Gunakan hierarki antarmuka dan animasi seperlunya untuk menjelaskan perubahan state, bukan menghiasinya.')
+        description: t('UI and animation should tell players what just happened: a match was found, a hit landed, a purchase went through.', 'UI dan animasi harus memberi tahu pemain apa yang baru terjadi: match ditemukan, hit kena, pembelian berhasil.')
       }
     ],
 
@@ -45,19 +45,19 @@
       {
         id: 'software',
         number: '02',
-        title: t('Software & Developer Tools', 'Software & Alat Developer'),
+        title: t('Software & Developer Tools', 'Software & Developer Tools'),
         accent: 'Software',
-        description: t('Repeatedly moving files, copying data, or running the same commands? I build tools and integrations around the workflow you already use.', 'Sering pindah file, salin data, atau menjalankan langkah yang sama? Saya membuat tools dan integrasi untuk workflow yang kamu pakai sehari-hari.'),
-        deliverables: t(['Local utilities and file-processing tools', 'API integrations and bot workflows', 'Editor and game-engine tooling'], ['Utilitas lokal dan pengolahan file', 'Integrasi API dan workflow bot', 'Tooling editor dan game engine']),
+        description: t('If you keep moving the same files, copying data, or running the same commands, I can turn that into a tool or integration that fits the workflow you already use.', 'Kalau kamu sering memindahkan file, menyalin data, atau menjalankan perintah yang sama berulang kali, saya bisa membuatkan tools atau integrasi yang cocok dengan workflow yang sudah kamu pakai.'),
+        deliverables: t(['Local utilities and file-processing tools', 'API integrations and bot workflows', 'Editor and game-engine tooling'], ['Utility lokal dan tools pengolahan file', 'Integrasi API dan workflow bot', 'Tooling untuk editor dan game engine']),
         proof: { label: t('Explore DrXporter', 'Lihat DrXporter'), url: 'https://github.com/DranxX/DrXporter' },
-        tags: ['Python', 'TypeScript', t('Automation', 'Otomatisasi'), t('Developer tooling', 'Alat developer')]
+        tags: ['Python', 'TypeScript', t('Automation', 'Otomatisasi'), t('Developer tooling', 'Developer tools')]
       },
       {
         id: 'ai-ml',
         number: '03',
         title: t('AI / ML Experiments', 'Eksperimen AI / ML'),
         accent: 'AI / ML',
-        description: t('Have a dataset or a model idea to test? We can scope a prototype for text processing, fine-tuning, or computer vision, then inspect the output and its limits.', 'Punya dataset atau ide model yang ingin dicoba? Kita bisa mulai dari prototype pengolahan teks, fine-tuning, atau computer vision, lalu cek hasil dan batasannya.'),
+        description: t('I build small prototypes for text processing, fine-tuning, or computer vision, then go through the output with you to see where the model holds up and where it does not.', 'Saya membuat prototype kecil untuk pengolahan teks, fine-tuning, atau computer vision, lalu mengecek hasilnya bersama kamu: bagian mana yang sudah bagus dan mana yang belum.'),
         deliverables: t(['Data preparation and processing scripts', 'Training and inference workflows', 'Prototype evaluation with sample outputs'], ['Script persiapan dan pengolahan data', 'Workflow training dan inference', 'Evaluasi prototype dengan contoh output']),
         proof: { label: t('Explore corpus-cleaner', 'Lihat corpus-cleaner'), url: 'https://github.com/DranxX/corpus-cleaner' },
         tags: ['Python', 'TensorFlow', 'PyTorch', 'OpenCV']
@@ -68,9 +68,9 @@
         title: t('Security & Performance', 'Keamanan & Performa'),
         accent: t('Security', 'Keamanan'),
         description: t('A feature can work normally and still fail on bad input, duplicate requests, or disconnects. I trace those paths, review server validation, and profile suspected bottlenecks.', 'Fitur bisa berjalan normal tapi bermasalah saat input salah, request ganda, atau koneksi putus. Saya telusuri alurnya, cek validasi server, dan lakukan profiling pada bottleneck yang dicurigai.'),
-        deliverables: t(['Code review with findings and proposed fixes', 'Server validation, rate limits, and recovery paths', 'Profiling and focused performance changes'], ['Review kode dengan temuan dan usulan perbaikan', 'Validasi server, rate limit, dan jalur recovery', 'Profiling dan perbaikan performa sesuai bottleneck']),
+        deliverables: t(['Code review with findings and proposed fixes', 'Server validation, rate limits, and recovery paths', 'Profiling and focused performance changes'], ['Code review dengan temuan dan usulan perbaikan', 'Validasi server, rate limit, dan recovery saat terjadi error', 'Profiling dan perbaikan performa di bottleneck-nya']),
         proof: { label: t('See Bentengan engineering decisions', 'Lihat keputusan teknis Bentengan'), url: 'Project_Bentengan#decisions' },
-        tags: [t('Threat modeling', 'Pemodelan ancaman'), 'Pentesting', 'Profiling', t('Optimization', 'Optimisasi')]
+        tags: ['Threat modeling', 'Pentesting', 'Profiling', t('Optimization', 'Optimasi')]
       }
     ],
 
@@ -82,7 +82,7 @@
         kind: 'case-study',
         scopes: ['game'],
         categoryLabel: 'Roblox / Multiplayer',
-        description: t('Team PvP on Roblox, from cross-server matchmaking to the final score. I built the gameplay and backend scripting: combat, party queues, rejoin, player data, and purchases.', 'PvP tim di Roblox, dari matchmaking lintas server sampai hasil pertandingan. Saya mengerjakan scripting gameplay dan backend: combat, antrean party, rejoin, data pemain, dan transaksi.'),
+        description: t('Team PvP on Roblox, from cross-server matchmaking to the final score. I built the gameplay and backend scripting: combat, party queues, rejoin, player data, and purchases.', 'Game PvP beregu di Roblox, dari matchmaking lintas server sampai hasil pertandingan. Saya mengerjakan scripting gameplay dan backend: combat, antrean party, rejoin, data pemain, dan transaksi.'),
         tags: ['Luau', 'MemoryStore', 'ProfileStore'],
         preview: `${assetBase}/projects/bentengan/card.webp`,
         url: 'Project_Bentengan'
@@ -109,7 +109,7 @@
         name: 'DrXporter',
         preview: `${assetBase}/previews/drxporter.webp`,
         scopes: ['game', 'software'],
-        categoryLabel: t('Personal developer tool', 'Alat developer pribadi'),
+        categoryLabel: t('Personal developer tool', 'Developer tool pribadi'),
         visibility: 'public',
         archived: false,
         fork: false,
@@ -139,7 +139,7 @@
         name: 'SAZA Bot Go',
         preview: `${assetBase}/previews/saza-go.webp`,
         scopes: ['automation'],
-        categoryLabel: t('WhatsApp bot starter', 'Fondasi bot WhatsApp'),
+        categoryLabel: t('WhatsApp bot starter', 'Starter bot WhatsApp'),
         visibility: 'public',
         archived: false,
         fork: false,
@@ -154,12 +154,12 @@
         name: 'SAZA Bot JS',
         preview: `${assetBase}/previews/saza-js.webp`,
         scopes: ['automation'],
-        categoryLabel: t('WhatsApp bot starter', 'Fondasi bot WhatsApp'),
+        categoryLabel: t('WhatsApp bot starter', 'Starter bot WhatsApp'),
         visibility: 'public',
         archived: false,
         fork: false,
         source: 'original',
-        description: t('A JavaScript starter for WhatsApp bots using Baileys. Includes formatted responses and an npm or Bun workflow as a base for adding your own commands.', 'Starter bot WhatsApp dengan JavaScript dan Baileys. Menyediakan format respons serta workflow npm atau Bun sebagai dasar untuk menambahkan command sendiri.'),
+        description: t('A JavaScript starter for WhatsApp bots using Baileys. Includes formatted responses and an npm or Bun workflow as a base for adding your own commands.', 'Starter bot WhatsApp dengan JavaScript dan Baileys. Format respons dan workflow npm atau Bun sudah tersedia, tinggal tambahkan command sendiri.'),
         tags: ['JavaScript', 'Baileys', 'Node.js', 'Bun'],
         url: 'https://github.com/DranxX/SAZA-Bot-JS'
       },
@@ -225,8 +225,8 @@
         ]
       },
       {
-        title: t('Game development', 'Pengembangan game'),
-        note: t('Currently focused on Roblox development', 'Saat ini paling banyak digunakan untuk pengembangan di Roblox'),
+        title: t('Game development', 'Game development'),
+        note: t('Mostly Roblox right now', 'Saat ini paling banyak di Roblox'),
         items: [
           { name: 'Roblox Studio', iconSrc: `${assetBase}/brands/roblox-studio.svg`, short: 'RBLX' },
           { name: 'Unity', iconSrc: `${assetBase}/brands/unity.svg`, iconSurface: 'mono', short: 'UN' },
@@ -248,7 +248,7 @@
       },
       {
         title: t('Security & infrastructure', 'Keamanan & infrastruktur'),
-        note: t('Testing, containers, and deployment', 'Pengujian, container, dan deployment'),
+        note: t('Testing, containers, and deployment', 'Testing, container, dan deployment'),
         items: [
           { name: 'Burp Suite', iconSrc: `${assetBase}/brands/burp-suite.svg`, short: 'BS' },
           { name: 'Kali Linux', iconSrc: `${assetBase}/brands/kalilinux.svg`, short: 'KL' },
@@ -259,11 +259,11 @@
     ],
 
     languages: [
-       { name: t('Indonesian', 'Bahasa Indonesia'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('My primary language', 'Bahasa utama saya'), flag: `${assetBase}/icons/flags/id.svg` },
-       { name: t('English', 'Bahasa Inggris'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('Used for work', 'Digunakan untuk bekerja'), flag: `${assetBase}/icons/flags/gb.svg` },
-       { name: t('Japanese', 'Bahasa Jepang'), proficiency: 'developing', proficiencyLabel: t('Developing', 'Berkembang'), level: t('General comprehension', 'Pemahaman umum'), flag: `${assetBase}/icons/flags/jp.svg` },
-       { name: t('Chinese', 'Bahasa Mandarin'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Early learning', 'Tahap awal belajar'), flag: `${assetBase}/icons/flags/cn.svg` },
-       { name: t('French', 'Bahasa Prancis'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Early learning', 'Tahap awal belajar'), flag: `${assetBase}/icons/flags/fr.svg` }
+       { name: t('Indonesian', 'Bahasa Indonesia'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('First language', 'Bahasa sehari-hari'), flag: `${assetBase}/icons/flags/id.svg` },
+       { name: t('English', 'Bahasa Inggris'), proficiency: 'active', proficiencyLabel: t('Active', 'Aktif'), level: t('Used for work', 'Dipakai untuk kerja'), flag: `${assetBase}/icons/flags/gb.svg` },
+       { name: t('Japanese', 'Bahasa Jepang'), proficiency: 'developing', proficiencyLabel: t('Developing', 'Berkembang'), level: t('Understand most of it', 'Paham secara umum'), flag: `${assetBase}/icons/flags/jp.svg` },
+       { name: t('Chinese', 'Bahasa Mandarin'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Baru belajar dasar'), flag: `${assetBase}/icons/flags/cn.svg` },
+       { name: t('French', 'Bahasa Prancis'), proficiency: 'beginner', proficiencyLabel: t('Beginner', 'Pemula'), level: t('Learning the basics', 'Baru belajar dasar'), flag: `${assetBase}/icons/flags/fr.svg` }
     ]
   });
 })();
