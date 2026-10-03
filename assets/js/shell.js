@@ -144,7 +144,7 @@
 
       const bottom = create('div', 'footer-bottom');
       const copyright = create('span');
-      copyright.append('© ', create('em', '', 'DranxX'), ' Studio');
+      copyright.append(`© ${new Date().getFullYear()} `, create('em', '', 'DranxX Studio'));
       bottom.append(copyright);
 
       wrap.append(grid, bottom);

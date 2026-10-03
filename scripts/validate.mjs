@@ -316,7 +316,7 @@ if (!/\.hero-title\s*\{[^}]*text-transform:\s*none/.test(pageStyleSource)
   issues.push('Brand identity: hero and Profile must keep DranxX casing while navbar and footer use the approved uppercase treatment');
 }
 if (/Sitemap/.test(shellSource)
-  || !/'© ', create\('em', '', 'DranxX'\), ' Studio'/.test(shellSource)) {
+  || !/`© \$\{new Date\(\)\.getFullYear\(\)\} `, create\('em', '', 'DranxX Studio'\)/.test(shellSource)) {
   issues.push('assets/js/shell.js: footer must use plain portfolio copy without the unexplained Sitemap link');
 }
 if (/UTC\+7/.test(homeSource)) {
