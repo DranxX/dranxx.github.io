@@ -196,7 +196,6 @@
       const wrap = create('div', 'wrap');
       const head = this.createSectionHead(this.copy.systemsLabel, this.copy.systemsTitle);
       head.querySelector('h2').id = 'project-systems-title';
-      head.append(create('p', 'section-copy', this.isIndonesian ? 'Ringkasan menunjukkan fungsi tiap sistem. Buka detail untuk melihat aturan, alur data, dan penanganan kegagalannya.' : 'Each summary explains what a system does. Open the details for its rules, data flow, and failure handling.'));
       const grid = create('div', 'project-system-list');
       this.project.systems.forEach(system => {
         const card = setAttributes(create('article', 'system-row drx-reveal'), { id: `system-${system.id}` });

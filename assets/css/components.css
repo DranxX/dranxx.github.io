@@ -290,7 +290,6 @@
 
 .project-clear { min-height: 44px; padding: 8px 14px; font-size: 11px; }
 .catalog-title { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 700; }
-.catalog-hint { color: var(--muted); font-size: 12px; line-height: 1.6; }
 .catalog-filters { display: flex; flex-wrap: wrap; gap: 8px; }
 .catalog-filter { min-height: 44px; padding: 10px 16px; border: 1px solid var(--muted); background: transparent; color: var(--muted); font-family: inherit; font-size: 12px; line-height: 1.4; cursor: pointer; transition: color 180ms ease, border-color 180ms ease, background 180ms ease; }
 .catalog-filter:hover { color: var(--foreground); border-color: var(--blue); background: var(--ink-3); }
@@ -343,7 +342,6 @@
 
 /* DRX accordion integration -------------------------------------------- */
 .faq-layout { gap: 54px; }
-.faq-copy { margin-top: 24px; }
 
 .drx-accordion { border-top: 1px solid var(--line); }
 .drx-accordion-item { border-bottom-color: var(--line); }
