@@ -54,12 +54,12 @@ const targetExists = target => {
 };
 const cleanRoute = fileName => (fileName === 'index.html' ? '' : fileName.replace(/\.html$/, ''));
 
-const localTarget = (sourceFile, rawTarget) => {
+const localTarget = (documentBase, rawTarget) => {
   const cleaned = rawTarget.split('#')[0].split('?')[0];
   if (!cleaned || /^(?:[a-z]+:|\/\/)/i.test(cleaned)) return null;
-  return cleaned.startsWith('/')
-    ? path.join(root, cleaned.slice(1))
-    : path.resolve(path.dirname(path.join(root, sourceFile)), cleaned);
+  const base = typeof documentBase === 'string' ? new URL(documentBase, 'https://local.invalid/') : documentBase;
+  const resolved = new URL(cleaned, base);
+  return path.join(root, decodeURIComponent(resolved.pathname.slice(1)));
 };
 
 const listFiles = (directory, extension) => {
@@ -103,6 +103,9 @@ for (const page of pages) {
   }
 
   const html = fs.readFileSync(absolutePage, 'utf8');
+  const pageUrl = new URL(page, 'https://local.invalid/');
+  const baseHref = html.match(/<base\s+href=["']([^"']+)["']/i)?.[1];
+  const documentBase = baseHref ? new URL(baseHref, pageUrl) : pageUrl;
   validateMarkupNesting(html, page);
   const ids = [...html.matchAll(/\bid=["']([^"']+)["']/g)].map(match => match[1]);
   const duplicates = [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
@@ -162,16 +165,19 @@ for (const page of pages) {
   if (!new RegExp(`<html\\b[^>]*\\blang=["']${expectedLocale}["']`, 'i').test(html)) {
     issues.push(`${page}: document language must match its locale directory`);
   }
+  const route = page.slice(expectedLocale.length + 1).replace(/index\.html$/, '').replace(/\.html$/, '');
   for (const locale of locales) {
-    const route = cleanRoute(path.basename(page));
-    if (!html.includes(`hreflang="${locale}" href="../${locale}/${route}"`)) {
+    const alternate = [...html.matchAll(/<link\b[^>]*rel=["']alternate["'][^>]*>/gi)]
+      .find(([tag]) => tag.includes(`hreflang="${locale}"`));
+    const href = alternate?.[0].match(/\bhref=["']([^"']+)["']/i)?.[1];
+    if (!href || new URL(href, documentBase).pathname !== `/${locale}/${route}`) {
       issues.push(`${page}: missing ${locale} alternate-language route`);
     }
   }
 
   for (const match of html.matchAll(/\b(href|src)=["']([^"']+)["']/gi)) {
     const [, attribute, rawTarget] = match;
-    const target = localTarget(page, rawTarget);
+    const target = localTarget(documentBase, rawTarget);
     if (target && !targetExists(target)) issues.push(`${page}: ${attribute} target is missing: ${rawTarget}`);
     if (attribute === 'href' && target && /\.html$/.test(rawTarget.split(/[?#]/)[0])) issues.push(`${page}: link should use the extensionless route: ${rawTarget}`);
   }

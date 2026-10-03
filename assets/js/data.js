@@ -212,7 +212,7 @@
     technologyGroups: [
       {
         title: t('Languages', 'Bahasa pemrograman'),
-        note: t('I mainly use Luau and Python, and try other languages in my projects', 'Saya paling sering menggunakan Luau dan Python. Bahasa lain saya coba saat mengerjakan proyek.'),
+        note: t('Luau and Python are my main programming languages, and I try others while working on projects or experimenting', 'Saya paling sering menggunakan Luau dan Python sebagai bahasa pemrograman utama lalu bahasa lain saya coba saat mengerjakan proyek atau bereksperimen'),
         items: [
           { name: 'Luau / Lua', iconSrc: `${assetBase}/brands/lua.svg`, short: 'Lua', primary: true },
           { name: 'Python', iconSrc: `${assetBase}/brands/python.svg`, short: 'Py', primary: true },
