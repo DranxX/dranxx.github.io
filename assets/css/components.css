@@ -373,8 +373,6 @@
 /* Forms ----------------------------------------------------------------- */
 .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .form-shell .drx-field { margin-bottom: 18px; }
-.nojs-form-warning { margin-bottom: 20px; padding: 14px; border-left: 2px solid var(--yellow); color: var(--muted); background: var(--ink); font-size: 10px; }
-.nojs-form-warning a { color: var(--yellow); }
 .form-shell .drx-label { color: var(--muted); font-size: 9.5px; letter-spacing: .13em; }
 .form-shell .drx-input,
 .form-shell .drx-textarea {

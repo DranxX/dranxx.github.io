@@ -406,11 +406,15 @@ if (!/addEventListener\(['"]error['"][\s\S]*?preview\.remove\(\)/.test(collectio
   issues.push('assets/js/collections.js: repository previews must retain an offline/error fallback');
 }
 const contactRuntimeSource = fs.readFileSync(path.join(root, 'assets/js/app.js'), 'utf8');
-if (!/formsubmit\.co\/ajax\/\$\{config\.email\}/.test(contactRuntimeSource)
-  || !/data-contact-form/.test(contactSource)
+if (!/formsubmit\.co\/dranxx\.contact@gmail\.com/.test(contactSource)
+  || !/method="POST"/.test(contactSource)
   || !/name="_honey"/.test(contactSource)
-  || !/href="mailto:dranxx\.contact@gmail\.com">dranxx\.contact@gmail\.com<\/a>/.test(contactSource)) {
-  issues.push('contact.html: the form must send through FormSubmit with a honeypot, and the address must be a plain mailto link');
+  || !/name="_next"/.test(contactSource)
+  || !/name="_subject"/.test(contactSource)
+  || !/href="mailto:dranxx\.contact@gmail\.com">dranxx\.contact@gmail\.com<\/a>/.test(contactSource)
+  || /formsubmit\.co\/ajax/.test(contactRuntimeSource)
+  || /data-contact-form/.test(contactSource)) {
+  issues.push('contact.html: the form must POST to FormSubmit with a honeypot and return URL, and the address must be a plain mailto link');
 }
 if (!/'project-showcase': renderShowcase/.test(collectionSource)
   || !/const items = getOrderedProjects\(\)\.filter\(item => !item\.archived\);/.test(collectionSource)

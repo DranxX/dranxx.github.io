@@ -6,18 +6,12 @@
       filteredBy: 'Hasil untuk',
       showingAll: 'Semua proyek',
       projectCount: count => `${count} proyek`,
-      subject: 'Pertanyaan dari portofolio DranxX',
-      sending: 'Mengirim…',
-      sent: email => `Terkirim. Saya akan membalas ke ${email}.`,
-      sendFailed: `Pesan gagal terkirim. Silakan email langsung ke ${config?.email}.`
+      sentFallback: 'Pesan terkirim. Saya akan segera membalas.'
     } : {
       filteredBy: 'Results for',
       showingAll: 'All projects',
       projectCount: count => `${count} project${count === 1 ? '' : 's'}`,
-      subject: 'Portfolio inquiry from DranxX',
-      sending: 'Sending…',
-      sent: email => `Sent. I’ll reply to ${email}.`,
-      sendFailed: `Couldn’t send it. Please email ${config?.email} instead.`
+      sentFallback: 'Your message was sent. I’ll reply soon.'
     };
     const progress = document.getElementById('scrollProgress');
     const backToTop = document.getElementById('backToTop');
@@ -195,44 +189,17 @@
       document.addEventListener('dranxx:content-ready', applyProjectFilters);
     }
 
-    // The site is static, so FormSubmit relays the form to config.email. The first message
-    // sent to a new address triggers an activation email that has to be confirmed once.
-    document.querySelectorAll('[data-contact-form]').forEach(form => {
-      const status = form.querySelector('[data-form-message]');
-      const submit = form.querySelector('[type="submit"]');
-      form.addEventListener('submit', async event => {
-        event.preventDefault();
-        if (!form.reportValidity()) return;
-
-        const values = new FormData(form);
-        const replyEmail = String(values.get('email') || '').trim();
-        submit.disabled = true;
-        status.textContent = copy.sending;
+    // FormSubmit redirects back with ?sent=1 after a successful POST.
+    const formSent = new URLSearchParams(window.location.search).get('sent');
+    if (formSent === '1') {
+      const fireAndForget = async () => {
         try {
-          const response = await fetch(`https://formsubmit.co/ajax/${config.email}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({
-              name: String(values.get('name') || '').trim(),
-              email: replyEmail,
-              message: String(values.get('message') || '').trim(),
-              _subject: copy.subject,
-              _template: 'table',
-              _honey: String(values.get('_honey') || '')
-            })
-          });
-          const result = await response.json().catch(() => ({}));
-          if (!response.ok || String(result.success) !== 'true') throw new Error(result.message || `FormSubmit responded with ${response.status}`);
-          form.reset();
-          status.textContent = copy.sent(replyEmail);
-        } catch (error) {
-          console.warn('The contact form could not be sent.', error);
-          status.textContent = copy.sendFailed;
-        } finally {
-          submit.disabled = false;
-        }
-      });
-    });
+          const status = document.querySelector('[data-form-message]');
+          if (status) status.textContent = copy.sentFallback;
+        } catch {}
+      };
+      fireAndForget();
+    }
 
     const updateScrollState = () => {
       const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
