@@ -50,14 +50,28 @@
       else revealAll();
     });
 
-    document.addEventListener('keydown', event => {
-      if (event.key !== 'Escape') return;
-      const menu = document.querySelector('.drx-navbar-links');
-      const toggle = document.querySelector('.drx-navbar-toggle');
+    const menu = document.querySelector('.drx-navbar-links');
+    const menuToggle = document.querySelector('.drx-navbar-toggle');
+    const mobileNav = window.matchMedia('(max-width: 900px)');
+    const closeMenu = () => {
       menu?.classList.remove('open');
-      toggle?.classList.remove('open');
-      toggle?.setAttribute('aria-expanded', 'false');
+      menuToggle?.classList.remove('open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    };
+    document.addEventListener('keydown', event => {
+      if (!mobileNav.matches || !menu?.classList.contains('open')) return;
+      if (event.key === 'Escape') {
+        closeMenu();
+        menuToggle?.focus();
+      }
     });
+    menuToggle?.addEventListener('click', event => {
+      if (event.detail !== 0 || !mobileNav.matches) return;
+      window.requestAnimationFrame(() => {
+        if (menu?.classList.contains('open')) menu.querySelector('a')?.focus({ preventScroll: true });
+      });
+    });
+    mobileNav.addEventListener('change', closeMenu);
 
     const setupTilt = () => {
       if (reducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
