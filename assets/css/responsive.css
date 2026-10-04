@@ -208,11 +208,16 @@
   .project-query-row,
   .project-facet-row { padding-inline: 16px; }
 
-  .profile-sidebar { grid-template-columns: 1fr; }
-  .profile-avatar { max-width: 240px; }
+  .profile-sidebar { grid-template-columns: 1fr; text-align: center; }
+  .profile-avatar { width: 100%; max-width: 240px; margin-inline: auto; }
+  .profile-sidebar .contact-list a { max-width: 100%; justify-content: center; }
   .profile-links { grid-column: auto; }
   .profile-link-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .profile-links a { display: flex; justify-content: center; }
   .profile-main { padding: 34px 24px; }
+  .profile-overline,
+  .profile-name,
+  .profile-role { text-align: center; }
   .profile-name { font-size: 66px; }
   .profile-interest-grid { grid-template-columns: 1fr; }
   .technology-group { padding: 26px 22px; }
