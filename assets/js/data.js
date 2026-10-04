@@ -35,8 +35,8 @@
       {
         id: 'games',
         number: '01',
-        title: t('Gameplay Systems', 'Sistem Gameplay'),
-        accent: t('Game Systems', 'Sistem'),
+        title: t('Game Development', 'Game Development'),
+        accent: 'Game',
         description: t('Need matchmaking, combat, or persistent player data? I build the server rules and connect the client controllers, so input, UI, and saved data follow the same game state.', 'Butuh matchmaking, combat, atau data pemain yang tersimpan? Saya membangun aturan di server dan menghubungkannya dengan controller di client, sehingga input, UI, dan data mengikuti state game yang sama.'),
         deliverables: t(['Gameplay: rounds, combat, objectives, movement, and input', 'Backend: party queues, cross-server matchmaking, teleport, and rejoin', 'Player systems: inventory, shop, receipts, progression, and rankings'], ['Gameplay: ronde, combat, objective, movement, dan input', 'Backend: party, matchmaking lintas server, teleport, dan rejoin', 'Sistem pemain: inventory, shop, receipt, progres, dan ranking']),
         proof: { label: t('See these systems in Bentengan', 'Lihat implementasinya di Bentengan'), url: 'Project/Bentengan/', image: `${assetBase}/projects/bentengan/card.webp` },
@@ -181,7 +181,7 @@
       {
         id: 'discord-bot',
         code: 'DSC',
-        name: 'DiscordBot',
+        name: 'Discord Bot',
         preview: `${assetBase}/previews/discord-bot.webp`,
         scopes: ['automation'],
         categoryLabel: t('Discord bot', 'Bot Discord'),
@@ -196,7 +196,7 @@
       {
         id: 'chatbot',
         code: 'CHT',
-        name: 'chatbot',
+        name: 'ChatBot',
         scopes: ['ai', 'game'],
         categoryLabel: t('AI / NPC dialogue', 'AI / Dialog NPC'),
         visibility: 'public',

@@ -11,8 +11,8 @@
     titleSuffix: isIndonesian ? 'DranxX - Portofolio Developer' : 'DranxX - Developer Portfolio',
     email: 'dranxx.contact@gmail.com',
     tagline: isIndonesian
-      ? 'Game dan software developer dari Indonesia, dengan pengalaman 5 tahun mengerjakan proyek di bidang game, software, AI/ML, dan keamanan.'
-      : 'Game and software developer from Indonesia, with 5 years of projects across games, software, AI/ML, and security.',
+      ? 'Game dan software developer dari Indonesia, dengan pengalaman 5 tahun mengerjakan proyek game development, system design, AI/ML, optimisasi, dan keamanan.'
+      : 'Game and software developer from Indonesia, with 5 years of projects across game development, system design, AI/ML, optimization, and security.',
     // Nav labels stay the same in both locales: the mixed Resources/Proyek state read as unfinished.
     nav: [
       { key: 'home', label: 'Home', href: './' },

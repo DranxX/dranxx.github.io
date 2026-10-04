@@ -247,7 +247,7 @@
 
 @media (max-width: 900px), (pointer: coarse) {
   /* Phones and tablets, including landscape tablets: small uppercase labels and meta text never drop below 10px. */
-  :is(.section-label, .hero-kicker, .tag, .status, .drx-label, .drx-field-description, .form-note, .project-view, .project-category,
+  :is(.section-label, .hero-kicker, .tag, .status, .drx-label, .drx-field-description, .project-view, .project-category,
     .project-result-bar span, .showcase-eyebrow span, .technology-index, .technology-badge, .principle-index, .project-flow-index,
     .project-system-index, .project-case-role, .project-case-state span, .project-media-placeholder span, .project-section-nav a,
     .resource-category, .resource-channel, .resource-count, .language-proficiency, .language-item p, .profile-link-label,

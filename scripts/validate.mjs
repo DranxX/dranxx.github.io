@@ -347,7 +347,7 @@ if (/data-wib-clock|Local time|WIB --:--:--/.test(`${homeSource}\n${profileSourc
 if (!/Indonesia · UTC\+7/.test(profileSource) || !/Blacksmithing[\s\S]*?metallurgy/i.test(profileSource) || !/chess\.com\/member\/bramadyafiqri/.test(profileSource)) {
   issues.push('profile.html: biography must include UTC+7, combined metallurgy/blacksmithing, and the Chess profile link');
 }
-if (!/<dd>Games · Software · AI\/ML · Security<\/dd>/.test(profileSource)
+if (!/<dd>Games · AI\/ML · Optimization · Security<\/dd>/.test(profileSource)
   || /Working mostly in/.test(profileSource)) {
   issues.push('profile.html: sidebar must describe broad project scope instead of labeling DranxX by Roblox');
 }
@@ -525,8 +525,8 @@ try {
     || [...expectedProficiency].some(([name, proficiency]) => languages.find(language => language.name === name)?.proficiency !== proficiency)) {
     issues.push('assets/js/data.js: language proficiency must map Indonesian/English to active, Japanese to developing, and Mandarin/French to beginner');
   }
-  const discordBot = projects.find(item => item.name === 'DiscordBot');
-  if (!discordBot?.scopes.includes('automation')) issues.push('assets/js/data.js: DiscordBot must be classified under bots and automation');
+  const discordBot = projects.find(item => item.name === 'Discord Bot');
+  if (!discordBot?.scopes.includes('automation')) issues.push('assets/js/data.js: Discord Bot must be classified under bots and automation');
 
   const projectIds = new Set(projects.map(project => project.id));
 

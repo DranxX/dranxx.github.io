@@ -6,15 +6,7 @@
       filteredBy: 'Hasil untuk',
       showingAll: 'Semua proyek',
       projectCount: count => `${count} proyek`,
-      projectFallback: 'Proyek atau kolaborasi',
-      topics: {
-        project: 'Proyek atau kolaborasi',
-        games: 'Sistem gameplay',
-        software: 'Software atau tooling',
-        'ai-ml': 'Eksperimen AI / ML',
-        'security-performance': 'Keamanan atau performa'
-      },
-      subject: label => `Pertanyaan dari portofolio: ${label}`,
+      subject: 'Pertanyaan dari portofolio DranxX',
       sending: 'Mengirim…',
       sent: email => `Terkirim. Saya akan membalas ke ${email}.`,
       sendFailed: `Pesan gagal terkirim. Silakan email langsung ke ${config?.email}.`
@@ -22,15 +14,7 @@
       filteredBy: 'Results for',
       showingAll: 'All projects',
       projectCount: count => `${count} project${count === 1 ? '' : 's'}`,
-      projectFallback: 'Project or collaboration',
-      topics: {
-        project: 'Project or collaboration',
-        games: 'Gameplay systems',
-        software: 'Software or tooling',
-        'ai-ml': 'AI / ML experiments',
-        'security-performance': 'Security or performance'
-      },
-      subject: label => `Portfolio inquiry: ${label}`,
+      subject: 'Portfolio inquiry from DranxX',
       sending: 'Sending…',
       sent: email => `Sent. I’ll reply to ${email}.`,
       sendFailed: `Couldn’t send it. Please email ${config?.email} instead.`
@@ -214,8 +198,6 @@
     // The site is static, so FormSubmit relays the form to config.email. The first message
     // sent to a new address triggers an activation email that has to be confirmed once.
     document.querySelectorAll('[data-contact-form]').forEach(form => {
-      const requestedTopic = new URLSearchParams(window.location.search).get('topic');
-      const topic = Object.hasOwn(copy.topics, requestedTopic) ? copy.topics[requestedTopic] : copy.projectFallback;
       const status = form.querySelector('[data-form-message]');
       const submit = form.querySelector('[type="submit"]');
       form.addEventListener('submit', async event => {
@@ -234,7 +216,7 @@
               name: String(values.get('name') || '').trim(),
               email: replyEmail,
               message: String(values.get('message') || '').trim(),
-              _subject: copy.subject(topic),
+              _subject: copy.subject,
               _template: 'table',
               _honey: String(values.get('_honey') || '')
             })
