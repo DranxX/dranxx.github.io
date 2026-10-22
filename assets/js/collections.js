@@ -233,7 +233,7 @@
   const getLocalPreview = item => item.preview || '';
 
   const github = config.github || {};
-  const repositoryCacheKey = `dranxx:repositories:${github.user}`;
+  const repositoryCacheKey = `dranxx:repositories:${github.user}:updated-at-v2`;
   const repositoryCacheAge = 60 * 60 * 1000;
   const topicScopes = { game: 'game', roblox: 'game', minecraft: 'game', software: 'software', tool: 'software', bot: 'automation', automation: 'automation', ai: 'ai', 'machine-learning': 'ai' };
   const getRepositoryKey = item => getGitHubRepository(item.url)?.repository.toLowerCase() || '';
@@ -256,6 +256,7 @@
       .map(repo => ({
         name: repo.name,
         url: repo.html_url,
+        pushed_at: repo.pushed_at,
         description: repo.description || '',
         language: repo.language || '',
         topics: repo.topics || [],
@@ -274,6 +275,7 @@
       code: repo.name.replace(/[^a-z0-9]/gi, '').slice(0, 3).toUpperCase(),
       name: repo.name,
       kind: 'repository',
+      updatedAt: repo.pushed_at || '',
       scopes: [...new Set(repo.topics.map(topic => topicScopes[topic]).filter(Boolean))],
       categoryLabel: repo.language || copy.repository,
       description: repo.description,
@@ -292,15 +294,28 @@
     const curatedKeys = new Set(data.projects.map(getRepositoryKey).filter(Boolean));
     const curated = data.projects
       .filter(item => !getRepositoryKey(item) || live.has(getRepositoryKey(item)))
-      .map(item => (live.get(getRepositoryKey(item))?.archived ? { ...item, archived: true } : item));
+      .map(item => {
+        const repo = live.get(getRepositoryKey(item));
+        return {
+          ...item,
+          ...(repo?.archived ? { archived: true } : {}),
+          updatedAt: repo?.pushed_at || item.updatedAt || ''
+        };
+      });
     const discovered = [...live.values()]
       .filter(repo => !curatedKeys.has(repo.name.toLowerCase()))
       .map(createRepositoryProject);
-    return [...curated, ...discovered];
+    return [...curated, ...discovered].sort((a, b) => {
+      const aTime = Date.parse(a.updatedAt) || 0;
+      const bTime = Date.parse(b.updatedAt) || 0;
+      return bTime - aTime;
+    });
   };
 
   const repositoryCache = github.user ? readRepositoryCache() : null;
-  let projects = Array.isArray(repositoryCache?.repositories) ? mergeRepositories(repositoryCache.repositories) : data.projects;
+  let projects = Array.isArray(repositoryCache?.repositories)
+    ? mergeRepositories(repositoryCache.repositories)
+    : [...data.projects].sort((a, b) => (Date.parse(b.updatedAt) || 0) - (Date.parse(a.updatedAt) || 0));
 
   const getOrderedProjects = () => projects;
 

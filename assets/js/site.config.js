@@ -52,7 +52,7 @@
     github: Object.freeze({
       user: 'DranxX',
       // The profile README and this site's own repo are not projects.
-      ignore: Object.freeze(['DranxX', 'dranxx.github.io'])
+      ignore: Object.freeze(['DranxX', 'dranxx.github.io', 'spotify-middleware', 'DrxManager'])
     }),
     social: [
       { label: 'GitHub', href: 'https://github.com/DranxX' },

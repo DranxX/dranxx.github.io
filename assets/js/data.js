@@ -88,6 +88,38 @@
         url: 'Project/Bentengan/'
       },
       {
+        id: 'filemofm',
+        code: 'FMF',
+        name: 'FilemoFM',
+        kind: 'repository',
+        scopes: ['software'],
+        categoryLabel: t('Windows / Linux file manager', 'File manager Windows / Linux'),
+        visibility: 'public',
+        archived: false,
+        fork: false,
+        source: 'original',
+        updatedAt: '2026-10-22T12:21:43Z',
+        description: t('A portable file manager for Windows and Linux. It catalogs file metadata in SQLite, supports keyword and optional local semantic search, and queues file operations with recovery.', 'File manager portabel untuk Windows dan Linux. Aplikasi ini menyimpan katalog metadata file di SQLite, mendukung pencarian kata kunci dan pencarian semantik lokal opsional, serta menjalankan operasi file lewat antrean yang punya mekanisme pemulihan.'),
+        tags: ['Rust', 'egui', 'SQLite', 'Windows / Linux'],
+        url: 'https://github.com/DranxX/FilemoFM'
+      },
+      {
+        id: 'codemap',
+        code: 'CDM',
+        name: 'CodeMap',
+        kind: 'repository',
+        scopes: ['software'],
+        categoryLabel: t('Offline repository visualizer', 'Visualisasi repository offline'),
+        visibility: 'public',
+        archived: false,
+        fork: false,
+        source: 'original',
+        updatedAt: '2026-10-21T18:56:44Z',
+        description: t('An offline Rust tool that scans a code repository and generates a self-contained HTML treemap, with file filters and SVG or PNG export.', 'Tool Rust offline yang memindai repository kode lalu membuat treemap HTML mandiri, lengkap dengan filter file dan ekspor SVG atau PNG.'),
+        tags: ['Rust', 'CLI', 'HTML', 'SVG / PNG'],
+        url: 'https://github.com/DranxX/CodeMap'
+      },
+      {
         id: 'corpus-cleaner',
         code: 'CRC',
         name: 'corpus-cleaner',
@@ -99,6 +131,7 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-10-03T05:24:38Z',
         description: t('A LoRA fine-tuning toolkit for turning raw text into clean text in Indonesian, English, and Chinese. Includes UMT5 training, tokenization caches, environment checks, and inference scripts.', 'Toolkit fine-tuning LoRA untuk membersihkan teks mentah dalam bahasa Indonesia, Inggris, dan Mandarin. Mencakup training UMT5, cache tokenisasi, pengecekan environment, dan script inference.'),
         tags: ['Python', 'LoRA', 'Transformers', 'UMT5'],
         url: 'https://github.com/DranxX/corpus-cleaner'
@@ -114,6 +147,7 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-07-13T11:29:38Z',
         description: t('Work on Roblox scripts in a local editor and keep Studio in sync. A Luau plugin and TypeScript service track scripts and instances in both directions, using UUIDs and Rojo-compatible files.', 'Edit script Roblox di editor lokal dan sinkronkan perubahan ke Studio, atau sebaliknya. Plugin Luau dan service TypeScript melacak script serta instance lewat UUID dan file yang kompatibel dengan Rojo.'),
         tags: ['Luau', 'TypeScript', 'Node.js', 'Rojo'],
         url: 'https://github.com/DranxX/DrXporter'
@@ -129,6 +163,7 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-02-03T23:54:23Z',
         description: t('Reusable Roblox models and scripts, with RBXM packages you can import into Studio. Browse the source, inspect how each system works, and adapt it to your game.', 'Kumpulan model dan script Roblox dengan paket RBXM yang bisa langsung diimpor ke Studio. Buka source-nya, pelajari cara kerja tiap sistem, lalu sesuaikan dengan game kamu.'),
         tags: ['Roblox Studio', 'Luau'],
         url: 'https://github.com/DranxX/MyRobloxAssets'
@@ -144,6 +179,7 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-07-14T01:23:23Z',
         description: t('Build a WhatsApp bot in Go without starting its connection and storage layers from scratch. Uses whatsmeow, a plugin registry, SQLite, reconnection handling, and spam protection.', 'Starter bot WhatsApp berbasis Go dan whatsmeow. Sudah dilengkapi registry plugin, penyimpanan SQLite, reconnect, dan proteksi spam, sehingga pengembangan bisa langsung berfokus pada fitur bot.'),
         tags: ['Go', 'WhatsMeow', 'SQLite', 'Plugins'],
         url: 'https://github.com/DranxX/SAZA-Bot-Go'
@@ -159,25 +195,12 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-07-14T00:51:16Z',
         description: t('A JavaScript starter for WhatsApp bots using Baileys. Includes formatted responses and an npm or Bun workflow as a base for adding your own commands.', 'Starter bot WhatsApp dengan JavaScript dan Baileys. Format respons dan workflow npm atau Bun sudah tersedia, sehingga kamu cukup menambahkan command sendiri.'),
         tags: ['JavaScript', 'Baileys', 'Node.js', 'Bun'],
         url: 'https://github.com/DranxX/SAZA-Bot-JS'
       },
       {
-        id: 'drx-manager',
-        code: 'DRM',
-        name: 'DrxManager',
-        preview: `${assetBase}/previews/drx-manager.webp`,
-        scopes: ['software'],
-        categoryLabel: t('Personal desktop app', 'Aplikasi desktop pribadi'),
-        visibility: 'public',
-        archived: false,
-        fork: false,
-        source: 'original',
-        description: t('A Windows file explorer built with Rust and egui. Color tags help organize files, while built-in previews let you inspect them without opening a separate app.', 'File explorer Windows yang saya bangun dengan Rust dan egui. Tag warna membantu mengelompokkan file, sementara preview bawaan memudahkan pemeriksaan isi file tanpa membuka aplikasi lain.'),
-        tags: ['Rust', 'egui', 'Windows'],
-        url: 'https://github.com/DranxX/DrxManager'
-      },
       {
         id: 'discord-bot',
         code: 'DSC',
@@ -189,6 +212,7 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-07-13T11:31:41Z',
         description: t('A Discord.js bot for running a server. Slash commands handle bans, kicks, timeouts, and bulk deletes for a moderator role, and notifiers announce new YouTube videos, TikTok posts, and live streams.', 'Bot Discord.js untuk mengelola server. Slash command menangani ban, kick, timeout, dan hapus pesan massal untuk role moderator, sementara notifier mengumumkan video YouTube, postingan TikTok, dan live terbaru.'),
         tags: ['JavaScript', 'Discord.js', 'YouTube API', 'TikTok'],
         url: 'https://github.com/DranxX/DiscordBot'
@@ -203,6 +227,7 @@
         archived: false,
         fork: false,
         source: 'original',
+        updatedAt: '2026-01-22T16:48:45Z',
         description: t('A small Flask endpoint on Vercel that sends a player message to Gemini and returns a short reply in an NPC voice. Built for NPC dialogue in Roblox, and usable from any game that can make HTTP requests.', 'Endpoint Flask kecil di Vercel yang meneruskan pesan pemain ke Gemini lalu membalas singkat dengan gaya bicara NPC. Dibuat untuk dialog NPC di Roblox, dan juga dapat digunakan oleh game lain yang mendukung request HTTP.'),
         tags: ['Python', 'Flask', 'Gemini', 'Vercel'],
         url: 'https://github.com/DranxX/chatbot'
