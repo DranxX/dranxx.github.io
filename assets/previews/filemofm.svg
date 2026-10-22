@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" fill="none">
+  <rect width="1200" height="640" fill="#11121A"/>
+  <rect width="12" height="640" fill="#F0D63C"/>
+  <circle cx="965" cy="320" r="190" fill="#1B1D2A"/>
+  <path d="M843 252h93l31 34h110c15 0 27 12 27 27v103c0 15-12 27-27 27H843c-15 0-27-12-27-27V279c0-15 12-27 27-27Z" fill="#F0D63C"/>
+  <path d="M816 313h288v103c0 15-12 27-27 27H843c-15 0-27-12-27-27V313Z" fill="#74C3D5"/>
+  <path d="M816 313h288v22H816z" fill="#F5E98C"/>
+  <text x="88" y="206" fill="#F0D63C" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="7">PORTABLE FILE MANAGER</text>
+  <text x="84" y="316" fill="#F5F4F0" font-family="Arial, sans-serif" font-size="82" font-weight="700">FilemoFM</text>
+  <text x="88" y="374" fill="#B3B5C1" font-family="Arial, sans-serif" font-size="27">A file manager for Windows and Linux</text>
+  <path d="M88 432h476" stroke="#343646" stroke-width="2"/>
+  <text x="88" y="486" fill="#F0D63C" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="3">RUST  /  EGUI</text>
+</svg>

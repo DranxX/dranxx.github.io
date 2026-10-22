@@ -269,31 +269,10 @@
     return repositories;
   };
 
-  const createRepositoryProject = repo => {
-    const item = {
-      id: `repo-${repo.name.toLowerCase()}`,
-      code: repo.name.replace(/[^a-z0-9]/gi, '').slice(0, 3).toUpperCase(),
-      name: repo.name,
-      kind: 'repository',
-      updatedAt: repo.pushed_at || '',
-      scopes: [...new Set(repo.topics.map(topic => topicScopes[topic]).filter(Boolean))],
-      categoryLabel: repo.language || copy.repository,
-      description: repo.description,
-      tags: [repo.language, ...repo.topics].filter(Boolean).slice(0, 4),
-      url: repo.url,
-      archived: repo.archived
-    };
-    item.preview = getGitHubPreview(item);
-    return item;
-  };
-
-  // Curated entries keep their copy. GitHub decides which of them still exist and adds every other non-fork repository.
+  // Only curated projects appear in the portfolio; GitHub refreshes their update dates.
   const mergeRepositories = repositories => {
-    const ignored = new Set((github.ignore || []).map(name => name.toLowerCase()));
-    const live = new Map(repositories.filter(repo => !ignored.has(repo.name.toLowerCase())).map(repo => [repo.name.toLowerCase(), repo]));
-    const curatedKeys = new Set(data.projects.map(getRepositoryKey).filter(Boolean));
+    const live = new Map(repositories.map(repo => [repo.name.toLowerCase(), repo]));
     const curated = data.projects
-      .filter(item => !getRepositoryKey(item) || live.has(getRepositoryKey(item)))
       .map(item => {
         const repo = live.get(getRepositoryKey(item));
         return {
@@ -302,10 +281,7 @@
           updatedAt: repo?.pushed_at || item.updatedAt || ''
         };
       });
-    const discovered = [...live.values()]
-      .filter(repo => !curatedKeys.has(repo.name.toLowerCase()))
-      .map(createRepositoryProject);
-    return [...curated, ...discovered].sort((a, b) => {
+    return curated.sort((a, b) => {
       const aTime = Date.parse(a.updatedAt) || 0;
       const bTime = Date.parse(b.updatedAt) || 0;
       return bTime - aTime;

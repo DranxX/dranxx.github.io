@@ -91,6 +91,7 @@
         id: 'filemofm',
         code: 'FMF',
         name: 'FilemoFM',
+        preview: `${assetBase}/previews/filemofm.svg`,
         kind: 'repository',
         scopes: ['software'],
         categoryLabel: t('Windows / Linux file manager', 'File manager Windows / Linux'),
@@ -200,7 +201,6 @@
         tags: ['JavaScript', 'Baileys', 'Node.js', 'Bun'],
         url: 'https://github.com/DranxX/SAZA-Bot-JS'
       },
-      {
       {
         id: 'discord-bot',
         code: 'DSC',
