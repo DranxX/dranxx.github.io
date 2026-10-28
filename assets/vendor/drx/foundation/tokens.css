@@ -1,0 +1,145 @@
+:root {
+  --drx-primary: #e8c840;
+  --drx-primary-hover: #f0d84a;
+  --drx-primary-active: #c9a820;
+  --drx-primary-muted: rgba(232, 200, 64, 0.15);
+  --drx-secondary: #6aaec8;
+  --drx-secondary-hover: #7ec0d8;
+  --drx-secondary-active: #3d8aab;
+  --drx-secondary-muted: rgba(106, 174, 200, 0.15);
+  --drx-success: #75c991;
+  --drx-success-hover: #8bd5a3;
+  --drx-success-active: #4f9f69;
+  --drx-success-muted: rgba(117, 201, 145, 0.14);
+  --drx-danger: #dc7474;
+  --drx-danger-hover: #e58b8b;
+  --drx-danger-active: #ae5151;
+  --drx-danger-muted: rgba(220, 116, 116, 0.14);
+  --drx-warning: #fbbf24;
+  --drx-warning-hover: #fcd34d;
+  --drx-warning-active: #f59e0b;
+  --drx-warning-muted: rgba(251, 191, 36, 0.15);
+  --drx-info: #60a5fa;
+  --drx-info-hover: #93c5fd;
+  --drx-info-active: #3b82f6;
+  --drx-info-muted: rgba(96, 165, 250, 0.15);
+
+  --drx-ink: #080810;
+  --drx-ink-2: #0f0f1a;
+  --drx-ink-3: #181825;
+  --drx-ink-4: #222233;
+  --drx-ink-3-rgb: 24, 24, 37;
+  --drx-fg: #d4d4e8;
+  --drx-mid: #66667f;
+  --drx-dim: #2a2a40;
+  --drx-line: rgba(255, 255, 255, 0.08);
+  --drx-line-strong: rgba(255, 255, 255, 0.16);
+  --drx-overlay: rgba(0, 0, 0, 0.6);
+
+  --drx-font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --drx-font-body: 'IBM Plex Mono', Consolas, monospace;
+  --drx-font-mono: 'IBM Plex Mono', Consolas, monospace;
+
+  --drx-container: 1180px;
+  --drx-nav-height: 62px;
+
+  --drx-text-xs: 9px;
+  --drx-text-sm: 11px;
+  --drx-text-base: 14px;
+  --drx-text-md: 16px;
+  --drx-text-lg: 20px;
+  --drx-text-xl: 28px;
+  --drx-text-2xl: 36px;
+  --drx-text-3xl: clamp(34px, 4.5vw, 58px);
+  --drx-text-4xl: clamp(62px, 9.5vw, 118px);
+
+  --drx-leading-tight: 0.9;
+  --drx-leading-snug: 1.0;
+  --drx-leading-normal: 1.6;
+  --drx-leading-relaxed: 1.8;
+  --drx-leading-loose: 1.9;
+
+  --drx-tracking-tight: -1px;
+  --drx-tracking-normal: 0;
+  --drx-tracking-wide: 0.04em;
+  --drx-tracking-wider: 0.12em;
+  --drx-tracking-widest: 0.22em;
+
+  --drx-weight-light: 300;
+  --drx-weight-normal: 400;
+  --drx-weight-medium: 500;
+  --drx-weight-semibold: 600;
+  --drx-weight-bold: 700;
+  --drx-weight-extrabold: 800;
+
+  --drx-space-0: 0;
+  --drx-space-1: 4px;
+  --drx-space-2: 8px;
+  --drx-space-3: 12px;
+  --drx-space-4: 16px;
+  --drx-space-5: 20px;
+  --drx-space-6: 24px;
+  --drx-space-8: 32px;
+  --drx-space-10: 40px;
+  --drx-space-12: 48px;
+  --drx-space-14: 56px;
+  --drx-space-16: 64px;
+  --drx-space-20: 80px;
+  --drx-space-24: 96px;
+
+  --drx-radius-none: 0;
+  --drx-radius-sm: 2px;
+  --drx-radius-md: 4px;
+  --drx-radius-lg: 8px;
+  --drx-radius-xl: 12px;
+  --drx-radius-2xl: 16px;
+  --drx-radius-full: 9999px;
+
+  --drx-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --drx-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --drx-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --drx-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --drx-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --drx-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  --drx-shadow-none: none;
+
+  --drx-z-base: 0;
+  --drx-z-dropdown: 100;
+  --drx-z-sticky: 150;
+  --drx-z-navbar: 200;
+  --drx-z-drawer: 300;
+  --drx-z-modal: 400;
+  --drx-z-popover: 500;
+  --drx-z-tooltip: 600;
+  --drx-z-toast: 700;
+  --drx-z-preloader: 10000;
+
+  --drx-bp-sm: 480px;
+  --drx-bp-md: 600px;
+  --drx-bp-lg: 900px;
+  --drx-bp-xl: 1200px;
+
+  --drx-opacity-0: 0;
+  --drx-opacity-5: 0.05;
+  --drx-opacity-10: 0.1;
+  --drx-opacity-25: 0.25;
+  --drx-opacity-50: 0.5;
+  --drx-opacity-75: 0.75;
+  --drx-opacity-100: 1;
+
+  --drx-duration-instant: 0ms;
+  --drx-duration-fast: 150ms;
+  --drx-duration-base: 200ms;
+  --drx-duration-normal: 300ms;
+  --drx-duration-slow: 500ms;
+  --drx-duration-slower: 650ms;
+  --drx-duration-page: 600ms;
+
+  --drx-ease-default: ease;
+  --drx-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --drx-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --drx-ease-in-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --drx-ease-sharp: cubic-bezier(0.7, 0, 0.2, 1);
+  --drx-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --drx-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

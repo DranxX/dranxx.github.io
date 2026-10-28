@@ -1,0 +1,187 @@
+.drx-font-display {
+  font-family: var(--drx-font-heading);
+  font-weight: var(--drx-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: var(--drx-tracking-tight);
+  line-height: var(--drx-leading-tight);
+}
+
+.drx-font-display-sm { font-size: clamp(28px, 4vw, 48px); }
+.drx-font-display-md { font-size: clamp(40px, 6vw, 72px); }
+.drx-font-display-lg { font-size: clamp(56px, 9vw, 110px); }
+.drx-font-display-xl { font-size: clamp(72px, 12vw, 160px); }
+
+.drx-font-label {
+  font-size: 8.5px;
+  letter-spacing: var(--drx-tracking-widest);
+  text-transform: uppercase;
+  color: var(--drx-text-muted);
+  font-family: var(--drx-font-body);
+  font-weight: var(--drx-weight-medium);
+}
+
+.drx-font-overline {
+  font-size: var(--drx-text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--drx-primary);
+  font-weight: var(--drx-weight-medium);
+}
+
+.drx-font-caption {
+  font-size: 10px;
+  color: var(--drx-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.drx-font-stat {
+  font-family: var(--drx-font-heading);
+  font-size: var(--drx-text-2xl);
+  font-weight: var(--drx-weight-bold);
+  line-height: 1;
+}
+
+.drx-font-stat-lg {
+  font-size: clamp(36px, 5vw, 64px);
+}
+
+.drx-font-code {
+  font-family: var(--drx-font-mono);
+  font-size: 0.9em;
+  background: var(--drx-bg-3);
+  padding: 2px 6px;
+  border-radius: var(--drx-radius-sm);
+  border: 1px solid var(--drx-border);
+}
+
+.drx-font-quote {
+  font-family: var(--drx-font-heading);
+  font-size: var(--drx-text-xl);
+  font-weight: var(--drx-weight-light);
+  font-style: italic;
+  line-height: var(--drx-leading-relaxed);
+  color: var(--drx-text-muted);
+  border-left: 3px solid var(--drx-primary);
+  padding-left: var(--drx-space-5);
+}
+
+.drx-text-gradient {
+  background: linear-gradient(135deg, var(--drx-primary), var(--drx-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.drx-text-gradient-warm {
+  background: linear-gradient(135deg, var(--drx-primary), var(--drx-danger));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.drx-text-gradient-cool {
+  background: linear-gradient(135deg, var(--drx-secondary), var(--drx-info));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.drx-text-gradient-success {
+  background: linear-gradient(135deg, var(--drx-success), var(--drx-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.drx-text-stroke {
+  -webkit-text-stroke: 1px var(--drx-text);
+  -webkit-text-fill-color: transparent;
+}
+
+.drx-text-stroke-primary {
+  -webkit-text-stroke: 1px var(--drx-primary);
+  -webkit-text-fill-color: transparent;
+}
+
+.drx-text-stroke-secondary {
+  -webkit-text-stroke: 1px var(--drx-secondary);
+  -webkit-text-fill-color: transparent;
+}
+
+.drx-text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.drx-text-shadow-md {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.drx-text-shadow-glow {
+  text-shadow: 0 0 10px var(--drx-primary-muted), 0 0 20px var(--drx-primary-muted);
+}
+
+.drx-text-balance {
+  text-wrap: balance;
+}
+
+.drx-text-pretty {
+  text-wrap: pretty;
+}
+
+.drx-list-disc {
+  list-style: none;
+  padding: 0;
+}
+
+.drx-list-disc li {
+  position: relative;
+  padding-left: var(--drx-space-4);
+  font-size: var(--drx-text-sm);
+  color: var(--drx-text);
+  line-height: var(--drx-leading-relaxed);
+}
+
+.drx-list-disc li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  background: var(--drx-primary);
+  border-radius: var(--drx-radius-full);
+}
+
+.drx-list-disc li + li {
+  margin-top: var(--drx-space-2);
+}
+
+.drx-list-numbered {
+  list-style: none;
+  padding: 0;
+  counter-reset: drx-list;
+}
+
+.drx-list-numbered li {
+  position: relative;
+  padding-left: var(--drx-space-8);
+  font-size: var(--drx-text-sm);
+  color: var(--drx-text);
+  line-height: var(--drx-leading-relaxed);
+  counter-increment: drx-list;
+}
+
+.drx-list-numbered li::before {
+  content: counter(drx-list, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-family: var(--drx-font-heading);
+  font-size: var(--drx-text-xs);
+  font-weight: var(--drx-weight-bold);
+  color: var(--drx-primary);
+  letter-spacing: var(--drx-tracking-wide);
+}
+
+.drx-list-numbered li + li {
+  margin-top: var(--drx-space-3);
+}

@@ -1,0 +1,121 @@
+.drx-size-sm { --_size: sm; }
+.drx-size-md { --_size: md; }
+.drx-size-lg { --_size: lg; }
+
+.drx-btn.drx-size-sm { font-size: var(--drx-text-xs); padding: 6px 14px; }
+.drx-btn.drx-size-md { font-size: var(--drx-text-sm); padding: 10px 20px; }
+.drx-btn.drx-size-lg { font-size: 13px; padding: 14px 28px; }
+
+.drx-input.drx-size-sm { padding: 8px 12px; font-size: var(--drx-text-sm); }
+.drx-input.drx-size-md { padding: 12px 16px; font-size: 13px; }
+.drx-input.drx-size-lg { padding: 16px 20px; font-size: var(--drx-text-base); }
+
+.drx-badge.drx-size-sm { font-size: 7px; padding: 2px 6px; }
+.drx-badge.drx-size-md { font-size: 8.5px; padding: 3px 9px; }
+.drx-badge.drx-size-lg { font-size: 10px; padding: 4px 12px; }
+
+.drx-avatar.drx-size-sm { width: 32px; height: 32px; font-size: 12px; }
+.drx-avatar.drx-size-md { width: 48px; height: 48px; font-size: 18px; }
+.drx-avatar.drx-size-lg { width: 64px; height: 64px; font-size: 24px; }
+
+.drx-spinner.drx-size-sm { width: 14px; height: 14px; }
+.drx-spinner.drx-size-md { width: 20px; height: 20px; }
+.drx-spinner.drx-size-lg { width: 32px; height: 32px; }
+
+.drx-style-solid { --_style: solid; }
+.drx-style-outline { --_style: outline; }
+.drx-style-ghost { --_style: ghost; }
+.drx-style-link { --_style: link; }
+
+.drx-btn.drx-style-solid.drx-color-primary { background: var(--drx-primary); color: var(--drx-ink); border-color: var(--drx-primary); }
+.drx-btn.drx-style-solid.drx-color-secondary { background: var(--drx-secondary); color: var(--drx-ink); border-color: var(--drx-secondary); }
+.drx-btn.drx-style-solid.drx-color-danger { background: var(--drx-danger); color: #fff; border-color: var(--drx-danger); }
+.drx-btn.drx-style-solid.drx-color-success { background: var(--drx-success); color: var(--drx-ink); border-color: var(--drx-success); }
+.drx-btn.drx-style-solid.drx-color-warning { background: var(--drx-warning); color: var(--drx-ink); border-color: var(--drx-warning); }
+
+.drx-btn.drx-style-outline.drx-color-primary { background: transparent; color: var(--drx-primary); border-color: var(--drx-primary); }
+.drx-btn.drx-style-outline.drx-color-secondary { background: transparent; color: var(--drx-secondary); border-color: var(--drx-secondary); }
+.drx-btn.drx-style-outline.drx-color-danger { background: transparent; color: var(--drx-danger); border-color: var(--drx-danger); }
+.drx-btn.drx-style-outline.drx-color-success { background: transparent; color: var(--drx-success); border-color: var(--drx-success); }
+
+.drx-btn.drx-style-outline.drx-color-primary:hover { background: var(--drx-primary-muted); }
+.drx-btn.drx-style-outline.drx-color-secondary:hover { background: var(--drx-secondary-muted); }
+.drx-btn.drx-style-outline.drx-color-danger:hover { background: var(--drx-danger-muted); }
+.drx-btn.drx-style-outline.drx-color-success:hover { background: var(--drx-success-muted); }
+
+.drx-btn.drx-style-ghost { background: transparent; color: var(--drx-text); border-color: var(--drx-border); }
+.drx-btn.drx-style-ghost:hover { background: var(--drx-surface-hover); }
+
+.drx-btn.drx-style-link { background: transparent; border: none; padding: 0; }
+.drx-btn.drx-style-link.drx-color-primary { color: var(--drx-primary); }
+.drx-btn.drx-style-link.drx-color-secondary { color: var(--drx-secondary); }
+.drx-btn.drx-style-link:hover { text-decoration: underline; }
+
+.drx-color-primary { --_color: var(--drx-primary); }
+.drx-color-secondary { --_color: var(--drx-secondary); }
+.drx-color-danger { --_color: var(--drx-danger); }
+.drx-color-success { --_color: var(--drx-success); }
+.drx-color-warning { --_color: var(--drx-warning); }
+.drx-color-info { --_color: var(--drx-info); }
+
+.drx-alert.drx-color-primary { background: var(--drx-primary-muted); border-color: var(--drx-primary-active); color: var(--drx-primary); }
+.drx-alert.drx-color-secondary { background: var(--drx-secondary-muted); border-color: var(--drx-secondary-active); color: var(--drx-secondary); }
+.drx-alert.drx-color-danger { background: var(--drx-danger-muted); border-color: var(--drx-danger-active); color: var(--drx-danger); }
+.drx-alert.drx-color-success { background: var(--drx-success-muted); border-color: var(--drx-success-active); color: var(--drx-success); }
+.drx-alert.drx-color-warning { background: var(--drx-warning-muted); border-color: var(--drx-warning-active); color: var(--drx-warning); }
+.drx-alert.drx-color-info { background: var(--drx-info-muted); border-color: var(--drx-info-active); color: var(--drx-info); }
+
+.drx-badge.drx-color-primary { color: var(--drx-primary); border-color: var(--drx-primary-active); }
+.drx-badge.drx-color-secondary { color: var(--drx-secondary); border-color: var(--drx-secondary-active); }
+.drx-badge.drx-color-danger { color: var(--drx-danger); border-color: var(--drx-danger-active); }
+.drx-badge.drx-color-success { color: var(--drx-success); border-color: var(--drx-success-active); }
+.drx-badge.drx-color-warning { color: var(--drx-warning); border-color: var(--drx-warning-active); }
+
+.drx-progress-bar.drx-color-primary { background: var(--drx-primary); }
+.drx-progress-bar.drx-color-secondary { background: var(--drx-secondary); }
+.drx-progress-bar.drx-color-success { background: var(--drx-success); }
+.drx-progress-bar.drx-color-danger { background: var(--drx-danger); }
+
+.drx-spinner.drx-color-primary { border-top-color: var(--drx-primary); }
+.drx-spinner.drx-color-secondary { border-top-color: var(--drx-secondary); }
+.drx-spinner.drx-color-success { border-top-color: var(--drx-success); }
+.drx-spinner.drx-color-danger { border-top-color: var(--drx-danger); }
+
+.drx-is-hover,
+*:hover > .drx-on-hover { opacity: 1; visibility: visible; }
+.drx-on-hover { opacity: 0; visibility: hidden; transition: opacity var(--drx-duration-fast), visibility var(--drx-duration-fast); }
+
+.drx-is-active,
+.drx-active { --_state: active; }
+
+.drx-is-disabled,
+[disabled],
+[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.drx-is-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.drx-is-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid var(--drx-border);
+  border-top-color: var(--drx-primary);
+  border-radius: var(--drx-radius-full);
+  animation: drxSpin 0.6s linear infinite;
+}
+
+@keyframes drxSpin {
+  to { transform: rotate(360deg); }
+}
