@@ -16,8 +16,9 @@
 
   const createBrand = className => {
     const brand = create('span', className);
-    brand.append('Dra');
-    brand.append(create('em', '', 'nxX'));
+    brand.append(create('span', 'brand-dr', 'Dr'));
+    brand.append(create('span', 'brand-an', 'an'));
+    brand.append(create('span', 'brand-xX', 'xX'));
     return brand;
   };
 
@@ -63,8 +64,7 @@
       mobileContact.append(createLink(ui.navContact || 'Contact', 'contact', 'drx-navbar-cta-mobile'));
       navLinks.append(mobileContact);
 
-      const contact = createLink(ui.navContact || 'Contact', 'contact', 'drx-btn drx-btn-solid-primary portfolio-cta drx-navbar-cta');
-      if (currentPage === 'contact') contact.setAttribute('aria-current', 'page');
+
 
       // Old .html links still resolve, so both /en/projects and /en/projects.html map to the same route.
       const pathSegments = window.location.pathname.split('/').filter(Boolean);
@@ -79,12 +79,6 @@
         lang: ui.alternateLocale
       });
 
-      const themeToggle = setAttributes(create('button', 'theme-toggle drx-theme-toggle'), {
-        type: 'button',
-        'aria-label': ui.toggleTheme,
-        'aria-pressed': 'false'
-      });
-      themeToggle.append(setAttributes(create('i', 'bi bi-moon'), { 'aria-hidden': 'true' }));
 
       const menuToggle = setAttributes(create('button', 'nav-toggle drx-navbar-toggle'), {
         type: 'button',
@@ -94,7 +88,7 @@
       });
       for (let index = 0; index < 3; index += 1) menuToggle.append(create('span'));
 
-      navRight.append(navLinks, contact, languageSwitch, themeToggle, menuToggle);
+      navRight.append(navLinks, languageSwitch, menuToggle);
       nav.append(logo, navRight);
       this.replaceChildren(nav);
     }
@@ -160,22 +154,72 @@
       const grain = setAttributes(create('div', 'site-grain'), {
         'aria-hidden': 'true'
       });
-
-      const progress = setAttributes(create('div', 'scroll-progress'), {
-        id: 'scrollProgress',
-        'aria-hidden': 'true'
-      });
-      const cursorDot = setAttributes(create('div', 'cursor-dot'), {
-        id: 'cursorDot',
-        'aria-hidden': 'true'
-      });
       const backToTop = setAttributes(create('button', 'back-to-top'), {
         id: 'backToTop',
         type: 'button',
         'aria-label': ui.backToTop
       });
       backToTop.append(setAttributes(create('i', 'bi bi-arrow-up'), { 'aria-hidden': 'true' }));
-      this.replaceChildren(grain, progress, cursorDot, backToTop);
+
+      // Floating theme control, out of the navbar.
+      const floatingTheme = setAttributes(create('button', 'floating-theme drx-theme-toggle'), {
+        type: 'button',
+        'aria-label': ui.toggleTheme,
+        'aria-pressed': 'false'
+      });
+      floatingTheme.append(setAttributes(create('i', 'bi bi-moon'), { 'aria-hidden': 'true' }));
+
+      // Contact bubble: opens a small email panel (chatbot slot for later).
+      const chatPanel = setAttributes(create('div', 'chat-panel'), {
+        id: 'chatPanel',
+        role: 'dialog',
+        'aria-label': ui.chatTitle,
+        hidden: ''
+      });
+      const chatHead = create('div', 'chat-panel-head');
+      chatHead.append(create('span', 'chat-panel-title', ui.chatTitle));
+      const chatClose = setAttributes(create('button', 'chat-close'), { type: 'button', 'aria-label': ui.chatClose });
+      chatClose.append(setAttributes(create('i', 'bi bi-x-lg'), { 'aria-hidden': 'true' }));
+      chatHead.append(chatClose);
+      const chatBody = create('div', 'chat-panel-body');
+      chatBody.append(create('p', 'chat-intro', ui.chatIntro));
+      const chatMail = setAttributes(create('a', 'chat-mail'), { href: 'mailto:' + config.email });
+      chatMail.append(setAttributes(create('i', 'bi bi-envelope'), { 'aria-hidden': 'true' }));
+      chatMail.append(create('span', 'chat-mail-text', config.email));
+      chatBody.append(chatMail);
+            const chatSend = setAttributes(create('a', 'chat-send'), { href: 'contact' });
+      chatSend.append(create('span', 'chat-send-text', ui.chatSend));
+      chatBody.append(chatSend);
+      chatPanel.append(chatHead, chatBody);
+
+      const chatToggle = setAttributes(create('button', 'chat-toggle'), {
+        type: 'button',
+        'aria-label': ui.chatOpen,
+        'aria-expanded': 'false',
+        'aria-controls': 'chatPanel'
+      });
+      const chatIcon = setAttributes(create('i', 'bi bi-chat-dots-fill'), { 'aria-hidden': 'true' });
+      chatToggle.append(chatIcon);
+
+      const setOpen = open => {
+        chatPanel.hidden = !open;
+        chatToggle.setAttribute('aria-expanded', String(open));
+        chatToggle.setAttribute('aria-label', open ? ui.chatClose : ui.chatOpen);
+        chatToggle.classList.toggle('open', open);
+        chatIcon.className = open ? 'bi bi-x-lg' : 'bi bi-chat-dots-fill';
+        if (open) chatMail.focus();
+        else chatToggle.focus();
+      };
+      chatToggle.addEventListener('click', () => setOpen(chatPanel.hidden));
+      chatClose.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !chatPanel.hidden) { setOpen(false); chatToggle.focus(); }
+      });
+      document.addEventListener('click', event => {
+        if (!chatPanel.hidden && !chatPanel.contains(event.target) && !chatToggle.contains(event.target)) setOpen(false);
+      });
+
+      this.replaceChildren(grain, backToTop, floatingTheme, chatToggle, chatPanel);
     }
   }
 

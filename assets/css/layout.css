@@ -37,7 +37,62 @@
   max-width: 560px;
   color: var(--muted);
   font-size: var(--text-copy);
-  font-weight: 300;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.section-tail { margin-top: 30px; }
+
+.page-hero {
+  min-height: 420px;
+  padding: calc(var(--nav-height) + 76px) 0 56px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+wrap {
+  width: min(var(--container), calc(100% - 96px));
+  margin-inline: auto;
+}
+
+.section {
+  padding: var(--space-section) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-compact { padding: var(--space-section-compact) 0; }
+.section-alt { background: var(--ink-2); }
+
+.grid {
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: clamp(40px, 4vw, 60px);
+  align-items: start;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, .62fr);
+  gap: clamp(36px, 4vw, 56px);
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.section-copy {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: var(--text-copy);
+  font-weight: 400;
   line-height: 1.8;
 }
 
@@ -74,26 +129,26 @@
   max-width: 900px;
   margin-top: 20px;
   font-family: var(--font-display);
-  font-size: clamp(60px, 7.8vw, 104px);
-  font-weight: 800;
-  letter-spacing: -.026em;
-  line-height: .86;
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: .95;
   text-transform: uppercase;
 }
 
-.page-title .yellow { color: var(--yellow); }
-.page-title .blue { color: var(--blue); }
+.page-title .yellow { color: var(--drx-primary); }
+.page-title .blue { color: var(--drx-primary); }
 
 .page-lead {
   max-width: 650px;
   margin-top: 24px;
   color: var(--muted);
   font-size: var(--text-copy);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.82;
 }
 
-.page-lead .blue { color: var(--blue); font-weight: 500; }
+.page-lead .blue { color: var(--drx-primary); font-weight: 500; }
 .page-lead .yellow { color: var(--yellow); font-weight: 500; }
 
 .page-code {

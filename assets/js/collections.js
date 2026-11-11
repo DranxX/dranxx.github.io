@@ -13,7 +13,9 @@
     archived: 'Diarsipkan',
     repository: 'Repositori',
     showcase: 'Preview proyek',
-    showcaseSteps: 'Pilih proyek'
+    showcaseSteps: 'Pilih proyek',
+    prevSlide: 'Slide sebelumnya',
+    nextSlide: 'Slide berikutnya',
   } : {
     ask: 'Ask about this work',
     openRepository: 'Open repository',
@@ -24,7 +26,9 @@
     archived: 'Archived',
     repository: 'Repository',
     showcase: 'Project previews',
-    showcaseSteps: 'Choose a project'
+    showcaseSteps: 'Choose a project',
+    prevSlide: 'Previous slide',
+    nextSlide: 'Next slide',
   };
 
   const create = (tag, className, text) => {
@@ -425,7 +429,9 @@
     showcaseTeardowns.get(element)?.();
     const listeners = new AbortController();
     const { signal } = listeners;
-    const items = getOrderedProjects().filter(item => !item.archived);
+    const ordered = getOrderedProjects().filter(item => !item.archived);
+    // The case study leads: it is the deepest proof of work, recency orders the rest.
+    const items = [...ordered.filter(item => item.kind === 'case-study'), ...ordered.filter(item => item.kind !== 'case-study')];
     const total = items.length;
     if (!total) return;
     element.classList.add('showcase', 'drx-reveal');
@@ -450,6 +456,13 @@
       progress.append(step);
       return step;
     });
+
+    const prevButton = setAttributes(create('button', 'showcase-arrow prev'), { type: 'button', 'aria-label': copy.prevSlide });
+    prevButton.append(setAttributes(create('i', 'bi bi-chevron-left'), { 'aria-hidden': 'true' }));
+    prevButton.addEventListener('click', () => show(active - 1));
+    const nextButton = setAttributes(create('button', 'showcase-arrow next'), { type: 'button', 'aria-label': copy.nextSlide });
+    nextButton.append(setAttributes(create('i', 'bi bi-chevron-right'), { 'aria-hidden': 'true' }));
+    nextButton.addEventListener('click', () => show(active + 1));
 
     const slideDuration = 6000;
     let active = 0;
@@ -567,7 +580,7 @@
       clearTimeout(wrapTimer);
     });
 
-    element.replaceChildren(status, viewport, progress);
+    element.replaceChildren(status, viewport, prevButton, nextButton, progress);
     placeTrack(1, true);
     show(0);
   };

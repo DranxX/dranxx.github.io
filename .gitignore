@@ -5,3 +5,4 @@ Thumbs.db
 .qa-*/
 qa-*.png
 report*.txt
+.mimosa/

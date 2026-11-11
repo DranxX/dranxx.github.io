@@ -56,11 +56,10 @@
 
   .page-hero { min-height: 390px; padding-block: calc(var(--nav-height) + 66px) 50px; }
   .page-title { max-width: 800px; }
-  .page-code { right: 8px; opacity: .45; }
 
   .home-hero { min-height: auto; }
   .home-hero .wrap.hero-layout { min-height: 600px; padding: 72px 0 68px; }
-  .hero-title { font-size: clamp(74px, 13vw, 118px); }
+  .hero-title { font-size: clamp(52px, 10vw, 80px); }
   .home-hero .wrap.hero-layout { grid-template-columns: minmax(0, 1fr) 180px; column-gap: 28px; }
   .hero-bottom { margin-top: 34px; }
 
@@ -79,7 +78,7 @@
   .profile-links { grid-column: 1 / -1; margin-top: 0; }
   .profile-link-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .profile-main { padding: 38px 34px; }
-  .profile-name { font-size: clamp(64px, 9vw, 88px); }
+  .profile-name { font-size: clamp(48px, 8vw, 72px); }
 
   .language-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .showcase-slide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
@@ -119,35 +118,29 @@
   .showcase-content { padding: 30px 26px; }
   .project-case-banner { min-height: 270px; aspect-ratio: 1.7 / 1; }
   .project-case-identity { margin-top: -40px; padding-inline: 14px; grid-template-columns: 94px minmax(0, 1fr); gap: 18px; }
-  .project-case-logo { width: 94px; height: 94px; box-shadow: 6px 6px 0 color-mix(in srgb, var(--yellow) 22%, transparent); }
+  .project-case-logo { width: 94px; height: 94px; }
   .project-logo-placeholder { font-size: 28px; }
   .project-case-title { padding-top: 50px; }
-  .project-case-title h1 { font-size: clamp(56px, 16vw, 82px); }
+  .project-case-title h1 { font-size: clamp(42px, 11vw, 64px); }
   .project-case-actions { grid-column: 1 / -1; padding-top: 12px; }
   .project-case-actions .drx-btn { flex: 1 1 190px; }
   .project-flow { grid-template-columns: 1fr; }
   .project-flow-stage { min-height: 0; padding: 24px; }
   .project-flow-stage h3 { margin-top: 20px; }
   .project-flow-arrow { top: auto; right: 26px; bottom: -9px; transform: rotate(90deg); }
-  .project-flow-stage { scroll-snap-align: start; }
   .project-snapshot div { grid-template-columns: 110px 1fr; }
 
-  .display-heading { font-size: clamp(40px, 12vw, 62px); }
+  .display-heading { font-size: clamp(30px, 8vw, 44px); }
   .nojs-nav { position: relative; padding: 18px 24px; align-items: flex-start; flex-direction: column; }
   .nojs-links { gap: 12px 18px; }
   .page-hero { min-height: 360px; }
-  .page-title { font-size: clamp(54px, 14vw, 80px); }
-  .page-code { display: none; }
+  .page-title { font-size: clamp(36px, 9vw, 56px); }
 
   .home-hero .wrap.hero-layout { min-height: 550px; padding: 64px 0 60px; grid-template-columns: minmax(0, 1fr) 72px; grid-template-areas: 'kicker kicker' 'heading logo' 'copy copy'; column-gap: 20px; }
   .hero-kicker { align-self: center; }
-  .hero-title { margin-top: 26px; font-size: clamp(64px, 17vw, 94px); }
+  .hero-title { margin-top: 26px; font-size: clamp(44px, 13vw, 68px); }
   .hero-bottom { margin-top: 38px; }
-  .hero-logo { --logo-aura-size: 220px; width: 72px; margin-top: 26px; transform: translateX(-32px); }
-  .scope-divider { height: 68px; margin: -4px 0 30px; }
-  .scope-divider .scope-marquee { width: 106vw; transform: translate(-50%, -50%) rotate(-.8deg); }
-  .scope-divider .drx-marquee-item { padding-block: 12px; }
-  .scope-divider .drx-marquee-name { font-size: 16px; }
+  .hero-logo { width: 72px; margin-top: 26px; transform: translateX(-32px); }
 
   .projects-grid,
   .provenance-grid { grid-template-columns: 1fr; }
@@ -187,13 +180,10 @@
 
   .section { padding: 56px 0; }
   .home-hero .wrap.hero-layout { min-height: 520px; padding-block: 58px 54px; }
-  .hero-title { font-size: clamp(56px, 18vw, 78px); line-height: .82; }
+  .hero-title { font-size: clamp(40px, 14vw, 58px); line-height: .95; }
   .home-hero .wrap.hero-layout { grid-template-columns: minmax(0, 1fr) 64px; }
   .hero-bottom { margin-top: 34px; }
-  .hero-logo { --logo-aura-size: 200px; width: 64px; align-self: end; margin-bottom: 6px; transform: translate(-32px, -8px); }
-  .scope-divider { height: 58px; margin-bottom: 24px; }
-  .scope-divider .scope-marquee { width: 108vw; transform: translate(-50%, -50%) rotate(-.6deg); }
-  .scope-divider .drx-marquee-name { font-size: 15px; }
+  .hero-logo { width: 64px; align-self: end; margin-bottom: 6px; transform: translate(-32px, -8px); }
 
   .focus-grid { grid-template-columns: 1fr; }
   .principle-card { min-height: 240px; }
@@ -218,7 +208,7 @@
   .profile-overline,
   .profile-name,
   .profile-role { text-align: center; }
-  .profile-name { font-size: 66px; }
+  .profile-name { font-size: 48px; }
   .profile-interest-grid { grid-template-columns: 1fr; }
   .technology-group { padding: 26px 22px; }
   .technology-group:first-child,
@@ -276,19 +266,6 @@
 }
 
 @media (max-width: 900px), (pointer: coarse) {
-  /* Phones and tablets, including landscape tablets: small uppercase labels and meta text never drop below 10px. */
-  :is(.section-label, .hero-kicker, .tag, .status, .drx-label, .drx-field-description, .project-view, .project-category,
-    .project-result-bar span, .showcase-eyebrow span, .technology-index, .technology-badge, .principle-index, .project-flow-index,
-    .project-system-index, .project-case-role, .project-case-state span, .project-media-placeholder span, .project-section-nav a,
-    .resource-category, .resource-channel, .resource-count, .language-proficiency, .language-item p, .profile-link-label,
-    .profile-links span, .profile-overline, .footer-column h2, .footer-bottom span, .footer-bottom em, .language-switch,
-    .nav-links a, .page-content dt, .drx-accordion-trigger small) { font-size: 10px; }
-  .tag.drx-badge,
-  .form-shell .drx-label,
-  .form-shell .drx-field-description,
-  .project-query-row .drx-label,
-  .resource-query-row .drx-label { font-size: 10px; }
-
   /* Touch targets: standalone links get at least 24px of height without changing their look. */
   .text-link,
   .contact-list a,
@@ -302,11 +279,14 @@
 @media (pointer: coarse) {
   /* Touch screens keep their own overlay scrollbar; the 9px custom bar would take page width and zoom short pages out. */
   ::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* iOS zooms the page when an input's font size is under 16px. */
+  .drx-input,
+  .drx-textarea,
+  .drx-select { font-size: 16px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-nav .nav-toggle span,
   .site-nav .nav-links { transition: none; }
-  .scope-divider .drx-marquee-track { animation: none !important; transform: none !important; }
-  .scope-divider .drx-marquee-item:nth-child(2) { display: none; }
 }

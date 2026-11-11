@@ -91,7 +91,7 @@
         id: 'filemofm',
         code: 'FMF',
         name: 'FilemoFM',
-        preview: `${assetBase}/previews/filemofm.svg`,
+        preview: `${assetBase}/previews/filemofm.png`,
         kind: 'repository',
         scopes: ['software'],
         categoryLabel: t('Windows / Linux file manager', 'File manager Windows / Linux'),

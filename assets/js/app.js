@@ -13,9 +13,7 @@
       projectCount: count => `${count} project${count === 1 ? '' : 's'}`,
       sentFallback: 'Your message was sent. I’ll reply soon.'
     };
-    const progress = document.getElementById('scrollProgress');
     const backToTop = document.getElementById('backToTop');
-    const cursorDot = document.getElementById('cursorDot');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const introElements = [...document.querySelectorAll('.home-hero .drx-reveal, .page-hero .drx-reveal, .project-case-hero .drx-reveal')];
     introElements.forEach((element, index) => {
@@ -49,6 +47,15 @@
       if (runtime?.initReveal) runtime.initReveal('.drx-reveal');
       else revealAll();
     });
+    // Safety net: if the observer never fires (hidden tab, suspended renderer),
+    // the page must not stay invisible. Only kicks in when nothing revealed at all.
+    const revealIfStuck = () => {
+      if (!document.querySelector('.drx-reveal.visible')) revealAll();
+    };
+    window.setTimeout(revealIfStuck, 1500);
+    ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(type => {
+      window.addEventListener(type, revealIfStuck, { once: true, passive: true });
+    });
 
     const menu = document.querySelector('.drx-navbar-links');
     const menuToggle = document.querySelector('.drx-navbar-toggle');
@@ -73,61 +80,32 @@
     });
     mobileNav.addEventListener('change', closeMenu);
 
-    const setupTilt = () => {
+    // Cursor spotlight: a soft accent glow follows the pointer across cards.
+    const setupSpotlight = () => {
       if (reducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-      document.querySelectorAll('.project-card:not([data-tilt-ready]), .profile-avatar:not([data-tilt-ready])').forEach(card => {
-        card.dataset.tiltReady = 'true';
+      document.querySelectorAll('.project-card:not([data-spotlight]), .resource-card:not([data-spotlight]), .principle-card:not([data-spotlight])').forEach(card => {
+        card.dataset.spotlight = 'true';
+        // One write per frame, zero layout reads while moving: the rect is cached on entry.
+        let rect = card.getBoundingClientRect();
+        let pendingFrame = 0;
+        let latestX = 0;
+        let latestY = 0;
+        card.addEventListener('pointerenter', () => { rect = card.getBoundingClientRect(); }, { passive: true });
         card.addEventListener('pointermove', event => {
-          const rect = card.getBoundingClientRect();
-          const x = (event.clientX - rect.left) / rect.width - .5;
-          const y = (event.clientY - rect.top) / rect.height - .5;
-          card.style.transform = `perspective(900px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg) translateY(-6px)`;
-        });
-        card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+          latestX = event.clientX;
+          latestY = event.clientY;
+          if (pendingFrame) return;
+          pendingFrame = window.requestAnimationFrame(() => {
+            pendingFrame = 0;
+            card.style.setProperty('--mx', `${Math.round(latestX - rect.left)}px`);
+            card.style.setProperty('--my', `${Math.round(latestY - rect.top)}px`);
+          });
+        }, { passive: true });
       });
     };
 
-    setupTilt();
-    document.addEventListener('dranxx:content-ready', setupTilt);
-
-    if (cursorDot && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      document.documentElement.classList.add('has-custom-cursor');
-      let targetX = window.innerWidth / 2;
-      let targetY = window.innerHeight / 2;
-      let dotX = targetX;
-      let dotY = targetY;
-      let cursorFrame = 0;
-
-      const animateCursor = () => {
-        dotX += (targetX - dotX) * .34;
-        dotY += (targetY - dotY) * .34;
-        cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
-        if (Math.abs(targetX - dotX) > .1 || Math.abs(targetY - dotY) > .1) {
-          cursorFrame = window.requestAnimationFrame(animateCursor);
-        } else {
-          cursorFrame = 0;
-        }
-      };
-
-      window.addEventListener('pointermove', event => {
-        targetX = event.clientX;
-        targetY = event.clientY;
-        cursorDot.classList.add('visible');
-        if (!cursorFrame) cursorFrame = window.requestAnimationFrame(animateCursor);
-      }, { passive: true });
-      window.addEventListener('pointerout', event => {
-        if (event.relatedTarget) return;
-        cursorDot.classList.remove('visible');
-      });
-      document.addEventListener('pointerover', event => {
-        if (event.target instanceof Element && event.target.closest('a, button, input, select, textarea, summary, [role="button"]')) cursorDot.classList.add('is-hovering');
-      });
-      document.addEventListener('pointerout', event => {
-        if (!(event.target instanceof Element) || !event.target.closest('a, button, input, select, textarea, summary, [role="button"]')) return;
-        if (event.relatedTarget instanceof Element && event.relatedTarget.closest('a, button, input, select, textarea, summary, [role="button"]')) return;
-        cursorDot.classList.remove('is-hovering');
-      });
-    }
+    setupSpotlight();
+    document.addEventListener('dranxx:content-ready', setupSpotlight);
 
     const projectDiscovery = document.querySelector('[data-project-discovery]');
     if (projectDiscovery) {
@@ -216,8 +194,6 @@
     }
 
     const updateScrollState = () => {
-      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (progress) progress.style.width = `${scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0}%`;
       backToTop?.classList.toggle('visible', window.scrollY > 560);
     };
     window.addEventListener('scroll', updateScrollState, { passive: true });

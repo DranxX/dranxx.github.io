@@ -3,6 +3,11 @@ html {
   scroll-behavior: smooth;
 }
 
+  ::selection {
+    background: var(--drx-secondary);
+    color: var(--drx-ink);
+  }
+
 body {
   min-height: 100vh;
   overflow-x: hidden;
@@ -45,11 +50,9 @@ textarea { font: inherit; }
   z-index: 12000;
   padding: 10px 14px;
   background: var(--yellow);
-  color: #080810;
-  font-size: 10px;
+  color: #121212;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
   transform: translateY(-160%);
   transition: transform 160ms ease;
 }
@@ -88,6 +91,13 @@ textarea { font: inherit; }
 .home-hero .drx-reveal,
 .page-hero .drx-reveal { transition-delay: var(--enter-delay, 0ms); }
 
+/* Alvalens spring: everything settles with one confident curve. */
+.drx-reveal {
+  transition: opacity 620ms cubic-bezier(.22, 1, .36, 1), transform 620ms cubic-bezier(.22, 1, .36, 1);
+}
+
+
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,
@@ -98,6 +108,15 @@ textarea { font: inherit; }
     scroll-behavior: auto !important;
     transition-duration: .01ms !important;
   }
-  .drx-reveal { opacity: 1 !important; transform: none !important; }
-  .cursor-dot { display: none !important; }
+  .drx-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+
+
+
+/* Page switches morph instead of hard-swapping (Chrome 126+, Safari 18.4+). */
+@view-transition { navigation: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
 }

@@ -87,7 +87,7 @@
     }
 
     getFormat(resource) {
-      const extension = /\.[^./]+$/.exec(resource.fileName || '');
+      const extension = (resource.fileName || '').match(/\.[^./]+$/);
       return extension ? extension[0].toLowerCase() : '-';
     }
 

@@ -1,13 +1,41 @@
+/* Palette — deep dark, glass surfaces
+   Ground #0b0c0f · glass fills rgba(255,255,255,.04) · hairlines rgba(255,255,255,.07)
+   Accent ratio follows the logo: blue dominant (frame), yellow reserved for the brand mark.
+   --drx-primary  = icon blue  — the whole UI accent system
+   --drx-secondary= icon yellow— brand mark only (wordmark), never UI chrome */
 :root,
-[data-theme="dark"] { --drx-text-muted: #9292ab; }
+[data-theme="dark"] {
+  --drx-text-muted: #a9abb3;
+  --drx-ink: #0b0c0f;
+  --drx-ink-2: #101216;
+  --drx-ink-3: #15171c;
+  --drx-ink-4: #1d2026;
+  --drx-ink-3-rgb: 21, 23, 28;
+  --drx-fg: #e6e7ea;
+  --drx-mid: #a9abb3;
+  --drx-dim: #3a3c44;
+  --drx-line: rgba(255, 255, 255, 0.07);
+  --drx-line-strong: rgba(255, 255, 255, 0.16);
+  --drx-primary: #91d1e5;
+  --drx-primary-hover: #a6dcf0;
+  --drx-primary-active: #6fb3d4;
+  --drx-primary-muted: rgba(145, 209, 229, 0.15);
+  --drx-secondary: #e8c840;
+  --drx-secondary-hover: #f0d84a;
+  --drx-secondary-active: #c9a820;
+  --drx-secondary-muted: rgba(232, 200, 64, 0.3);
+}
 
 :root.light,
 [data-theme="light"] {
   --drx-text-muted: #565665;
-  --drx-primary: #795900;
-  --drx-primary-hover: #6b4f00;
-  --drx-primary-active: #634900;
-  --drx-secondary: #315f7d;
+  --drx-primary: #2b6d8f;
+  --drx-primary-hover: #1f5a78;
+  --drx-primary-active: #174a63;
+  --drx-primary-muted: rgba(43, 109, 143, 0.15);
+  --drx-secondary: #795900;
+  --drx-secondary-hover: #6b4f00;
+  --drx-secondary-active: #634900;
 }
 
 :root {
@@ -21,9 +49,9 @@
   --dim: var(--drx-text-dim);
   --line: var(--drx-border);
   --line-strong: var(--drx-border-strong);
-  --yellow: var(--drx-primary);
+  --yellow: var(--drx-primary);      /* alias: dominant accent (icon blue) */
   --yellow-2: var(--drx-primary-active);
-  --blue: var(--drx-secondary);
+  --blue: var(--drx-secondary);      /* alias: brand yellow — wordmark only */
   --blue-2: var(--drx-secondary-active);
   --success: var(--drx-success);
   --warning: var(--drx-warning);
@@ -35,7 +63,10 @@
   --ease-out: var(--drx-ease-out);
   --space-section: clamp(72px, 6vw, 88px);
   --space-section-compact: clamp(46px, 4vw, 58px);
-  --text-copy: 13px;
-  --text-detail: 11.5px;
-  --text-meta: 9px;
+  --glass-fill: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  --glass-line: rgba(255, 255, 255, 0.08);
+  --glass-line-hover: rgba(255, 255, 255, 0.18);
+  --text-copy: 14px;
+  --text-detail: 12px;
+  --text-meta: 11px;
 }

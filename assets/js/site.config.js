@@ -73,7 +73,12 @@
       backToTop: 'Kembali ke atas',
       languageLabel: 'Buka versi bahasa Inggris',
       languageCode: 'EN',
-      alternateLocale: 'en'
+      alternateLocale: 'en',
+      chatOpen: 'Buka panel kontak',
+      chatClose: 'Tutup panel kontak',
+      chatTitle: 'Hubungi saya',
+      chatIntro: 'Paling cepat lewat email:',
+      chatSend: 'Send Email'
     } : {
       primaryNavigation: 'Primary navigation',
       homeLabel: 'DranxX home',
@@ -86,7 +91,12 @@
       backToTop: 'Back to top',
       languageLabel: 'Buka versi bahasa Indonesia',
       languageCode: 'ID',
-      alternateLocale: 'id'
+      alternateLocale: 'id',
+      chatOpen: 'Open the contact panel',
+      chatClose: 'Close the contact panel',
+      chatTitle: 'Get in touch',
+      chatIntro: 'Email is the fastest way to reach me:',
+      chatSend: 'Send Email'
     })
   });
 })();
