@@ -16,6 +16,8 @@
     showcaseSteps: 'Pilih proyek',
     prevSlide: 'Slide sebelumnya',
     nextSlide: 'Slide berikutnya',
+    playNow: 'Main sekarang',
+    playLabel: name => `Main ${name} di Roblox`,
   } : {
     ask: 'Ask about this work',
     openRepository: 'Open repository',
@@ -29,6 +31,8 @@
     showcaseSteps: 'Choose a project',
     prevSlide: 'Previous slide',
     nextSlide: 'Next slide',
+    playNow: 'Play now',
+    playLabel: name => `Play ${name} on Roblox`,
   };
 
   const create = (tag, className, text) => {
@@ -415,10 +419,24 @@
     attachPreview(media, item, 'showcase-image', true);
     action.append(setAttributes(create('i', external ? 'bi bi-arrow-up-right' : 'bi bi-arrow-right'), { 'aria-hidden': 'true' }));
 
+    const playUrl = item.kind === 'case-study' ? config.projectLinks?.[item.id]?.play : '';
+    const actions = create('div', 'showcase-actions');
+    actions.append(action);
+    if (playUrl) {
+      const play = setAttributes(create('a', 'text-link', copy.playNow), {
+        href: playUrl,
+        target: '_blank',
+        rel: 'noreferrer noopener',
+        'aria-label': copy.playLabel(item.name)
+      });
+      play.append(setAttributes(create('i', 'bi bi-play-fill'), { 'aria-hidden': 'true' }));
+      actions.append(play);
+    }
+
     const content = create('div', 'showcase-content');
     const eyebrow = create('div', 'showcase-eyebrow');
     eyebrow.append(create('span', '', item.categoryLabel), setAttributes(create('span', '', formatStep(index, total)), { 'aria-hidden': 'true' }));
-    content.append(eyebrow, create('h3', '', item.name), create('p', '', item.description), createTags(item.tags), action);
+    content.append(eyebrow, create('h3', '', item.name), create('p', '', item.description), createTags(item.tags), actions);
     slide.append(media, content);
     return slide;
   };

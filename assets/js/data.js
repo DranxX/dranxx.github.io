@@ -7,27 +7,27 @@
     principles: [
       {
         number: '01',
-        title: t('Clear data flow', 'Alur data yang jelas'),
-        label: t('System design', 'Desain sistem'),
-        description: t('I decide early which part of the code owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya menentukan bagian kode mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih mudah diperbaiki dan dikembangkan.')
-      },
-      {
-        number: '02',
         title: t('The server decides', 'Server yang menentukan'),
         label: t('Security', 'Keamanan'),
         description: t('The client only sends input. Prices, permissions, rewards, and results are checked on the server, including when someone sends bad or repeated requests.', 'Client cukup mengirim input. Harga, izin akses, reward, dan hasil akhir diperiksa di server, termasuk saat ada yang mengirim request salah atau berulang.')
       },
       {
-        number: '03',
+        number: '02',
         title: t('Measure before optimizing', 'Ukur sebelum optimasi'),
         label: t('Optimization', 'Optimasi'),
         description: t('I profile first and fix the part that is actually slow, while keeping an eye on frame time, memory, and network usage.', 'Saya melakukan profiling terlebih dahulu, lalu memperbaiki bagian yang memang lambat sambil memantau frame time, memori, dan penggunaan network.')
       },
       {
+        number: '03',
+        title: t('Fixed by the numbers', 'Diperbaiki lewat angka'),
+        label: t('Measurement', 'Pengukuran'),
+        description: t('Minor bugs, input validation, and resource usage are recorded as data in every release. A fix counts when its numbers move.', 'Bug minor, validasi input, dan penggunaan resource tercatat sebagai data di setiap rilis. Perbaikan dianggap berhasil kalau angkanya bergerak.')
+      },
+      {
         number: '04',
-        title: t('Feedback users can read', 'Feedback yang jelas'),
-        label: t('UX & motion', 'UX & animasi'),
-        description: t('UI and animation should tell people what just happened: a match was found, a file was saved, a purchase went through.', 'UI dan animasi harus memberi tahu pengguna apa yang baru terjadi: match ditemukan, file tersimpan, pembelian berhasil.')
+        title: t('Clear data flow', 'Alur data yang jelas'),
+        label: t('System design', 'Desain sistem'),
+        description: t('I decide early which part of the code owns each piece of data and who is allowed to change it. Features stay easier to fix and extend that way.', 'Sejak awal saya menentukan bagian kode mana yang memegang tiap data dan siapa yang boleh mengubahnya. Dengan begitu fitur lebih mudah diperbaiki dan dikembangkan.')
       }
     ],
 
@@ -141,7 +141,7 @@
         id: 'paper-research-mcp',
         code: 'PRM',
         name: 'Paper-Research-MCP',
-        preview: `${assetBase}/previews/paper-research-mcp.png`,
+        preview: `${assetBase}/previews/paper-research-mcp-gh.png`,
         kind: 'repository',
         scopes: ['ai'],
         categoryLabel: t('Academic paper search MCP', 'Pencarian paper akademik via MCP'),

@@ -36,7 +36,7 @@
     }),
     projectLinks: Object.freeze({
       bentengan: Object.freeze({
-        play: ''
+        play: 'https://www.roblox.com/games/120348048719750/BENTENGAN'
       })
     }),
     resourceSources: Object.freeze({
