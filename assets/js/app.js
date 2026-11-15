@@ -107,6 +107,16 @@
     setupSpotlight();
     document.addEventListener('dranxx:content-ready', setupSpotlight);
 
+    // Hero stats: the static HTML carries the current counts, this recomputes
+    // them from the data files so new entries need no manual edit.
+    const fillHeroStats = () => {
+      const projects = window.DRANXX_DATA?.projects?.length;
+      const resources = window.DRANXX_RESOURCES?.items?.filter(item => item.published)?.length;
+      document.querySelectorAll('[data-stat="projects"]').forEach(node => { if (projects) node.textContent = projects; });
+      document.querySelectorAll('[data-stat="resources"]').forEach(node => { if (resources) node.textContent = resources; });
+    };
+    fillHeroStats();
+
     const projectDiscovery = document.querySelector('[data-project-discovery]');
     if (projectDiscovery) {
       const normalizeFilterText = value => String(value)

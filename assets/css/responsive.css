@@ -184,6 +184,10 @@
   .home-hero .wrap.hero-layout { grid-template-columns: minmax(0, 1fr) 64px; }
   .hero-bottom { margin-top: 34px; }
   .hero-logo { width: 64px; align-self: end; margin-bottom: 6px; }
+  .hero-stats { gap: 14px; }
+  .hero-stat dt { font-size: 12px; }
+  .hero-stat dd { font-size: 34px; }
+  .hero-stat dd span { font-size: 13px; }
 
   .focus-grid { grid-template-columns: 1fr; }
   .principle-card { min-height: 240px; }
