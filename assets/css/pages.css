@@ -79,7 +79,6 @@
   letter-spacing: -.02em;
   line-height: 1;
 }
-.hero-stat dd span { font-size: clamp(14px, 1.4vw, 17px); font-weight: 600; letter-spacing: 0; color: var(--muted); margin-left: 3px; }
 
 .hero-logo {
   grid-area: logo;
