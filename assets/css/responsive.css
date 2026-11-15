@@ -140,7 +140,7 @@
   .hero-kicker { align-self: center; }
   .hero-title { margin-top: 26px; font-size: clamp(44px, 13vw, 68px); }
   .hero-bottom { margin-top: 38px; }
-  .hero-logo { width: 72px; margin-top: 26px; transform: translateX(-32px); }
+  .hero-logo { width: 72px; margin-top: 26px; }
 
   .projects-grid,
   .provenance-grid { grid-template-columns: 1fr; }
@@ -183,7 +183,7 @@
   .hero-title { font-size: clamp(40px, 14vw, 58px); line-height: .95; }
   .home-hero .wrap.hero-layout { grid-template-columns: minmax(0, 1fr) 64px; }
   .hero-bottom { margin-top: 34px; }
-  .hero-logo { width: 64px; align-self: end; margin-bottom: 6px; transform: translate(-32px, -8px); }
+  .hero-logo { width: 64px; align-self: end; margin-bottom: 6px; }
 
   .focus-grid { grid-template-columns: 1fr; }
   .principle-card { min-height: 240px; }
@@ -263,6 +263,15 @@
   .footer-about,
   .footer-contact { grid-column: auto; }
   .footer-bottom { padding: 20px 0; flex-direction: column; align-items: flex-start; }
+}
+
+/* Short screens (iPhone SE 1st gen, 320×568): the full-height hero pushes the
+   CTA into the floating chrome, so the hero sizes to its content instead. */
+@media (max-width: 520px) and (max-height: 620px) {
+  .home-hero .wrap.hero-layout { min-height: 0; padding-block: 36px 32px; }
+  .hero-title { margin-top: 20px; }
+  .hero-bottom { margin-top: 24px; }
+  .hero-copy > p { line-height: 1.7; }
 }
 
 @media (max-width: 900px), (pointer: coarse) {

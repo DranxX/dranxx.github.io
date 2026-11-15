@@ -138,6 +138,26 @@
         url: 'https://github.com/DranxX/corpus-cleaner'
       },
       {
+        id: 'paper-research-mcp',
+        code: 'PRM',
+        name: 'Paper-Research-MCP',
+        preview: `${assetBase}/previews/paper-research-mcp.png`,
+        kind: 'repository',
+        scopes: ['ai'],
+        categoryLabel: t('Academic paper search MCP', 'Pencarian paper akademik via MCP'),
+        visibility: 'public',
+        archived: false,
+        fork: false,
+        source: 'original',
+        updatedAt: '2026-11-14T17:40:32Z',
+        description: t(
+          'An MCP server for academic paper search: 31 sources behind 36 tools with one result schema. The federation layer searches many sources at once and deduplicates by DOI and title, and the free sources work without an API key.',
+          'Server MCP untuk pencarian paper akademik: 31 sumber di balik 36 tools dengan satu skema hasil. Lapisan federasinya mencari ke banyak sumber sekaligus lalu mendeduplikasi lewat DOI dan judul, dan sumber gratisnya bisa dipakai tanpa API key.'
+        ),
+        tags: ['Python', 'MCP', 'uv', 'PyPI'],
+        url: 'https://github.com/DranxX/Paper-Research-MCP'
+      },
+      {
         id: 'drxporter',
         code: 'DXP',
         name: 'DrXporter',

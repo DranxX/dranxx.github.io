@@ -29,8 +29,14 @@
         resources: 'resource',
         result: count => `${count} resource tersedia`,
         resultSingle: '1 resource tersedia',
-        download: version => `Download ${version}`,
-        downloadLabel: (name, version) => `Download ${name}, versi ${version}`,
+        download: 'Download',
+        downloadLabel: name => `Download ${name}`,
+        datasetSource: 'Lihat di Hugging Face',
+        datasetSourceLabel: name => `Lihat ${name} di Hugging Face`,
+        actionCopy: {
+          install: { label: 'Install', icon: 'bi-box-arrow-up-right', aria: name => `Install ${name} dari PyPI` },
+          open: { label: 'Buka dataset', icon: 'bi-box-arrow-up-right', aria: name => `Buka dataset ${name} di Hugging Face` }
+        },
         details: 'Lihat detail',
         detailsLabel: name => `Lihat detail ${name}`,
         close: 'Tutup detail resource',
@@ -53,8 +59,14 @@
       } : {
         resources: 'resources',
         result: count => `${count} resource${count === 1 ? '' : 's'} available`,
-        download: version => `Download ${version}`,
-        downloadLabel: (name, version) => `Download ${name}, version ${version}`,
+        download: 'Download',
+        downloadLabel: name => `Download ${name}`,
+        datasetSource: 'View on Hugging Face',
+        datasetSourceLabel: name => `View ${name} on Hugging Face`,
+        actionCopy: {
+          install: { label: 'Install', icon: 'bi-box-arrow-up-right', aria: name => `Install ${name} on PyPI` },
+          open: { label: 'Open dataset', icon: 'bi-box-arrow-up-right', aria: name => `Open the ${name} dataset on Hugging Face` }
+        },
         details: 'View details',
         detailsLabel: name => `View ${name} details`,
         close: 'Close resource details',
@@ -157,13 +169,24 @@
       return mark;
     }
 
-    createDownloadLink(resource, version, className) {
+    createResourceLink(resource, version, className) {
+      const action = resource.action && this.copy.actionCopy[resource.action];
+      if (resource.externalUrl && action) {
+        const link = setAttributes(create('a', className), {
+          href: resource.externalUrl,
+          target: '_blank',
+          rel: 'noreferrer noopener',
+          'aria-label': action.aria(resource.name)
+        });
+        link.append(action.label, setAttributes(create('i', `bi ${action.icon}`), { 'aria-hidden': 'true' }));
+        return link;
+      }
       const link = setAttributes(create('a', className), {
         href: this.getDownloadUrl(resource, version),
         download: resource.fileName,
-        'aria-label': this.copy.downloadLabel(resource.name, version.version)
+        'aria-label': this.copy.downloadLabel(resource.name)
       });
-      link.append(this.copy.download(version.version), setAttributes(create('i', 'bi bi-download'), { 'aria-hidden': 'true' }));
+      link.append(this.copy.download, setAttributes(create('i', 'bi bi-download'), { 'aria-hidden': 'true' }));
       return link;
     }
 
@@ -196,8 +219,16 @@
         'data-modal-open': '#resourceDetailModal',
         'aria-label': this.copy.detailsLabel(resource.name)
       });
-      actions.append(this.createDownloadLink(resource, version, 'drx-btn drx-btn-solid-primary'), details);
+      actions.append(this.createResourceLink(resource, version, 'drx-btn drx-btn-solid-primary'), details);
 
+      if (resource.preview) {
+        article.append(setAttributes(create('img', 'resource-preview'), {
+          src: resource.preview,
+          alt: '',
+          loading: 'lazy',
+          decoding: 'async'
+        }));
+      }
       article.append(head, title, create('p', 'resource-description', resource.description), this.createTags(resource.tags), meta, actions);
       details.addEventListener('click', () => this.showDetails(resource, true));
       return article;
@@ -324,7 +355,7 @@
         const row = create('article', 'resource-version');
         const info = create('div');
         info.append(create('strong', '', item.version), create('span', '', this.formatDate(item.releasedAt)), create('p', '', item.note));
-        row.append(info, this.createDownloadLink(resource, item, 'text-link'));
+        row.append(info, this.createResourceLink(resource, item, 'text-link'));
         versionList.append(row);
       });
       versionHistory.append(versionList);
@@ -336,21 +367,37 @@
       }
       body.replaceChildren(...[intro, meta, install, versionHistory, terms].filter(Boolean));
 
-      const source = setAttributes(create('a', 'drx-btn drx-btn-outline', this.copy.source), {
-        href: this.getSourceUrl(resource, version),
-        target: '_blank',
-        rel: 'noreferrer noopener',
-        'aria-label': this.copy.sourceLabel(resource.name)
-      });
-      const sourceMark = setAttributes(create('span', 'brand-mark'), { 'aria-hidden': 'true' });
-      for (const theme of ['light', 'dark']) {
-        sourceMark.append(setAttributes(create('img', `brand-logo brand-logo-${theme}`), {
-          src: `${this.config.assetBase}/brands/github${theme === 'dark' ? '-dark' : ''}.svg`,
+      let source;
+      if (resource.sourceUrl && resource.sourceBrand === 'huggingface') {
+        source = setAttributes(create('a', 'drx-btn drx-btn-outline', this.copy.datasetSource), {
+          href: resource.sourceUrl,
+          target: '_blank',
+          rel: 'noreferrer noopener',
+          'aria-label': this.copy.datasetSourceLabel(resource.name)
+        });
+        const sourceMark = setAttributes(create('span', 'brand-mark'), { 'aria-hidden': 'true' });
+        sourceMark.append(setAttributes(create('img', 'brand-logo'), {
+          src: `${this.config.assetBase}/brands/huggingface.svg`,
           alt: '', width: '20', height: '20'
         }));
+        source.append(sourceMark);
+      } else {
+        source = setAttributes(create('a', 'drx-btn drx-btn-outline', this.copy.source), {
+          href: resource.sourceUrl || this.getSourceUrl(resource, version),
+          target: '_blank',
+          rel: 'noreferrer noopener',
+          'aria-label': this.copy.sourceLabel(resource.name)
+        });
+        const sourceMark = setAttributes(create('span', 'brand-mark'), { 'aria-hidden': 'true' });
+        for (const theme of ['light', 'dark']) {
+          sourceMark.append(setAttributes(create('img', `brand-logo brand-logo-${theme}`), {
+            src: `${this.config.assetBase}/brands/github${theme === 'dark' ? '-dark' : ''}.svg`,
+            alt: '', width: '20', height: '20'
+          }));
+        }
+        source.append(sourceMark);
       }
-      source.append(sourceMark);
-      footer.replaceChildren(source, this.createDownloadLink(resource, version, 'drx-btn drx-btn-solid-primary'));
+      footer.replaceChildren(source, this.createResourceLink(resource, version, 'drx-btn drx-btn-solid-primary'));
 
       if (updateHash && window.location.hash !== `#${resource.id}`) window.history.pushState({ resource: resource.id }, '', `#${resource.id}`);
     }
